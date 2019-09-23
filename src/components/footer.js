@@ -1,8 +1,8 @@
 import { Link } from "gatsby"
 import React from "react"
 
-const Header = () => (
-  <header
+const Footer = () => (
+  <footer
     style={{
       background: `#333333`,
       marginBottom: `1.45rem`,
@@ -15,7 +15,7 @@ const Header = () => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
+      <h2 style={{ margin: 0 }}>
         <Link
           to="/"
           style={{
@@ -23,14 +23,11 @@ const Header = () => (
             textDecoration: `none`,
           }}
         >
-          Header
+          Footer
         </Link>
-      </h1>
-      <h2 style={{ color: `#fff`}}>
-        2020 Candidate Tax Matrix
       </h2>
     </div>
-  </header>
+  </footer>
 )
 
-export default Header
+export default Footer
