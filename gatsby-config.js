@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `2020 Candidate Tax Matrix`,
+    description: `A tool to understand and compare tax plans among the 2020 presidential candidates.`,
+    author: `@alicefeng`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
