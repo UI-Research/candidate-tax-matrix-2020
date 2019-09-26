@@ -3,7 +3,7 @@ import React from "react"
 function CandidateList(props) {
     const candidates = props.candidates;
     const allCandidateListItems = candidates.map((candidate) =>
-        <li>{candidate}</li>
+        <li key={candidate.split().join("_")}>{candidate}</li>
     );
 
     return (
