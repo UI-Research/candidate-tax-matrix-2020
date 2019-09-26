@@ -27,7 +27,7 @@ class IndexPage extends Component {
             <NavLinks selectedView={view} />
             <h1>Overview</h1>
             <CandidateList candidates={selectedCandidates} />
-            <Cards candidates={selectedCandidates} />
+            <Cards view={view} candidates={selectedCandidates} />
           </Layout>
         )
     }
