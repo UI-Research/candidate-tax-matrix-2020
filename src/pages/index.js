@@ -4,6 +4,7 @@ import React from "react"
 import Layout from "../components/layout"
 import NavLinks from "../components/nav-links"
 import CandidateList from "../components/candidate-list"
+import Cards from "../components/cards"
 //import Image from "../components/image"
 import SEO from "../components/seo"
 
@@ -15,6 +16,7 @@ const IndexPage = () => (
     <NavLinks />
     <h1>Overview</h1>
     <CandidateList candidates={candidates} />
+    <Cards candidates={candidates} />
   </Layout>
 )
 
