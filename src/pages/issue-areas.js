@@ -8,9 +8,8 @@ import SEO from "../components/seo"
 const IssueAreas = () => (
   <Layout>
     <SEO title="Page two" />
-    <h1>Issue Areas</h1>
-    <p>Welcome to page 2</p>
     <NavLinks />
+    <h1>Issue Areas</h1>
   </Layout>
 )
 

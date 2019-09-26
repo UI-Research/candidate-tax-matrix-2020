@@ -4,7 +4,7 @@ import React from "react"
 const Footer = () => (
   <footer
     style={{
-      background: `#333333`,
+      background: `#696969`,
       marginBottom: `1.45rem`,
     }}
   >

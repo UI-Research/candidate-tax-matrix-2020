@@ -8,9 +8,8 @@ import SEO from "../components/seo"
 const TaxPolicies = () => (
   <Layout>
     <SEO title="Tax policies" />
-    <h1>Tax Policies</h1>
-    <p>Welcome to page 3</p>
     <NavLinks />
+    <h1>Tax Policies</h1>
   </Layout>
 )
 

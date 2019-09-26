@@ -7,11 +7,7 @@ const NavLinks = () => (
     style={{
     }}
   >
-    <div
-      style={{
-        maxWidth: 960,
-      }}
-    >
+    <div className={navLinksStyles.navLinkContainer}>
         <Link to="/" className={navLinksStyles.navLink}>Overview</Link>
         <Link to="/issue-areas/" className={navLinksStyles.navLink}>Issue Areas</Link>
         <Link to="/tax-policies/" className={navLinksStyles.navLink}>Tax Policies</Link>
