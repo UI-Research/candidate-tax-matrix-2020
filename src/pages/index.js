@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 /* import { Link } from "gatsby" */
 
 import Layout from "../components/layout"
@@ -10,14 +10,27 @@ import SEO from "../components/seo"
 
 const candidates = ["Candidate 1", "Candidate 2", "Candidate 3", "Candidate 4", "Candidate 5"];
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <NavLinks />
-    <h1>Overview</h1>
-    <CandidateList candidates={candidates} />
-    <Cards candidates={candidates} />
-  </Layout>
-)
+class IndexPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            view: "overview",
+            selectedCandidates: candidates,
+        };
+    }
+
+    render() {
+        const { view, selectedCandidates } = this.state;
+        return (
+          <Layout>
+            <SEO title="Home" />
+            <NavLinks selectedView={view} />
+            <h1>Overview</h1>
+            <CandidateList candidates={selectedCandidates} />
+            <Cards candidates={selectedCandidates} />
+          </Layout>
+        )
+    }
+}
 
 export default IndexPage

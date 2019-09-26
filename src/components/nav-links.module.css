@@ -5,4 +5,14 @@
 .navLink {
     min-width: 100px;
     display: inline-block;
+    cursor: pointer;
+}
+
+.navLink:hover {
+    text-decoration: underline;
+}
+
+.selected {
+    background-color: #696969;
+    color: #fff;
 }
