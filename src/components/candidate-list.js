@@ -1,15 +1,16 @@
 import React from "react"
+import candidateListStyles from "./candidate-list.module.css"
 
 function CandidateList(props) {
     const candidates = props.candidates;
     const allCandidateListItems = candidates.map((candidate) =>
         <li key={candidate.name}>
-            <button className={candidate.selected ? "selected" : ""} onClick={() => props.onClick(candidate.name)}>{candidate.name}</button>
+            <button className={candidateListStyles.menuButton + " " + (candidate.selected ? candidateListStyles.selected : "")} onClick={() => props.onClick(candidate.name)}>{candidate.name}</button>
         </li>
     );
 
     return (
-        <ul>{allCandidateListItems}</ul>
+        <ul className={candidateListStyles.menuList}>{allCandidateListItems}</ul>
     );
 }
 
