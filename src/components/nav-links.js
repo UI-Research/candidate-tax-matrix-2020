@@ -2,6 +2,34 @@
 import React, { Component } from "react"
 import navLinksStyles from "./nav-links.module.css"
 
+const views = ["overview", "issue areas", "tax policies"];
+
+const NavLink = props => {
+    return (
+        <div
+            className={navLinksStyles.navLink + " " + (props.selectedView === props.viewName ? navLinksStyles.selected : "")}
+            onClick={() => props.onClick(props.viewName)}
+        >
+            {props.viewName}
+        </div>
+    );
+}
+
+const NavButtons = props => {
+    const navButtons = props.views.map((view) => {
+        return (
+            <NavLink
+                key={view}
+                selectedView={props.selectedView}
+                viewName={view}
+                onClick={props.onClick}
+            />
+        )
+    })
+
+    return navButtons;
+}
+
 class NavLinks extends Component {
 
     render() {
@@ -9,24 +37,11 @@ class NavLinks extends Component {
 
         return (
             <div className={navLinksStyles.navLinkContainer}>
-                <div
-                    className={navLinksStyles.navLink + " " + (selectedView === "overview" ? navLinksStyles.selected : "")}
-                    onClick={() => this.props.onClick("overview")}
-                >
-                    Overview
-                </div>
-                <div
-                    className={navLinksStyles.navLink + " " + (selectedView === "issue areas" ? navLinksStyles.selected : "")}
-                    onClick={() => this.props.onClick("issue areas")}
-                >
-                    Issue Areas
-                </div>
-                <div
-                    className={navLinksStyles.navLink + " " + (selectedView === "tax policies" ? navLinksStyles.selected : "")}
-                    onClick={() => this.props.onClick("tax policies")}
-                >
-                    Tax Policies
-                </div>
+                <NavButtons
+                    selectedView={selectedView}
+                    views={views}
+                    onClick={this.props.onClick}
+                />
             </div>
         );
     }
