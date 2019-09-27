@@ -19,15 +19,21 @@ class IndexPage extends Component {
         };
     }
 
+    handleClick = (view) => {
+        this.setState({view: view});
+    }
+
     render() {
-        const { view, selectedCandidates } = this.state;
         return (
           <Layout>
             <SEO title="Home" />
-            <NavLinks selectedView={view} />
+            <NavLinks
+                selectedView={this.state.view}
+                onClick={this.handleClick}
+            />
             <h1>Overview</h1>
-            <CandidateList candidates={selectedCandidates} />
-            <Cards view={view} candidates={selectedCandidates} />
+            <CandidateList candidates={this.state.selectedCandidates} />
+            <Cards view={this.state.view} candidates={this.state.selectedCandidates} />
           </Layout>
         )
     }
