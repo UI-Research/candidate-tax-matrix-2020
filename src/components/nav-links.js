@@ -1,5 +1,5 @@
 //import { Link } from "gatsby"
-import React, { Component } from "react"
+import React from "react"
 import navLinksStyles from "./nav-links.module.css"
 
 const views = ["overview", "issue areas", "tax policies"];
@@ -30,21 +30,16 @@ const NavButtons = props => {
     return navButtons;
 }
 
-class NavLinks extends Component {
-
-    render() {
-        const selectedView = this.props.selectedView;
-
-        return (
-            <div className={navLinksStyles.navLinkContainer}>
-                <NavButtons
-                    selectedView={selectedView}
-                    views={views}
-                    onClick={this.props.onClick}
-                />
-            </div>
-        );
-    }
+function NavLinks(props) {
+    return (
+        <div className={navLinksStyles.navLinkContainer}>
+            <NavButtons
+                selectedView={props.selectedView}
+                views={views}
+                onClick={props.onClick}
+            />
+        </div>
+    );
 }
 
 export default NavLinks
