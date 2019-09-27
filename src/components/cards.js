@@ -4,8 +4,8 @@ import cardStyles from "./cards.module.css"
 function Cards(props) {
     const view = props.view;
     const candidates = props.candidates;
-    const candidateCards = candidates.map((candidate) =>
-        <div key={candidate.split().join("_")} className={cardStyles.card}>{candidate}<br />{view}</div>
+    const candidateCards = candidates.filter((candidate) => candidate.selected).map((candidate) =>
+        <div key={candidate.name} className={cardStyles.card}>{candidate.name}<br />{view}</div>
     );
 
     return (

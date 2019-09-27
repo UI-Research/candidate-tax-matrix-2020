@@ -8,7 +8,13 @@ import Cards from "../components/cards"
 //import Image from "../components/image"
 import SEO from "../components/seo"
 
-const candidates = ["Candidate 1", "Candidate 2", "Candidate 3", "Candidate 4", "Candidate 5"];
+let candidates = [
+                    {name: "Candidate 1", selected: true},
+                    {name: "Candidate 2", selected: true},
+                    {name: "Candidate 3", selected: true},
+                    {name: "Candidate 4", selected: true},
+                    {name: "Candidate 5", selected: true}
+                ];
 
 class IndexPage extends Component {
     constructor(props) {
@@ -19,8 +25,17 @@ class IndexPage extends Component {
         };
     }
 
-    handleClick = (view) => {
+    handleViewClick = (view) => {
         this.setState({view: view});
+    }
+
+    handleCandidateClick = (clickedCandidate) => {
+        // const candidates = this.state.selectedCandidates.filter(candidate => candidate.name !== clickedCandidate);
+        const candidates = this.state.selectedCandidates.slice();
+        candidates.forEach(function(candidate) {
+            if(candidate.name === clickedCandidate) candidate.selected = !candidate.selected;
+        });
+        this.setState({selectedCandidates : candidates});
     }
 
     render() {
@@ -29,11 +44,17 @@ class IndexPage extends Component {
             <SEO title="Home" />
             <NavLinks
                 selectedView={this.state.view}
-                onClick={this.handleClick}
+                onClick={this.handleViewClick}
             />
             <h1>Overview</h1>
-            <CandidateList candidates={this.state.selectedCandidates} />
-            <Cards view={this.state.view} candidates={this.state.selectedCandidates} />
+            <CandidateList
+                candidates={this.state.selectedCandidates}
+                onClick={this.handleCandidateClick}
+            />
+            <Cards
+                view={this.state.view}
+                candidates={this.state.selectedCandidates}
+            />
           </Layout>
         )
     }
