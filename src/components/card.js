@@ -1,5 +1,5 @@
 import React, { Component}  from "react"
-import cardStyles from "./cards.module.css"
+import cardStyles from "./card.module.css"
 
 class Card extends Component {
     constructor(props) {
@@ -10,18 +10,31 @@ class Card extends Component {
     }
 
     handleCardClick = () => {
+        console.log("open modal");
         this.setState({isModal: true});
+    }
+
+    handleModalCloseBtnClick = (e) => {
+        console.log("close modal");
+        e.preventDefault();
+        this.setState({isModal: false});
     }
 
     render() {
         return (
             <div
-                className={cardStyles.card}
+                className={cardStyles.card + " " + (this.state.isModal ? cardStyles.modalView : "")}
                 onClick={this.handleCardClick}
             >
                 {this.props.candidate.name}
                 <br />
                 {this.props.view}
+                <button
+                    className={cardStyles.closeModalBtn}
+                    onClick={this.handleModalCloseBtnClick}
+                >
+                    Close
+                </button>
             </div>
         )
     }
