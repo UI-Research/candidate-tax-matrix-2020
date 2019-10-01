@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import NavLinks from "../components/nav-links"
 import CandidateList from "../components/candidate-list"
 import Cards from "../components/cards"
+import Modal from "../components/modal"
 //import Image from "../components/image"
 import SEO from "../components/seo"
 
@@ -22,6 +23,8 @@ class IndexPage extends Component {
         this.state = {
             view: "overview",
             selectedCandidates: candidates,
+            modalIsOpen: false,
+            modalCandidate: null,
         };
     }
 
@@ -36,6 +39,22 @@ class IndexPage extends Component {
             if(candidate.name === clickedCandidate) candidate.selected = !candidate.selected;
         });
         this.setState({selectedCandidates : candidates});
+    }
+
+    handleCardClick = (candidate) => {
+        console.log("open modal!", candidate, this.state.view);
+        this.setState({
+            modalIsOpen: true,
+            modalCandidate: candidate,
+        });
+    }
+
+    handleModalCloseBtnClick = () => {
+        console.log("close modal");
+        this.setState({
+            modalIsOpen: false,
+            modalCandidate: null,
+        });
     }
 
     render() {
@@ -54,6 +73,13 @@ class IndexPage extends Component {
             <Cards
                 view={this.state.view}
                 candidates={this.state.selectedCandidates}
+                onClick={this.handleCardClick}
+            />
+            <Modal
+                isOpen={this.state.modalIsOpen}
+                view={this.state.view}
+                candidate={this.state.modalCandidate}
+                onClick={this.handleModalCloseBtnClick}
             />
           </Layout>
         )

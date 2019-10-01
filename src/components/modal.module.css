@@ -1,0 +1,14 @@
+.modal {
+    border: 1px solid #000;
+    position: relative;
+}
+
+.closed {
+    display: none;
+}
+
+.closeModalBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}

@@ -1,17 +1,26 @@
-import React  from "react"
-import Card from "./card"
+import React from "react"
 import cardStyles from "./cards.module.css"
 
+function Card(props) {
+    const candidate = props.candidate;
+    return (
+        <div className={cardStyles.card} onClick={() => props.onClick(candidate.name)}>{candidate.name}<br />{props.view}</div>
+    )
+}
+
 function Cards(props) {
-    const view = props.view;
-    const candidates = props.candidates;
-    const candidateCards = candidates.filter((candidate) => candidate.selected).map((candidate) =>
-        <Card key={candidate.name} candidate={candidate} view={view} />
+    const candidateCards = props.candidates.filter((candidate) => candidate.selected).map((candidate) =>
+        <Card
+            key={candidate.name}
+            candidate={candidate}
+            view={props.view}
+            onClick={props.onClick}
+        />
     );
 
     return (
         <div className={cardStyles.cardContainer}>{candidateCards}</div>
-    );
+    )
 }
 
 export default Cards
