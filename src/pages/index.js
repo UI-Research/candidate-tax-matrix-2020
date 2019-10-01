@@ -43,7 +43,8 @@ class IndexPage extends Component {
 
     handleCardClick = (candidate) => {
         // console.log("open modal!", candidate, this.state.view);
-        document.getElementsByTagName('html')[0].style.overflow = "hidden";  // in gatsby, need to set overflow of <html> to hidden to prevent scroll
+        document.getElementsByTagName('html')[0].style["overflow-y"] = "hidden";  // in gatsby, need to set overflow of <html> to hidden to prevent scroll
+        document.getElementsByTagName('body')[0].style["padding-right"] = "15px";
         this.setState({
             modalIsOpen: true,
             modalCandidate: candidate,
@@ -52,7 +53,8 @@ class IndexPage extends Component {
 
     handleModalCloseBtnClick = () => {
         // console.log("close modal");
-        document.getElementsByTagName('html')[0].style.overflow = "scroll";
+        document.getElementsByTagName('html')[0].style["overflow-y"] = "scroll";
+        document.getElementsByTagName('body')[0].style["padding-right"] = "0";
         this.setState({
             modalIsOpen: false,
             modalCandidate: null,
