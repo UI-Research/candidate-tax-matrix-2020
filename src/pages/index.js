@@ -42,7 +42,7 @@ class IndexPage extends Component {
     }
 
     handleCardClick = (candidate) => {
-        console.log("open modal!", candidate, this.state.view);
+        // console.log("open modal!", candidate, this.state.view);
         this.setState({
             modalIsOpen: true,
             modalCandidate: candidate,
@@ -50,7 +50,7 @@ class IndexPage extends Component {
     }
 
     handleModalCloseBtnClick = () => {
-        console.log("close modal");
+        // console.log("close modal");
         this.setState({
             modalIsOpen: false,
             modalCandidate: null,
@@ -59,29 +59,31 @@ class IndexPage extends Component {
 
     render() {
         return (
-          <Layout>
-            <SEO title="Home" />
-            <NavLinks
-                selectedView={this.state.view}
-                onClick={this.handleViewClick}
-            />
-            <h1>Overview</h1>
-            <CandidateList
-                candidates={this.state.selectedCandidates}
-                onClick={this.handleCandidateClick}
-            />
-            <Cards
-                view={this.state.view}
-                candidates={this.state.selectedCandidates}
-                onClick={this.handleCardClick}
-            />
-            <Modal
-                isOpen={this.state.modalIsOpen}
-                view={this.state.view}
-                candidate={this.state.modalCandidate}
-                onClick={this.handleModalCloseBtnClick}
-            />
-          </Layout>
+            <div className={this.state.modalIsOpen ? "modalOpen" : null}>
+                <Layout>
+                    <SEO title="Home" />
+                    <NavLinks
+                        selectedView={this.state.view}
+                        onClick={this.handleViewClick}
+                    />
+                    <h1>Overview</h1>
+                    <CandidateList
+                        candidates={this.state.selectedCandidates}
+                        onClick={this.handleCandidateClick}
+                    />
+                    <Cards
+                        view={this.state.view}
+                        candidates={this.state.selectedCandidates}
+                        onClick={this.handleCardClick}
+                    />
+                    <Modal
+                        isOpen={this.state.modalIsOpen}
+                        view={this.state.view}
+                        candidate={this.state.modalCandidate}
+                        onClick={this.handleModalCloseBtnClick}
+                    />
+                </Layout>
+            </div>
         )
     }
 }
