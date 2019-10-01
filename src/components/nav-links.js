@@ -7,7 +7,7 @@ const views = ["overview", "issue areas", "tax policies"];
 const NavLink = props => {
     return (
         <div
-            className={navLinksStyles.navLink + " " + (props.selectedView === props.viewName ? navLinksStyles.selected : "")}
+            className={navLinksStyles.navLink + " " + (props.selectedView === props.viewName ? navLinksStyles.selected : null)}
             onClick={() => props.onClick(props.viewName)}
         >
             {props.viewName}
