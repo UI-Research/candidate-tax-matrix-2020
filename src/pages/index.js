@@ -43,6 +43,7 @@ class IndexPage extends Component {
 
     handleCardClick = (candidate) => {
         // console.log("open modal!", candidate, this.state.view);
+        document.getElementsByTagName('html')[0].style.overflow = "hidden";  // in gatsby, need to set overflow of <html> to hidden to prevent scroll
         this.setState({
             modalIsOpen: true,
             modalCandidate: candidate,
@@ -51,6 +52,7 @@ class IndexPage extends Component {
 
     handleModalCloseBtnClick = () => {
         // console.log("close modal");
+        document.getElementsByTagName('html')[0].style.overflow = "scroll";
         this.setState({
             modalIsOpen: false,
             modalCandidate: null,
@@ -59,7 +61,7 @@ class IndexPage extends Component {
 
     render() {
         return (
-            <div className={this.state.modalIsOpen ? "modalOpen" : null}>
+            <div>
                 <Layout>
                     <SEO title="Home" />
                     <NavLinks

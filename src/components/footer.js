@@ -4,7 +4,8 @@ import React from "react"
 const Footer = () => (
   <footer
     style={{
-      background: `#696969`
+      background: `#696969`,
+      width: `100%`,
     }}
   >
     <div
