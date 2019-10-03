@@ -61,6 +61,31 @@ class IndexPage extends Component {
         });
     }
 
+    onDragStart = (e, index) => {
+        this.draggedItem = this.state.selectedCandidates[index];
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/html", e.target.parentNode);
+        e.dataTransfer.setDragImage(e.target.parentNode, 20, 20);
+    }
+
+    onDragOver = (index) => {
+        const draggedOverItem = this.state.selectedCandidates[index];
+
+        if(this.draggedItem === draggedOverItem) {
+            return;
+        }
+
+        let selectedCandidates = this.state.selectedCandidates.filter(candidate => candidate !== this.draggedItem);
+
+        selectedCandidates.splice(index, 0, this.draggedItem);
+
+        this.setState({ selectedCandidates});
+    }
+
+    onDragEnd = () => {
+        this.draggedIdx = null;
+    }
+
     render() {
         return (
             <div>
@@ -74,6 +99,9 @@ class IndexPage extends Component {
                     <CandidateList
                         candidates={this.state.selectedCandidates}
                         onClick={this.handleCandidateClick}
+                        onDragStart={this.onDragStart}
+                        onDragOver={this.onDragOver}
+                        onDragEnd={this.onDragEnd}
                     />
                     <Cards
                         view={this.state.view}
