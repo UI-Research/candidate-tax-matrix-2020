@@ -3,6 +3,7 @@ import React, { Component } from "react"
 
 import Layout from "../components/layout"
 import NavLinks from "../components/nav-links"
+import IssueList from "../components/issue-list"
 import CandidateList from "../components/candidate-list"
 import Cards from "../components/cards"
 import Modal from "../components/modal"
@@ -10,12 +11,28 @@ import Modal from "../components/modal"
 import SEO from "../components/seo"
 
 let candidates = [
-                    {name: "Candidate 1", selected: true},
-                    {name: "Candidate 2", selected: true},
-                    {name: "Candidate 3", selected: true},
-                    {name: "Candidate 4", selected: true},
-                    {name: "Candidate 5", selected: true}
-                ];
+    {name: "Candidate 1", selected: true},
+    {name: "Candidate 2", selected: true},
+    {name: "Candidate 3", selected: true},
+    {name: "Candidate 4", selected: true},
+    {name: "Candidate 5", selected: true}
+];
+
+let issues = [
+    {name: "Issue 1", selected: true},
+    {name: "Issue 2", selected: true},
+    {name: "Issue 3", selected: true},
+    {name: "Issue 4", selected: true},
+    {name: "Issue 5", selected: true}
+];
+
+let taxPolicies = [
+    {name: "Tax Policy 1", selected: true},
+    {name: "Tax Policy 2", selected: true},
+    {name: "Tax Policy 3", selected: true},
+    {name: "Tax Policy 4", selected: true},
+    {name: "Tax Policy 5", selected: true}
+];
 
 class IndexPage extends Component {
     constructor(props) {
@@ -25,6 +42,8 @@ class IndexPage extends Component {
             selectedCandidates: candidates,
             modalIsOpen: false,
             modalCandidate: null,
+            selectedIssues: issues,
+            selectedTaxPolicies: taxPolicies,
         };
     }
 
@@ -61,6 +80,7 @@ class IndexPage extends Component {
         });
     }
 
+    // code from: https://www.freecodecamp.org/news/how-to-make-and-test-your-own-react-drag-and-drop-list-with-0-dependencies-6fb461603780/
     onDragStart = (e, index) => {
         this.draggedItem = this.state.selectedCandidates[index];
         e.dataTransfer.effectAllowed = "move";
@@ -87,6 +107,12 @@ class IndexPage extends Component {
     }
 
     render() {
+        let otherList;
+
+        if(this.state.view === "issue areas") {
+            otherList = <IssueList issues={this.state.selectedIssues} />
+        }
+
         return (
             <div>
                 <Layout>
@@ -96,6 +122,7 @@ class IndexPage extends Component {
                         onClick={this.handleViewClick}
                     />
                     <h1>Overview</h1>
+                    {otherList}
                     <CandidateList
                         candidates={this.state.selectedCandidates}
                         onClick={this.handleCandidateClick}
