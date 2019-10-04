@@ -107,12 +107,6 @@ class IndexPage extends Component {
     }
 
     render() {
-        let otherList;
-
-        if(this.state.view === "issue areas") {
-            otherList = <IssueList issues={this.state.selectedIssues} />
-        }
-
         return (
             <div>
                 <Layout>
@@ -122,7 +116,7 @@ class IndexPage extends Component {
                         onClick={this.handleViewClick}
                     />
                     <h1>Overview</h1>
-                    {otherList}
+                    {this.state.view === "issue areas" && <IssueList issues={this.state.selectedIssues} />}
                     <CandidateList
                         candidates={this.state.selectedCandidates}
                         onClick={this.handleCandidateClick}
