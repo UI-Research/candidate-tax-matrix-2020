@@ -1,13 +1,13 @@
 import React from "react"
-// import candidateListStyles from "./candidate-list.module.css"
+import issueListStyles from "./issue-list.module.css"
 
 function IssueList(props) {
     const issues = props.issues;
     const allIssueListItems = issues.map((issue, idx) =>
         <li key={issue.name}>
             <button
-                // className={candidateListStyles.menuButton + " " + (candidate.selected ? candidateListStyles.selected : null)}
-                // onClick={() => props.onClick(candidate.name)}
+                className={issueListStyles.menuButton + " " + (issue.selected ? issueListStyles.selected : null)}
+                onClick={() => props.onClick(issue.name)}
             >
                 {issue.name}
             </button>
@@ -15,7 +15,7 @@ function IssueList(props) {
     );
 
     return (
-        <ul>{allIssueListItems}</ul>
+        <ul className={issueListStyles.menuList}>{allIssueListItems}</ul>
     );
 }
 

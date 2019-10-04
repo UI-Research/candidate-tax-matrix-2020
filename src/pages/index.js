@@ -60,6 +60,14 @@ class IndexPage extends Component {
         this.setState({selectedCandidates : candidates});
     }
 
+    handleIssueClick = (clickedIssue) => {
+        const issues = this.state.selectedIssues.slice();
+        issues.forEach(function(issue) {
+            if(issue.name === clickedIssue) issue.selected = !issue.selected;
+        });
+        this.setState({selectedIssues : issues});
+    }
+
     handleCardClick = (candidate) => {
         // console.log("open modal!", candidate, this.state.view);
         document.getElementsByTagName('html')[0].style["overflow-y"] = "hidden";  // in gatsby, need to set overflow of <html> to hidden to prevent scroll
@@ -116,7 +124,7 @@ class IndexPage extends Component {
                         onClick={this.handleViewClick}
                     />
                     <h1>Overview</h1>
-                    {this.state.view === "issue areas" && <IssueList issues={this.state.selectedIssues} />}
+                    {this.state.view === "issue areas" && <IssueList issues={this.state.selectedIssues} onClick={this.handleIssueClick} />}
                     <CandidateList
                         candidates={this.state.selectedCandidates}
                         onClick={this.handleCandidateClick}
@@ -127,6 +135,7 @@ class IndexPage extends Component {
                     <Cards
                         view={this.state.view}
                         candidates={this.state.selectedCandidates}
+                        issues={this.state.selectedIssues}
                         onClick={this.handleCardClick}
                     />
                     <Modal
