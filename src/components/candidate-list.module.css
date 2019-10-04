@@ -6,6 +6,7 @@
 .menuButton {
     background-color: #ececec;
     border: none;
+    cursor: move;
 }
 
 .menuButton.selected {
