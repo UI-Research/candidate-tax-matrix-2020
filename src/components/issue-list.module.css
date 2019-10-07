@@ -1,0 +1,14 @@
+.menuList {
+    list-style: none;
+    margin-left: 0;
+}
+
+.menuButton {
+    background-color: #ececec;
+    border: none;
+    cursor: pointer;
+}
+
+.menuButton.selected {
+    background-color: #eb99c2;
+}
