@@ -123,7 +123,7 @@ class IndexPage extends Component {
                         selectedView={this.state.view}
                         onClick={this.handleViewClick}
                     />
-                    <h1>Overview</h1>
+                    <h1>{this.state.view}</h1>
                     {this.state.view === "issue areas" && <IssueList issues={this.state.selectedIssues} onClick={this.handleIssueClick} />}
                     <CandidateList
                         candidates={this.state.selectedCandidates}
