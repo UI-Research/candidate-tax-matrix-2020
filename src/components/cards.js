@@ -5,11 +5,7 @@ const cartProd = (arr1, arr2) =>
     arr1.flatMap(x => arr2.map(y => [x, y]));
 
 function Card(props) {
-    // const view = props.view;
     const candidate = props.candidate;
-    // let cardText;
-
-    // if(view === "issue areas") cardText = props.issue;
 
     return (
         <div
@@ -31,8 +27,12 @@ function Cards(props) {
         const selectedIssues = props.issues.filter((issue) => issue.selected).map((issue) => issue.name);
         allCards = cartProd(selectedCandidates, selectedIssues);
     }
+    else if(view === "tax policies") {
+        const selectedTaxPolicies = props.taxPolicies.filter((taxPolicy) => taxPolicy.selected).map((taxPolicy) => taxPolicy.name);
+        allCards = cartProd(selectedCandidates, selectedTaxPolicies);
+    }
 
-    console.log(allCards);
+    // console.log(allCards);
     const candidateCards = allCards.map((candidate) =>
             <Card
                 key={candidate}

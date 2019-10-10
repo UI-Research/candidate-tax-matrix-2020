@@ -146,6 +146,7 @@ class IndexPage extends Component {
                         view={this.state.view}
                         candidates={this.state.selectedCandidates}
                         issues={this.state.selectedIssues}
+                        taxPolicies={this.state.selectedTaxPolicies}
                         onClick={this.handleCardClick}
                     />
                     <Modal
