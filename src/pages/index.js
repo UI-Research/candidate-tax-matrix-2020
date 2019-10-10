@@ -4,6 +4,7 @@ import React, { Component } from "react"
 import Layout from "../components/layout"
 import NavLinks from "../components/nav-links"
 import IssueList from "../components/issue-list"
+import TaxPolicyList from "../components/tax-policy-list"
 import CandidateList from "../components/candidate-list"
 import Cards from "../components/cards"
 import Modal from "../components/modal"
@@ -68,6 +69,14 @@ class IndexPage extends Component {
         this.setState({selectedIssues : issues});
     }
 
+    handleTaxPolicyClick = (clickedTaxPolicy) => {
+        const taxPolicies = this.state.selectedTaxPolicies.slice();
+        taxPolicies.forEach(function(taxPolicy) {
+            if(taxPolicy.name === clickedTaxPolicy) taxPolicy.selected = !taxPolicy.selected;
+        });
+        this.setState({selectedTaxPolicies : taxPolicies});
+    }
+
     handleCardClick = (candidate) => {
         // console.log("open modal!", candidate, this.state.view);
         document.getElementsByTagName('html')[0].style["overflow-y"] = "hidden";  // in gatsby, need to set overflow of <html> to hidden to prevent scroll
@@ -125,6 +134,7 @@ class IndexPage extends Component {
                     />
                     <h1>{this.state.view}</h1>
                     {this.state.view === "issue areas" && <IssueList issues={this.state.selectedIssues} onClick={this.handleIssueClick} />}
+                    {this.state.view === "tax policies" && <TaxPolicyList taxPolicies={this.state.selectedTaxPolicies} onClick={this.handleTaxPolicyClick} />}
                     <CandidateList
                         candidates={this.state.selectedCandidates}
                         onClick={this.handleCandidateClick}
