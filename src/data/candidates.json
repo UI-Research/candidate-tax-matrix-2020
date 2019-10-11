@@ -1,0 +1,32 @@
+[
+    {
+        "first_name": "Donald",
+        "last_name": "Trump",
+        "party": "Republican",
+        "selected": true
+    },
+    {
+        "first_name": "Bill",
+        "last_name": "Weld",
+        "party": "Republican",
+        "selected": true
+    },
+    {
+        "first_name": "Elizabeth",
+        "last_name": "Warren",
+        "party": "Democrat",
+        "selected": true
+    },
+    {
+        "first_name": "Joe",
+        "last_name": "Biden",
+        "party": "Democrat",
+        "selected": true
+    },
+    {
+        "first_name": "Bernie",
+        "last_name": "Sanders",
+        "party": "Democrat",
+        "selected": true
+    }
+]

@@ -20,7 +20,7 @@ function Card(props) {
 
 function Cards(props) {
     const view = props.view;
-    const selectedCandidates = props.candidates.filter((candidate) => candidate.selected).map((candidate) => candidate.name);
+    const selectedCandidates = props.candidates.filter((candidate) => candidate.node.selected).map((candidate) => candidate.node.first_name + " " + candidate.node.last_name);
     let allCards = selectedCandidates;
 
     if(view === "issue areas") {

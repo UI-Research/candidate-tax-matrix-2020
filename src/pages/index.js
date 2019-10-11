@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { graphql } from "gatsby"
 /* import { Link } from "gatsby" */
 
 import Layout from "../components/layout"
@@ -11,13 +12,13 @@ import Modal from "../components/modal"
 //import Image from "../components/image"
 import SEO from "../components/seo"
 
-let candidates = [
-    {name: "Candidate 1", selected: true},
-    {name: "Candidate 2", selected: true},
-    {name: "Candidate 3", selected: true},
-    {name: "Candidate 4", selected: true},
-    {name: "Candidate 5", selected: true}
-];
+// let candidates = [
+//     {name: "Candidate 1", selected: true},
+//     {name: "Candidate 2", selected: true},
+//     {name: "Candidate 3", selected: true},
+//     {name: "Candidate 4", selected: true},
+//     {name: "Candidate 5", selected: true}
+// ];
 
 let issues = [
     {name: "Issue 1", selected: true},
@@ -40,7 +41,7 @@ class IndexPage extends Component {
         super(props);
         this.state = {
             view: "overview",
-            selectedCandidates: candidates,
+            selectedCandidates: this.props.data.allCandidatesJson.edges,
             modalIsOpen: false,
             modalCandidate: null,
             selectedIssues: issues,
@@ -56,7 +57,7 @@ class IndexPage extends Component {
         // const candidates = this.state.selectedCandidates.filter(candidate => candidate.name !== clickedCandidate);
         const candidates = this.state.selectedCandidates.slice();
         candidates.forEach(function(candidate) {
-            if(candidate.name === clickedCandidate) candidate.selected = !candidate.selected;
+            if(candidate.node.id === clickedCandidate) candidate.node.selected = !candidate.node.selected;
         });
         this.setState({selectedCandidates : candidates});
     }
@@ -124,6 +125,7 @@ class IndexPage extends Component {
     }
 
     render() {
+        // console.log(this.props.data.allCandidatesJson.edges);
         return (
             <div>
                 <Layout>
@@ -162,3 +164,18 @@ class IndexPage extends Component {
 }
 
 export default IndexPage
+export const query = graphql`
+  query {
+      allCandidatesJson {
+        edges {
+          node {
+            id
+            first_name
+            last_name
+            party
+            selected
+          }
+        }
+      }
+  }
+`
