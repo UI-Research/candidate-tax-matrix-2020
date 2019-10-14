@@ -2,7 +2,7 @@
 import React from "react"
 import navLinksStyles from "./nav-links.module.css"
 
-const views = ["overview", "issue areas", "tax policies"];
+const views = ["Overview", "Issue areas", "Tax policies"];
 
 const NavLink = props => {
     return (

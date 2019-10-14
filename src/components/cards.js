@@ -23,11 +23,11 @@ function Cards(props) {
     const selectedCandidates = props.candidates.filter((candidate) => candidate.node.selected).map((candidate) => candidate.node.first_name + " " + candidate.node.last_name);
     let allCards = selectedCandidates;
 
-    if(view === "issue areas") {
+    if(view === "Issue areas") {
         const selectedIssues = props.issues.filter((issue) => issue.selected).map((issue) => issue.name);
         allCards = cartProd(selectedCandidates, selectedIssues);
     }
-    else if(view === "tax policies") {
+    else if(view === "Tax policies") {
         const selectedTaxPolicies = props.taxPolicies.filter((taxPolicy) => taxPolicy.selected).map((taxPolicy) => taxPolicy.name);
         allCards = cartProd(selectedCandidates, selectedTaxPolicies);
     }

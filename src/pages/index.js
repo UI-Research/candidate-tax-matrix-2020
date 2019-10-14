@@ -135,8 +135,8 @@ class IndexPage extends Component {
                         onClick={this.handleViewClick}
                     />
                     <h1>{this.state.view}</h1>
-                    {this.state.view === "issue areas" && <IssueList issues={this.state.selectedIssues} onClick={this.handleIssueClick} />}
-                    {this.state.view === "tax policies" && <TaxPolicyList taxPolicies={this.state.selectedTaxPolicies} onClick={this.handleTaxPolicyClick} />}
+                    {this.state.view === "Issue areas" && <IssueList issues={this.state.selectedIssues} onClick={this.handleIssueClick} />}
+                    {this.state.view === "Tax policies" && <TaxPolicyList taxPolicies={this.state.selectedTaxPolicies} onClick={this.handleTaxPolicyClick} />}
                     <CandidateList
                         candidates={this.state.selectedCandidates}
                         onClick={this.handleCandidateClick}
@@ -165,8 +165,13 @@ class IndexPage extends Component {
 
 export default IndexPage
 export const query = graphql`
-  query {
-      allCandidatesJson {
+    query getCandidatesQuery {
+      allCandidatesJson(
+        sort: {
+          fields: [party, last_name],
+          order: [DESC, ASC]
+        }
+      ) {
         edges {
           node {
             id
@@ -177,5 +182,5 @@ export const query = graphql`
           }
         }
       }
-  }
+    }
 `
