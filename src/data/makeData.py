@@ -3,6 +3,25 @@
 """
 Created on Mon Oct 14 13:56:21 2019
 
+This script generates JSON files of the text data needed for the Candidate
+Tax Matrix.  It creates master data needed to populate the candidate, issue
+areas and tax policies filter lists in the tool.  It also maps bullet points
+from each candidate to the issue areas and tax policies they belong to in order
+to generate a final JSON of all the candidate data to populate the cards with.
+
+Inputs:
+    candidates.csv
+    issue_areas.csv
+    tax_policies.csv
+    text_to_category_mapping.csv
+    matrix_text.json
+    
+Ouputs:
+    candidates.json
+    issue_areas.json
+    tax_policies.json
+    data.json
+    
 @author: afeng
 """
 import numpy as np
@@ -30,7 +49,19 @@ def makeBulletText(candidate, view, category):
         bullet_text = ["None"]
         
     return bullet_text
-    
+
+
+# make master data jsons for candidate, issue areas and tax policies filter lists
+candidates["selected"] = True
+candidates.to_json("candidates.json", orient = "records")
+
+issue_areas["selected"] = True
+issue_areas.to_json("issue_areas.json", orient = "records")
+
+tax_policies["selected"] = True
+tax_policies.to_json("tax_policies.json", orient = "records")
+
+# make json with candidate bullet points
 bullets_mapped = text_to_cat.merge(issue_areas, 
                                    how="left", 
                                    left_on = "category_id", 
@@ -45,7 +76,6 @@ bullets_mapped.drop(["category_id", "id_x", "name_x", "id_y", "name_y"],
                     axis = "columns", 
                     inplace = True)
 
-# build final json
 data = []
 
 for candidate in candidates["last_name"]:
