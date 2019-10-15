@@ -73,7 +73,7 @@ class IndexPage extends Component {
     handleTaxPolicyClick = (clickedTaxPolicy) => {
         const taxPolicies = this.state.selectedTaxPolicies.slice();
         taxPolicies.forEach(function(taxPolicy) {
-            if(taxPolicy.name === clickedTaxPolicy) taxPolicy.node.selected = !taxPolicy.node.selected;
+            if(taxPolicy.node.name === clickedTaxPolicy) taxPolicy.node.selected = !taxPolicy.node.selected;
         });
         this.setState({selectedTaxPolicies : taxPolicies});
     }
