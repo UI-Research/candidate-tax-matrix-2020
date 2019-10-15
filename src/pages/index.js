@@ -28,13 +28,13 @@ let issues = [
     {name: "Issue 5", selected: true}
 ];
 
-let taxPolicies = [
-    {name: "Tax Policy 1", selected: true},
-    {name: "Tax Policy 2", selected: true},
-    {name: "Tax Policy 3", selected: true},
-    {name: "Tax Policy 4", selected: true},
-    {name: "Tax Policy 5", selected: true}
-];
+// let taxPolicies = [
+//     {name: "Tax Policy 1", selected: true},
+//     {name: "Tax Policy 2", selected: true},
+//     {name: "Tax Policy 3", selected: true},
+//     {name: "Tax Policy 4", selected: true},
+//     {name: "Tax Policy 5", selected: true}
+// ];
 
 class IndexPage extends Component {
     constructor(props) {
@@ -45,7 +45,7 @@ class IndexPage extends Component {
             modalIsOpen: false,
             modalCandidate: null,
             selectedIssues: issues,
-            selectedTaxPolicies: taxPolicies,
+            selectedTaxPolicies: this.props.data.allTaxPoliciesJson.edges,
         };
     }
 
@@ -73,7 +73,7 @@ class IndexPage extends Component {
     handleTaxPolicyClick = (clickedTaxPolicy) => {
         const taxPolicies = this.state.selectedTaxPolicies.slice();
         taxPolicies.forEach(function(taxPolicy) {
-            if(taxPolicy.name === clickedTaxPolicy) taxPolicy.selected = !taxPolicy.selected;
+            if(taxPolicy.name === clickedTaxPolicy) taxPolicy.node.selected = !taxPolicy.node.selected;
         });
         this.setState({selectedTaxPolicies : taxPolicies});
     }
@@ -192,6 +192,15 @@ export const query = graphql`
             first_name
             last_name
             party
+            selected
+          }
+        }
+      }
+      allTaxPoliciesJson(sort: {fields: name}) {
+        edges {
+          node {
+            id
+            name
             selected
           }
         }

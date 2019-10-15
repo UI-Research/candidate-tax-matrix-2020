@@ -28,7 +28,7 @@ function Cards(props) {
         allCards = cartProd(selectedCandidates, selectedIssues);
     }
     else if(view === "Tax policies") {
-        const selectedTaxPolicies = props.taxPolicies.filter((taxPolicy) => taxPolicy.selected).map((taxPolicy) => taxPolicy.name);
+        const selectedTaxPolicies = props.taxPolicies.filter((taxPolicy) => taxPolicy.node.selected).map((taxPolicy) => taxPolicy.node.name);
         allCards = cartProd(selectedCandidates, selectedTaxPolicies);
     }
 

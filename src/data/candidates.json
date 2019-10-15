@@ -28,5 +28,11 @@
         "last_name": "Sanders",
         "party": "Democrat",
         "selected": true
+    },
+    {
+        "first_name": "Julián",
+        "last_name": "Castro",
+        "party": "Democrat",
+        "selected": true
     }
 ]
