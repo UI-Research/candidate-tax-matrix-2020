@@ -18,7 +18,14 @@ function CandidateList(props) {
     );
 
     return (
-        <ul className={candidateListStyles.menuList}>{allCandidateListItems}</ul>
+        <>
+            <div>
+                <button onClick={() => props.onSelectAllClick()}>Select all</button>
+                /
+                <button onClick={() => props.onClearSelectionClick()}> Clear selection</button>
+            </div>
+            <ul className={candidateListStyles.menuList}>{allCandidateListItems}</ul>
+        </>
     );
 }
 

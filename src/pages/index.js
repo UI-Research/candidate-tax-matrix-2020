@@ -78,6 +78,18 @@ class IndexPage extends Component {
         this.setState({selectedTaxPolicies : taxPolicies});
     }
 
+    handleSelectAllClick = () => {
+        const candidates = this.state.selectedCandidates.slice();
+        candidates.map(c => c.node.selected = true);
+        this.setState({selectedCandidates : candidates});
+    }
+
+    handleClearSelectionClick = () => {
+        const candidates = this.state.selectedCandidates.slice();
+        candidates.map(c => c.node.selected = false);
+        this.setState({selectedCandidates : candidates});
+    }
+
     handleCardClick = (candidate) => {
         // console.log("open modal!", candidate, this.state.view);
         document.getElementsByTagName('html')[0].style["overflow-y"] = "hidden";  // in gatsby, need to set overflow of <html> to hidden to prevent scroll
@@ -139,6 +151,8 @@ class IndexPage extends Component {
                     {this.state.view === "Tax policies" && <TaxPolicyList taxPolicies={this.state.selectedTaxPolicies} onClick={this.handleTaxPolicyClick} />}
                     <CandidateList
                         candidates={this.state.selectedCandidates}
+                        onSelectAllClick={this.handleSelectAllClick}
+                        onClearSelectionClick={this.handleClearSelectionClick}
                         onClick={this.handleCandidateClick}
                         onDragStart={this.onDragStart}
                         onDragOver={this.onDragOver}
