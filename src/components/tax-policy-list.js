@@ -16,7 +16,12 @@ function TaxPolicyList(props) {
 
     return (
         <>
-            <h4>Choose tax policies</h4>
+            <div>
+                <h4>Choose tax policies</h4>
+                <button onClick={() => props.onSelectAllClick("tax policies")}>Select all</button>
+                /
+                <button onClick={() => props.onClearSelectionClick("tax policies")}>Clear selection</button>
+            </div>
             <ul className={taxPolicyListStyles.menuList}>{allTaxPolicyListItems}</ul>
         </>
     );

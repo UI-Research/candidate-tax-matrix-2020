@@ -16,7 +16,12 @@ function IssueList(props) {
 
     return (
         <>
-            <h4>Choose issue areas</h4>
+            <div>
+                <h4>Choose issue areas</h4>
+                <button onClick={() => props.onSelectAllClick("issue areas")}>Select all</button>
+                /
+                <button onClick={() => props.onClearSelectionClick("issue areas")}>Clear selection</button>
+            </div>
             <ul className={issueListStyles.menuList}>{allIssueListItems}</ul>
         </>
     );

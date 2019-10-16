@@ -54,16 +54,40 @@ class IndexPage extends Component {
         this.setState({selectedTaxPolicies : taxPolicies});
     }
 
-    handleSelectAllClick = () => {
-        const candidates = this.state.selectedCandidates.slice();
-        candidates.map(c => c.selected = true);
-        this.setState({selectedCandidates : candidates});
+    handleSelectAllClick = (list) => {
+        if(list === "candidates") {
+            const candidates = this.state.selectedCandidates.slice();
+            candidates.map(c => c.selected = true);
+            this.setState({selectedCandidates : candidates});
+        }
+        else if(list === "issue areas") {
+            const issues = this.state.selectedIssues.slice();
+            issues.map(i => i.selected = true);
+            this.setState({selectedIssues : issues});
+        }
+        else if(list === "tax policies") {
+            const taxPolicies = this.state.selectedTaxPolicies.slice();
+            taxPolicies.map(tp => tp.selected = true);
+            this.setState({selectedTaxPolicies : taxPolicies});
+        }
     }
 
-    handleClearSelectionClick = () => {
-        const candidates = this.state.selectedCandidates.slice();
-        candidates.map(c => c.selected = false);
-        this.setState({selectedCandidates : candidates});
+    handleClearSelectionClick = (list) => {
+        if(list === "candidates") {
+            const candidates = this.state.selectedCandidates.slice();
+            candidates.map(c => c.selected = false);
+            this.setState({selectedCandidates : candidates});
+        }
+        else if(list === "issue areas") {
+            const issues = this.state.selectedIssues.slice();
+            issues.map(i => i.selected = false);
+            this.setState({selectedIssues : issues});
+        }
+        else if(list === "tax policies") {
+            const taxPolicies = this.state.selectedTaxPolicies.slice();
+            taxPolicies.map(tp => tp.selected = false);
+            this.setState({selectedTaxPolicies : taxPolicies});
+        }
     }
 
     handleCardClick = (candidate) => {
@@ -123,8 +147,16 @@ class IndexPage extends Component {
                         onClick={this.handleViewClick}
                     />
                     <h1>{this.state.view}</h1>
-                    {this.state.view === "Issue areas" && <IssueList issues={this.state.selectedIssues} onClick={this.handleIssueClick} />}
-                    {this.state.view === "Tax policies" && <TaxPolicyList taxPolicies={this.state.selectedTaxPolicies} onClick={this.handleTaxPolicyClick} />}
+                    {this.state.view === "Issue areas" && <IssueList
+                                                            issues={this.state.selectedIssues}
+                                                            onSelectAllClick={this.handleSelectAllClick}
+                                                            onClearSelectionClick={this.handleClearSelectionClick}
+                                                            onClick={this.handleIssueClick} />}
+                    {this.state.view === "Tax policies" && <TaxPolicyList
+                                                            taxPolicies={this.state.selectedTaxPolicies}
+                                                            onSelectAllClick={this.handleSelectAllClick}
+                                                            onClearSelectionClick={this.handleClearSelectionClick}
+                                                            onClick={this.handleTaxPolicyClick} />}
                     <CandidateList
                         candidates={this.state.selectedCandidates}
                         onSelectAllClick={this.handleSelectAllClick}

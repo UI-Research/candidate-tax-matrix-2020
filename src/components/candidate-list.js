@@ -21,9 +21,9 @@ function CandidateList(props) {
         <>
             <div>
                 <h4>Choose candidates</h4>
-                <button onClick={() => props.onSelectAllClick()}>Select all</button>
+                <button onClick={() => props.onSelectAllClick("candidates")}>Select all</button>
                 /
-                <button onClick={() => props.onClearSelectionClick()}>Clear selection</button>
+                <button onClick={() => props.onClearSelectionClick("candidates")}>Clear selection</button>
             </div>
             <ul className={candidateListStyles.menuList}>{allCandidateListItems}</ul>
         </>
