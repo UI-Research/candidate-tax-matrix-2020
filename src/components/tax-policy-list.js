@@ -15,7 +15,10 @@ function TaxPolicyList(props) {
     );
 
     return (
-        <ul className={taxPolicyListStyles.menuList}>{allTaxPolicyListItems}</ul>
+        <>
+            <h4>Choose tax policies</h4>
+            <ul className={taxPolicyListStyles.menuList}>{allTaxPolicyListItems}</ul>
+        </>
     );
 }
 

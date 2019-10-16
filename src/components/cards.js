@@ -43,7 +43,11 @@ function Cards(props) {
     );
 
     return (
-        <div className={cardStyles.cardContainer}>{candidateCards}</div>
+        <div>
+            <div>Showing all candidates’ overviews</div>
+            <div>Print this view</div>
+            <div className={cardStyles.cardContainer}>{candidateCards}</div>
+        </div>
     )
 }
 

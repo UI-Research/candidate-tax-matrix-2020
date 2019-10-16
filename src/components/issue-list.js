@@ -15,7 +15,10 @@ function IssueList(props) {
     );
 
     return (
-        <ul className={issueListStyles.menuList}>{allIssueListItems}</ul>
+        <>
+            <h4>Choose issue areas</h4>
+            <ul className={issueListStyles.menuList}>{allIssueListItems}</ul>
+        </>
     );
 }
 

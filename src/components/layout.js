@@ -35,7 +35,10 @@ const Layout = ({ children }) => {
               paddingTop: 0,
             }}
         >
-            <main>{children}</main>
+            <main>
+                <p>What are the 2020 presidential candidates proposing to do about taxes? Our tracker breaks down their plans by the issues, tallies up the cost, and shows how much tax bills would change for households with high, average, and low incomes. </p>
+                {children}
+            </main>
         </div>
         <Footer />
     </>

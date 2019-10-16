@@ -25,12 +25,13 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          Header
+          {siteTitle}
         </Link>
       </h1>
       <h2 style={{ color: `#fff`}}>
-        {siteTitle}
+        2020 Election
       </h2>
+      <p>Date XX, 2019</p>
     </div>
   </header>
 )
