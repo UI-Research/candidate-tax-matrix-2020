@@ -12,40 +12,16 @@ import Modal from "../components/modal"
 //import Image from "../components/image"
 import SEO from "../components/seo"
 
-// let candidates = [
-//     {name: "Candidate 1", selected: true},
-//     {name: "Candidate 2", selected: true},
-//     {name: "Candidate 3", selected: true},
-//     {name: "Candidate 4", selected: true},
-//     {name: "Candidate 5", selected: true}
-// ];
-
-let issues = [
-    {name: "Issue 1", selected: true},
-    {name: "Issue 2", selected: true},
-    {name: "Issue 3", selected: true},
-    {name: "Issue 4", selected: true},
-    {name: "Issue 5", selected: true}
-];
-
-// let taxPolicies = [
-//     {name: "Tax Policy 1", selected: true},
-//     {name: "Tax Policy 2", selected: true},
-//     {name: "Tax Policy 3", selected: true},
-//     {name: "Tax Policy 4", selected: true},
-//     {name: "Tax Policy 5", selected: true}
-// ];
-
 class IndexPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             view: "overview",
-            selectedCandidates: this.props.data.allCandidatesJson.edges,
+            selectedCandidates: this.props.data.allCandidatesJson.nodes,
             modalIsOpen: false,
             modalCandidate: null,
-            selectedIssues: issues,
-            selectedTaxPolicies: this.props.data.allTaxPoliciesJson.edges,
+            selectedIssues: this.props.data.allIssueAreasJson.nodes,
+            selectedTaxPolicies: this.props.data.allTaxPoliciesJson.nodes,
         };
     }
 
@@ -57,7 +33,7 @@ class IndexPage extends Component {
         // const candidates = this.state.selectedCandidates.filter(candidate => candidate.name !== clickedCandidate);
         const candidates = this.state.selectedCandidates.slice();
         candidates.forEach(function(candidate) {
-            if(candidate.node.id === clickedCandidate) candidate.node.selected = !candidate.node.selected;
+            if(candidate.id === clickedCandidate) candidate.selected = !candidate.selected;
         });
         this.setState({selectedCandidates : candidates});
     }
@@ -73,20 +49,20 @@ class IndexPage extends Component {
     handleTaxPolicyClick = (clickedTaxPolicy) => {
         const taxPolicies = this.state.selectedTaxPolicies.slice();
         taxPolicies.forEach(function(taxPolicy) {
-            if(taxPolicy.node.name === clickedTaxPolicy) taxPolicy.node.selected = !taxPolicy.node.selected;
+            if(taxPolicy.name === clickedTaxPolicy) taxPolicy.selected = !taxPolicy.selected;
         });
         this.setState({selectedTaxPolicies : taxPolicies});
     }
 
     handleSelectAllClick = () => {
         const candidates = this.state.selectedCandidates.slice();
-        candidates.map(c => c.node.selected = true);
+        candidates.map(c => c.selected = true);
         this.setState({selectedCandidates : candidates});
     }
 
     handleClearSelectionClick = () => {
         const candidates = this.state.selectedCandidates.slice();
-        candidates.map(c => c.node.selected = false);
+        candidates.map(c => c.selected = false);
         this.setState({selectedCandidates : candidates});
     }
 
@@ -137,7 +113,7 @@ class IndexPage extends Component {
     }
 
     render() {
-        // console.log(this.props.data.allCandidatesJson.edges);
+        // console.log(this.props.data.allCandidatesJson.nodes);
         return (
             <div>
                 <Layout>
@@ -180,30 +156,28 @@ class IndexPage extends Component {
 export default IndexPage
 export const query = graphql`
     query getCandidatesQuery {
-      allCandidatesJson(
-        sort: {
-          fields: [party, last_name],
-          order: [DESC, ASC]
-        }
-      ) {
-        edges {
-          node {
-            id
-            first_name
-            last_name
-            party
-            selected
-          }
+      allCandidatesJson(sort: {fields: [party, last_name], order: [DESC, ASC]}) {
+        nodes {
+          first_name
+          id
+          last_name
+          party
+          selected
         }
       }
       allTaxPoliciesJson(sort: {fields: name}) {
-        edges {
-          node {
-            id
-            name
-            selected
-          }
+        nodes {
+          id
+          name
+          selected
         }
       }
+      allIssueAreasJson {
+        nodes {
+          id
+          name
+          selected
+        }
+  }
     }
 `

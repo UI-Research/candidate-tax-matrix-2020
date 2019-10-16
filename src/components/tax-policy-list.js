@@ -4,12 +4,12 @@ import taxPolicyListStyles from "./issue-list.module.css"
 function TaxPolicyList(props) {
     const taxPolicies = props.taxPolicies;
     const allTaxPolicyListItems = taxPolicies.map((taxPolicy, idx) =>
-        <li key={taxPolicy.node.name}>
+        <li key={taxPolicy.name}>
             <button
-                className={taxPolicyListStyles.menuButton + " " + (taxPolicy.node.selected ? taxPolicyListStyles.selected : null)}
-                onClick={() => props.onClick(taxPolicy.node.name)}
+                className={taxPolicyListStyles.menuButton + " " + (taxPolicy.selected ? taxPolicyListStyles.selected : null)}
+                onClick={() => props.onClick(taxPolicy.name)}
             >
-                {taxPolicy.node.name}
+                {taxPolicy.name}
             </button>
         </li>
     );
