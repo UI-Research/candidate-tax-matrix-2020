@@ -23,13 +23,18 @@ function Cards(props) {
     const selectedCandidates = props.candidates.filter((candidate) => candidate.selected).map((candidate) => candidate.first_name + " " + candidate.last_name);
     let allCards = selectedCandidates;
 
+    const allCandidatesSelected = (selectedCandidates.length === props.candidates.length);
+    let aboveCardText = "Showing " + (allCandidatesSelected ? "all" : "selected") + " candidates’ overviews";
+
     if(view === "Issue areas") {
         const selectedIssues = props.issues.filter((issue) => issue.selected).map((issue) => issue.name);
         allCards = cartProd(selectedCandidates, selectedIssues);
+        aboveCardText = "Showing " + (allCandidatesSelected ? "all" : "selected") + " candidates and " + (selectedIssues.length === props.issues.length ? "all" : "selected") + " issue areas";
     }
     else if(view === "Tax policies") {
         const selectedTaxPolicies = props.taxPolicies.filter((taxPolicy) => taxPolicy.selected).map((taxPolicy) => taxPolicy.name);
         allCards = cartProd(selectedCandidates, selectedTaxPolicies);
+        aboveCardText = "Showing " + (allCandidatesSelected ? "all" : "selected") + " candidates and " + (selectedTaxPolicies.length === props.taxPolicies.length ? "all" : "selected") + " tax policies";
     }
 
     // console.log(allCards);
@@ -44,7 +49,7 @@ function Cards(props) {
 
     return (
         <div>
-            <div>Showing all candidates’ overviews</div>
+            <div>{aboveCardText}</div>
             <div>Print this view</div>
             <div className={cardStyles.cardContainer}>{candidateCards}</div>
         </div>
