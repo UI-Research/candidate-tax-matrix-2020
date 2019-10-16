@@ -16,7 +16,7 @@ class IndexPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            view: "overview",
+            view: "Overview",
             selectedCandidates: this.props.data.allCandidatesJson.nodes,
             modalIsOpen: false,
             modalCandidate: null,
@@ -146,7 +146,6 @@ class IndexPage extends Component {
                         selectedView={this.state.view}
                         onClick={this.handleViewClick}
                     />
-                    <h1>{this.state.view}</h1>
                     {this.state.view === "Issue areas" && <IssueList
                                                             issues={this.state.selectedIssues}
                                                             onSelectAllClick={this.handleSelectAllClick}
