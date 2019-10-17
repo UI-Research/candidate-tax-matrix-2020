@@ -5,7 +5,7 @@ import React from "react"
 const Header = ({ siteTitle }) => (
   <header
     style={{
-      background: `#696969`,
+      background: `#164B7C`,
       marginBottom: `1.45rem`,
       width: `100%`,
     }}
@@ -13,7 +13,8 @@ const Header = ({ siteTitle }) => (
     <div
       style={{
         margin: `0 auto`,
-        maxWidth: 960,
+        maxWidth: 1309,
+        height: 268,
         padding: `1.45rem 1.0875rem`,
       }}
     >
@@ -22,16 +23,30 @@ const Header = ({ siteTitle }) => (
           to="/"
           style={{
             color: `white`,
+            fontSize: 60,
+            fontWeight: `bold`,
             textDecoration: `none`,
+            marginTop: `1rem`
           }}
         >
           {siteTitle}
         </Link>
       </h1>
-      <h2 style={{ color: `#fff`}}>
+      <h2 style={{
+        color: `#fff`,
+        fontSize: 48,
+        fontWeight: `lighter`,
+        marginTop: `0.3rem`
+      }}>
         2020 Election
       </h2>
-      <p>Date XX, 2019</p>
+      <p style={{
+        color: `#fff`,
+        fontSize: 24,
+        marginTop: `2rem`
+      }}>
+        Date XX, 2019
+      </p>
     </div>
   </header>
 )
