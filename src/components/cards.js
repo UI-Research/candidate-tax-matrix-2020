@@ -52,7 +52,13 @@ function Cards(props) {
     );
 
     return (
-        <div style={{maxWidth: 830}}>
+        <div
+            style={{
+                maxWidth: 750,
+                display: `inline-block`,
+                float: `left`
+            }}
+        >
             <div style={{fontSize: 16, fontWeight: `bold`}}>{aboveCardText}</div>
             <div style={{fontSize: 16, fontWeight: `bold`, textDecoration: `underline`}}>Print this view</div>
             <div className={cardStyles.cardContainer}>{candidateCards}</div>

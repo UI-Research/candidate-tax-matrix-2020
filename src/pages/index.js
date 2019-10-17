@@ -146,25 +146,31 @@ class IndexPage extends Component {
                         selectedView={this.state.view}
                         onClick={this.handleViewClick}
                     />
-                    {this.state.view === "Issue areas" && <IssueList
-                                                            issues={this.state.selectedIssues}
-                                                            onSelectAllClick={this.handleSelectAllClick}
-                                                            onClearSelectionClick={this.handleClearSelectionClick}
-                                                            onClick={this.handleIssueClick} />}
-                    {this.state.view === "Tax policies" && <TaxPolicyList
-                                                            taxPolicies={this.state.selectedTaxPolicies}
-                                                            onSelectAllClick={this.handleSelectAllClick}
-                                                            onClearSelectionClick={this.handleClearSelectionClick}
-                                                            onClick={this.handleTaxPolicyClick} />}
-                    <CandidateList
-                        candidates={this.state.selectedCandidates}
-                        onSelectAllClick={this.handleSelectAllClick}
-                        onClearSelectionClick={this.handleClearSelectionClick}
-                        onClick={this.handleCandidateClick}
-                        onDragStart={this.onDragStart}
-                        onDragOver={this.onDragOver}
-                        onDragEnd={this.onDragEnd}
-                    />
+                    <div style={{
+                        maxWidth: 375,
+                        display: `inline-block`,
+                        float: `left`
+                    }}>
+                        {this.state.view === "Issue areas" && <IssueList
+                                                                issues={this.state.selectedIssues}
+                                                                onSelectAllClick={this.handleSelectAllClick}
+                                                                onClearSelectionClick={this.handleClearSelectionClick}
+                                                                onClick={this.handleIssueClick} />}
+                        {this.state.view === "Tax policies" && <TaxPolicyList
+                                                                taxPolicies={this.state.selectedTaxPolicies}
+                                                                onSelectAllClick={this.handleSelectAllClick}
+                                                                onClearSelectionClick={this.handleClearSelectionClick}
+                                                                onClick={this.handleTaxPolicyClick} />}
+                        <CandidateList
+                            candidates={this.state.selectedCandidates}
+                            onSelectAllClick={this.handleSelectAllClick}
+                            onClearSelectionClick={this.handleClearSelectionClick}
+                            onClick={this.handleCandidateClick}
+                            onDragStart={this.onDragStart}
+                            onDragOver={this.onDragOver}
+                            onDragEnd={this.onDragEnd}
+                        />
+                    </div>
                     <Cards
                         view={this.state.view}
                         candidates={this.state.selectedCandidates}

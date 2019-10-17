@@ -7,7 +7,7 @@ function CandidateList(props) {
     const allCandidateListItems = candidates.map((candidate, idx) =>
         <li key={candidate.id} onDragOver={() => props.onDragOver(idx)}>
             <button
-                className={candidateListStyles.btn + " " + candidateListStyles.menuButton + " " + (candidate.selected ? candidateListStyles.selected : null)}
+                className={candidateListStyles.menuButton + " " + candidateListStyles.moveable + " " + (candidate.selected ? candidateListStyles.selected : null)}
                 onClick={() => props.onClick(candidate.id)}
                 draggable
                 onDragStart={(e) => props.onDragStart(e, idx)}
@@ -19,25 +19,15 @@ function CandidateList(props) {
     );
 
     return (
-        <>
-            <div style={{maxWidth: 300}}>
-                <h4
-                    style={{
-                        fontSize: 24,
-                        fontWeight: `bold`,
-                        marginBottom: `1rem`
-                     }}
-                >
-                    Choose candidates
-                </h4>
-                <SelectAllButtons
-                    list="candidates"
-                    onSelectAllClick={props.onSelectAllClick}
-                    onClearSelectionClick={props.onClearSelectionClick}
-                />
-            </div>
+        <div>
+            <h4 className={candidateListStyles.menuTitle}>Choose candidates</h4>
+            <SelectAllButtons
+                list="candidates"
+                onSelectAllClick={props.onSelectAllClick}
+                onClearSelectionClick={props.onClearSelectionClick}
+            />
             <ul className={candidateListStyles.menuList}>{allCandidateListItems}</ul>
-        </>
+        </div>
     );
 }
 

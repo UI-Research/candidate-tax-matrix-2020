@@ -17,7 +17,7 @@ function IssueList(props) {
 
     return (
         <div>
-            <h4>Choose issue areas</h4>
+            <h4 className={issueListStyles.menuTitle}>Choose issue areas</h4>
             <SelectAllButtons
                 list="issue areas"
                 onSelectAllClick={props.onSelectAllClick}
