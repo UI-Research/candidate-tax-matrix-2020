@@ -31,8 +31,8 @@ const Layout = ({ children }) => {
             style={{
               margin: `0 auto`,
               maxWidth: 1226,
-              padding: `0px 1.0875rem 1.45rem`,
-              paddingTop: 0,
+              overflow: `auto`,
+              position: `relative`
             }}
         >
             <main>
@@ -41,7 +41,8 @@ const Layout = ({ children }) => {
                         fontSize: 24,
                         fontWeight: `lighter`,
                         fontStyle: `italic`,
-                        lineHeight: `35px`}}
+                        lineHeight: `35px`,
+                        marginBottom: `3rem`}}
                 >
                     What are the 2020 presidential candidates proposing to do about taxes? Our tracker breaks down their plans by the issues, tallies up the cost, and shows how much tax bills would change for households with high, average, and low incomes.
                 </p>

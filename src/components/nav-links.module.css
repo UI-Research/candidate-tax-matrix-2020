@@ -1,5 +1,7 @@
 .navLinkContainer {
-    width: 368px;
+    width: 330px;
+    position: absolute;
+    right: 0;
 }
 
 .navLink {

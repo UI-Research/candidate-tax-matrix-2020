@@ -149,7 +149,8 @@ class IndexPage extends Component {
                     <div style={{
                         maxWidth: 375,
                         display: `inline-block`,
-                        float: `left`
+                        float: `left`,
+                        marginRight: 40
                     }}>
                         {this.state.view === "Issue areas" && <IssueList
                                                                 issues={this.state.selectedIssues}

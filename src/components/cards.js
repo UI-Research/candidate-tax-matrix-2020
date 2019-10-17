@@ -54,7 +54,7 @@ function Cards(props) {
     return (
         <div
             style={{
-                maxWidth: 750,
+                maxWidth: 800,
                 display: `inline-block`,
                 float: `left`
             }}
