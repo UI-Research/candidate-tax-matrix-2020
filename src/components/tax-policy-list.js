@@ -1,5 +1,6 @@
 import React from "react"
-import taxPolicyListStyles from "./issue-list.module.css"
+import SelectAllButtons from "./select-all-buttons.js"
+import taxPolicyListStyles from "./candidate-list.module.css"
 
 function TaxPolicyList(props) {
     const taxPolicies = props.taxPolicies;
@@ -15,15 +16,15 @@ function TaxPolicyList(props) {
     );
 
     return (
-        <>
-            <div>
-                <h4>Choose tax policies</h4>
-                <button onClick={() => props.onSelectAllClick("tax policies")}>Select all</button>
-                /
-                <button onClick={() => props.onClearSelectionClick("tax policies")}>Clear selection</button>
-            </div>
+        <div>
+            <h4>Choose tax policies</h4>
+            <SelectAllButtons
+                list="tax policies"
+                onSelectAllClick={props.onSelectAllClick}
+                onClearSelectionClick={props.onClearSelectionClick}
+            />
             <ul className={taxPolicyListStyles.menuList}>{allTaxPolicyListItems}</ul>
-        </>
+        </div>
     );
 }
 

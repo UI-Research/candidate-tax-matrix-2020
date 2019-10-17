@@ -1,5 +1,6 @@
 import React from "react"
-import issueListStyles from "./issue-list.module.css"
+import SelectAllButtons from "./select-all-buttons.js"
+import issueListStyles from "./candidate-list.module.css"
 
 function IssueList(props) {
     const issues = props.issues;
@@ -15,15 +16,15 @@ function IssueList(props) {
     );
 
     return (
-        <>
-            <div>
-                <h4>Choose issue areas</h4>
-                <button onClick={() => props.onSelectAllClick("issue areas")}>Select all</button>
-                /
-                <button onClick={() => props.onClearSelectionClick("issue areas")}>Clear selection</button>
-            </div>
+        <div>
+            <h4>Choose issue areas</h4>
+            <SelectAllButtons
+                list="issue areas"
+                onSelectAllClick={props.onSelectAllClick}
+                onClearSelectionClick={props.onClearSelectionClick}
+            />
             <ul className={issueListStyles.menuList}>{allIssueListItems}</ul>
-        </>
+        </div>
     );
 }
 

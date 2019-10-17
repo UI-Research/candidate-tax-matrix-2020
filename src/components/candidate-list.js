@@ -1,4 +1,5 @@
 import React from "react"
+import SelectAllButtons from "./select-all-buttons.js"
 import candidateListStyles from "./candidate-list.module.css"
 
 function CandidateList(props) {
@@ -29,21 +30,11 @@ function CandidateList(props) {
                 >
                     Choose candidates
                 </h4>
-                <div style={{marginBottom: 20}}>
-                    <button
-                        className={candidateListStyles.btn + " " + candidateListStyles.selectAllBtn}
-                        onClick={() => props.onSelectAllClick("candidates")}
-                    >
-                        Select all
-                    </button>
-                    <span style={{padding: 10, fontWeight: `bold`}}>/</span>
-                    <button
-                        className={candidateListStyles.btn + " " + candidateListStyles.selectAllBtn}
-                        onClick={() => props.onClearSelectionClick("candidates")}
-                    >
-                        Clear selection
-                    </button>
-                </div>
+                <SelectAllButtons
+                    list="candidates"
+                    onSelectAllClick={props.onSelectAllClick}
+                    onClearSelectionClick={props.onClearSelectionClick}
+                />
             </div>
             <ul className={candidateListStyles.menuList}>{allCandidateListItems}</ul>
         </>
