@@ -1,14 +1,30 @@
 .menuList {
     list-style: none;
     margin-left: 0;
+    width: 260px;
+}
+
+.btn {
+    border: none;
+    background: none;
+    padding-left: 0;
+    text-align: left;
+    height: 40px;
 }
 
 .menuButton {
-    background-color: #ececec;
-    border: none;
     cursor: move;
+    height: 30px;
+    font-style: italic;
+    color: #adabac;
 }
 
 .menuButton.selected {
-    background-color: #a2d4ec;
+    color: #000;
+    font-style: normal;
+}
+
+.selectAllBtn {
+    font-weight: bold;
+    color: #46abdb;
 }
