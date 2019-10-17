@@ -30,13 +30,21 @@ const Layout = ({ children }) => {
         <div
             style={{
               margin: `0 auto`,
-              maxWidth: 960,
+              maxWidth: 1226,
               padding: `0px 1.0875rem 1.45rem`,
               paddingTop: 0,
             }}
         >
             <main>
-                <p>What are the 2020 presidential candidates proposing to do about taxes? Our tracker breaks down their plans by the issues, tallies up the cost, and shows how much tax bills would change for households with high, average, and low incomes. </p>
+                <p
+                    style={{
+                        fontSize: 24,
+                        fontWeight: `lighter`,
+                        fontStyle: `italic`,
+                        lineHeight: `35px`}}
+                >
+                    What are the 2020 presidential candidates proposing to do about taxes? Our tracker breaks down their plans by the issues, tallies up the cost, and shows how much tax bills would change for households with high, average, and low incomes.
+                </p>
                 {children}
             </main>
         </div>

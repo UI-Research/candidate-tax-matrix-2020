@@ -12,8 +12,12 @@ function Card(props) {
             className={cardStyles.card}
             onClick={() => props.onClick(candidate)}
         >
-            {candidate} <br />
-            {props.view}
+            <h5 className={cardStyles.cardTitle}>{props.view}</h5>
+            <div style={{overflow: `auto`}}>
+                <div className={cardStyles.partyLogo}></div>
+                <h3 className={cardStyles.candidateName}>{candidate}</h3>
+            </div>
+            <p className={cardStyles.viewMoreLink}>View overview</p>
         </div>
     )
 }
@@ -48,9 +52,9 @@ function Cards(props) {
     );
 
     return (
-        <div>
-            <div>{aboveCardText}</div>
-            <div>Print this view</div>
+        <div style={{maxWidth: 830}}>
+            <div style={{fontSize: 16, fontWeight: `bold`}}>{aboveCardText}</div>
+            <div style={{fontSize: 16, fontWeight: `bold`, textDecoration: `underline`}}>Print this view</div>
             <div className={cardStyles.cardContainer}>{candidateCards}</div>
         </div>
     )

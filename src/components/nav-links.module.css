@@ -1,21 +1,33 @@
 .navLinkContainer {
-    maxWidth: 960;
+    width: 368px;
 }
 
 .navLink {
-    min-width: 100px;
+    min-width: 110px;
+    height: 45px;
+    box-sizing: border-box;
     display: inline-block;
     cursor: pointer;
+    color: #adabac;
     text-align: center;
     text-transform: uppercase;
     font-size: 14px;
+    line-height: 45px;
+    border: 1px solid #adabac;
+}
+
+.navLink:not(:last-child) {
+    border-right: none;
 }
 
 .navLink:hover {
-    text-decoration: underline;
+    background-color: #164b7c;
+    color: #fff;
+    border-color: #164b7c;
 }
 
 .selected {
-    background-color: #696969;
+    background-color: #164b7c;
     color: #fff;
+    border-color: #164b7c;
 }

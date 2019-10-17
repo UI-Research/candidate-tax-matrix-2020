@@ -1,15 +1,65 @@
 .cardContainer {
     overflow: auto;
+    margin-top: 50px;
 }
 
 .card {
-    height: 200px;
-    width: 200px;
-    border: 1px solid #000;
-    margin: 10px;
-    padding: 10px;
+    height: 400px;
+    width: 400px;
+    border: 1px solid #adabac;
+    padding: 20px;
+    margin-bottom: 20px;
     display: inline-block;
     float: left;
     background-color: #fff;
+    font-size: 16px;
     position: relative;
+    box-sizing: border-box;
+}
+
+.card:nth-child(odd) {
+    margin-right: 15px;
+}
+
+.card:nth-child(even) {
+    margin-left: 15px;
+}
+
+.cardTitle {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.partyLogo {
+    height: 45px;
+    width: 45px;
+    background: #353535;
+    border-radius: 50%;
+    display: inline-block;
+    float: left;
+    margin-right: 16px;
+}
+
+.candidateName {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    float: left;
+    line-height: 45px;
+}
+
+.republican {
+    color: #a4201d;
+}
+
+.democrat {
+    color: #11719F;
+}
+
+.viewMoreLink {
+    font-style: italic;
+    color: #adabac;
+    position: absolute;
+    bottom: 14px;
+    margin: 0;
 }
