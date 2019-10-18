@@ -30,14 +30,6 @@ const Header = ({ siteTitle }) => (
     >
           {siteTitle}
       </h1>
-      <h2 style={{
-        color: `#fff`,
-        fontSize: 48,
-        fontWeight: `lighter`,
-        marginTop: `0.3rem`
-      }}>
-        2020 Election
-      </h2>
       <p style={{
         color: `#fff`,
         fontSize: 24,
