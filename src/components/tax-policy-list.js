@@ -7,10 +7,11 @@ function TaxPolicyList(props) {
     const allTaxPolicyListItems = taxPolicies.map((taxPolicy, idx) =>
         <li key={taxPolicy.name}>
             <button
-                className={taxPolicyListStyles.menuButton + " " + (taxPolicy.selected ? taxPolicyListStyles.selected : null)}
+                className={taxPolicyListStyles.menuButton + " " + (taxPolicy.selected ? taxPolicyListStyles.selected : null) + " " + taxPolicyListStyles.democrat}
                 onClick={() => props.onClick(taxPolicy.name)}
             >
                 {taxPolicy.name}
+                <span className={taxPolicyListStyles.selectedIcon}>{taxPolicy.selected ? "×" : "+" }</span>
             </button>
         </li>
     );

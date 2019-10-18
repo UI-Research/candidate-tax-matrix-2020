@@ -7,10 +7,11 @@ function IssueList(props) {
     const allIssueListItems = issues.map((issue, idx) =>
         <li key={issue.name}>
             <button
-                className={issueListStyles.menuButton + " " + (issue.selected ? issueListStyles.selected : null)}
+                className={issueListStyles.menuButton + " " + (issue.selected ? issueListStyles.selected : null) + " " + issueListStyles.democrat}
                 onClick={() => props.onClick(issue.name)}
             >
                 {issue.name}
+                <span className={issueListStyles.selectedIcon}>{issue.selected ? "×" : "+" }</span>
             </button>
         </li>
     );
