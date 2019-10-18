@@ -6,6 +6,9 @@ const cartProd = (arr1, arr2) =>
 
 function Card(props) {
     const candidate = props.candidate;
+    let viewMoreText = "View overview";
+    if(props.view === "Issue areas") viewMoreText = "View proposal by issue area";
+    else if(props.view === "Tax types") viewMoreText = "View proposal by tax type";
 
     return (
         <div
@@ -17,7 +20,7 @@ function Card(props) {
                 <div className={cardStyles.partyLogo}></div>
                 <h3 className={cardStyles.candidateName}>{candidate}</h3>
             </div>
-            <p className={cardStyles.viewMoreLink}>View overview</p>
+            <p className={cardStyles.viewMoreLink}>{viewMoreText}</p>
         </div>
     )
 }
