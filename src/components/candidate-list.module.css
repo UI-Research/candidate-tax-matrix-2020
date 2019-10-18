@@ -20,6 +20,8 @@
     height: 30px;
     font-style: italic;
     color: #adabac;
+    width: 100%;
+    position: relative;
 }
 
 .moveable {
@@ -29,4 +31,19 @@
 .menuButton.selected {
     color: #000;
     font-style: normal;
+}
+
+.selectedIcon {
+    font-style: normal;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+}
+
+.menuButton.selected.democrat .selectedIcon {
+    color: #11719F;
+}
+
+.menuButton.selected.republican .selectedIcon {
+    color: #a4201d;
 }
