@@ -17,9 +17,9 @@ function TaxPolicyList(props) {
 
     return (
         <div>
-            <h4 className={taxPolicyListStyles.menuTitle}>Choose tax policies</h4>
+            <h4 className={taxPolicyListStyles.menuTitle}>Choose tax types</h4>
             <SelectAllButtons
-                list="tax policies"
+                list="tax types"
                 onSelectAllClick={props.onSelectAllClick}
                 onClearSelectionClick={props.onClearSelectionClick}
             />

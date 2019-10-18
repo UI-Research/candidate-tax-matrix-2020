@@ -12,14 +12,14 @@ to generate a final JSON of all the candidate data to populate the cards with.
 Inputs:
     candidates.csv
     issue_areas.csv
-    tax_policies.csv
+    tax_types.csv
     text_to_category_mapping.csv
     matrix_text.json
     
 Ouputs:
     candidates.json
     issue_areas.json
-    tax_policies.json
+    tax_types.json
     data.json
     
 @author: afeng
@@ -30,7 +30,7 @@ import json
 
 candidates = pd.read_csv("candidates.csv")
 issue_areas = pd.read_csv("issue_areas.csv")
-tax_policies = pd.read_csv("tax_policies.csv")
+tax_types = pd.read_csv("tax_types.csv")
 
 text_to_cat = pd.read_csv("text_to_category_mapping.csv")
 
@@ -58,15 +58,15 @@ candidates.to_json("candidates.json", orient = "records")
 issue_areas["selected"] = True
 issue_areas.to_json("issue_areas.json", orient = "records")
 
-tax_policies["selected"] = True
-tax_policies.to_json("tax_policies.json", orient = "records")
+tax_types["selected"] = True
+tax_types.to_json("tax_types.json", orient = "records")
 
 # make json with candidate bullet points
 bullets_mapped = text_to_cat.merge(issue_areas, 
                                    how="left", 
                                    left_on = "category_id", 
                                    right_on = "id"
-                                   ).merge(tax_policies,
+                                   ).merge(tax_types,
                                    how="left",
                                    left_on = "category_id",
                                    right_on = "id")
@@ -84,13 +84,13 @@ for candidate in candidates["last_name"]:
     candidate_dict["Name"] = candidate
     candidate_dict["Overview"] = ""
     candidate_dict["Issue areas"] = {}
-    candidate_dict["Tax policies"] = {}
+    candidate_dict["Tax types"] = {}
     
     for issue in issue_areas["name"]:
         candidate_dict["Issue areas"][issue] = makeBulletText(candidate, "Issue area", issue)
     
-    for tp in tax_policies["name"]:
-        candidate_dict["Tax policies"][tp] = makeBulletText(candidate, "Tax policy", tp)
+    for tp in tax_types["name"]:
+        candidate_dict["Tax types"][tp] = makeBulletText(candidate, "Tax type", tp)
 
     data.append(candidate_dict)
     

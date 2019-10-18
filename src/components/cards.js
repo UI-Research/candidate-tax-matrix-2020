@@ -35,7 +35,7 @@ function Cards(props) {
         allCards = cartProd(selectedCandidates, selectedIssues);
         aboveCardText = "Showing " + (allCandidatesSelected ? "all" : "selected") + " candidates and " + (selectedIssues.length === props.issues.length ? "all" : "selected") + " issue areas";
     }
-    else if(view === "Tax policies") {
+    else if(view === "Tax types") {
         const selectedTaxPolicies = props.taxPolicies.filter((taxPolicy) => taxPolicy.selected).map((taxPolicy) => taxPolicy.name);
         allCards = cartProd(selectedCandidates, selectedTaxPolicies);
         aboveCardText = "Showing " + (allCandidatesSelected ? "all" : "selected") + " candidates and " + (selectedTaxPolicies.length === props.taxPolicies.length ? "all" : "selected") + " tax policies";

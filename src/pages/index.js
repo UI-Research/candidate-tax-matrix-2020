@@ -21,7 +21,7 @@ class IndexPage extends Component {
             modalIsOpen: false,
             modalCandidate: null,
             selectedIssues: this.props.data.allIssueAreasJson.nodes,
-            selectedTaxPolicies: this.props.data.allTaxPoliciesJson.nodes,
+            selectedTaxTypes: this.props.data.allTaxTypesJson.nodes,
         };
     }
 
@@ -46,12 +46,12 @@ class IndexPage extends Component {
         this.setState({selectedIssues : issues});
     }
 
-    handleTaxPolicyClick = (clickedTaxPolicy) => {
-        const taxPolicies = this.state.selectedTaxPolicies.slice();
-        taxPolicies.forEach(function(taxPolicy) {
-            if(taxPolicy.name === clickedTaxPolicy) taxPolicy.selected = !taxPolicy.selected;
+    handleTaxTypeClick = (clickedTaxType) => {
+        const taxTypes = this.state.selectedTaxTypes.slice();
+        taxTypes.forEach(function(taxType) {
+            if(taxType.name === clickedTaxType) taxType.selected = !taxType.selected;
         });
-        this.setState({selectedTaxPolicies : taxPolicies});
+        this.setState({selectedTaxTypes : taxTypes});
     }
 
     handleSelectAllClick = (list) => {
@@ -65,10 +65,10 @@ class IndexPage extends Component {
             issues.map(i => i.selected = true);
             this.setState({selectedIssues : issues});
         }
-        else if(list === "tax policies") {
-            const taxPolicies = this.state.selectedTaxPolicies.slice();
-            taxPolicies.map(tp => tp.selected = true);
-            this.setState({selectedTaxPolicies : taxPolicies});
+        else if(list === "tax types") {
+            const taxTypes = this.state.selectedTaxTypes.slice();
+            taxTypes.map(tp => tp.selected = true);
+            this.setState({selectedTaxTypes : taxTypes});
         }
     }
 
@@ -83,10 +83,10 @@ class IndexPage extends Component {
             issues.map(i => i.selected = false);
             this.setState({selectedIssues : issues});
         }
-        else if(list === "tax policies") {
-            const taxPolicies = this.state.selectedTaxPolicies.slice();
-            taxPolicies.map(tp => tp.selected = false);
-            this.setState({selectedTaxPolicies : taxPolicies});
+        else if(list === "tax typees") {
+            const taxTypes = this.state.selectedTaxTypes.slice();
+            taxTypes.map(tp => tp.selected = false);
+            this.setState({selectedTaxTypes : taxTypes});
         }
     }
 
@@ -157,11 +157,11 @@ class IndexPage extends Component {
                                                                 onSelectAllClick={this.handleSelectAllClick}
                                                                 onClearSelectionClick={this.handleClearSelectionClick}
                                                                 onClick={this.handleIssueClick} />}
-                        {this.state.view === "Tax policies" && <TaxPolicyList
-                                                                taxPolicies={this.state.selectedTaxPolicies}
+                        {this.state.view === "Tax types" && <TaxPolicyList
+                                                                taxPolicies={this.state.selectedTaxTypes}
                                                                 onSelectAllClick={this.handleSelectAllClick}
                                                                 onClearSelectionClick={this.handleClearSelectionClick}
-                                                                onClick={this.handleTaxPolicyClick} />}
+                                                                onClick={this.handleTaxTypeClick} />}
                         <CandidateList
                             candidates={this.state.selectedCandidates}
                             onSelectAllClick={this.handleSelectAllClick}
@@ -176,7 +176,7 @@ class IndexPage extends Component {
                         view={this.state.view}
                         candidates={this.state.selectedCandidates}
                         issues={this.state.selectedIssues}
-                        taxPolicies={this.state.selectedTaxPolicies}
+                        taxPolicies={this.state.selectedTaxTypes}
                         onClick={this.handleCardClick}
                     />
                     <Modal
@@ -203,7 +203,7 @@ export const query = graphql`
           selected
         }
       }
-      allTaxPoliciesJson(sort: {fields: name}) {
+      allTaxTypesJson(sort: {fields: name}) {
         nodes {
           id
           name
