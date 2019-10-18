@@ -4,7 +4,6 @@ import candidateListStyles from "./candidate-list.module.css"
 
 function CandidateList(props) {
     const candidates = props.candidates;
-    console.log(candidates);
     const allCandidateListItems = candidates.map((candidate, idx) =>
         <li key={candidate.id} onDragOver={() => props.onDragOver(idx)}>
             <button

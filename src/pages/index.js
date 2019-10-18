@@ -12,6 +12,26 @@ import Modal from "../components/modal"
 //import Image from "../components/image"
 import SEO from "../components/seo"
 
+function sortBySelection(obj1, obj2) {
+    // source: https://gomakethings.com/sorting-an-array-by-multiple-criteria-with-vanilla-javascript/
+    // sort selected items to appear at top
+    if(obj1.selected && !obj2.selected) return -1;
+    if(!obj1.selected && obj2.selected) return 1;
+
+    // for candidates array, sort by party next
+    if(Object.keys(obj1).indexOf("party") > -1) {
+        if(obj1.party > obj2.party) return -1;
+        if(obj1.party < obj2.party) return 1;
+
+        if(obj1.last_name > obj2.last_name) return 1;
+        if(obj1.last_name < obj2.last_name) return -1;
+    }
+
+    // then sort alphabetically by name
+    if(obj1.name > obj2.name) return 1;
+    if(obj1.name < obj2.name) return -1;
+}
+
 class IndexPage extends Component {
     constructor(props) {
         super(props);
@@ -35,6 +55,7 @@ class IndexPage extends Component {
         candidates.forEach(function(candidate) {
             if(candidate.id === clickedCandidate) candidate.selected = !candidate.selected;
         });
+        candidates.sort(sortBySelection);
         this.setState({selectedCandidates : candidates});
     }
 
@@ -43,6 +64,7 @@ class IndexPage extends Component {
         issues.forEach(function(issue) {
             if(issue.name === clickedIssue) issue.selected = !issue.selected;
         });
+        issues.sort(sortBySelection);
         this.setState({selectedIssues : issues});
     }
 
@@ -51,6 +73,7 @@ class IndexPage extends Component {
         taxTypes.forEach(function(taxType) {
             if(taxType.name === clickedTaxType) taxType.selected = !taxType.selected;
         });
+        taxTypes.sort(sortBySelection);
         this.setState({selectedTaxTypes : taxTypes});
     }
 
@@ -58,16 +81,19 @@ class IndexPage extends Component {
         if(list === "candidates") {
             const candidates = this.state.selectedCandidates.slice();
             candidates.map(c => c.selected = true);
+            candidates.sort(sortBySelection);
             this.setState({selectedCandidates : candidates});
         }
         else if(list === "issue areas") {
             const issues = this.state.selectedIssues.slice();
             issues.map(i => i.selected = true);
+            issues.sort(sortBySelection);
             this.setState({selectedIssues : issues});
         }
         else if(list === "tax types") {
             const taxTypes = this.state.selectedTaxTypes.slice();
             taxTypes.map(tp => tp.selected = true);
+            taxTypes.sort(sortBySelection);
             this.setState({selectedTaxTypes : taxTypes});
         }
     }
@@ -83,7 +109,7 @@ class IndexPage extends Component {
             issues.map(i => i.selected = false);
             this.setState({selectedIssues : issues});
         }
-        else if(list === "tax typees") {
+        else if(list === "tax types") {
             const taxTypes = this.state.selectedTaxTypes.slice();
             taxTypes.map(tp => tp.selected = false);
             this.setState({selectedTaxTypes : taxTypes});
