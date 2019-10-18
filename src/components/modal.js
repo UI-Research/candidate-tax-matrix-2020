@@ -9,14 +9,16 @@ function Modal(props) {
         <div>
             <div className={modalStyles.modalBackdrop}></div>
             <div className={modalStyles.modal + " " + (props.isOpen ? null : modalStyles.closed)}>
-                <h3>This is the modal</h3>
-                {props.candidate} <br />
-                {props.view}
+                <p className={modalStyles.downloadPdfLink}>Download PDF</p>
+                <div style={{overflow: `auto`}}>
+                    <div className={modalStyles.partyLogo}></div>
+                    <h3 className={modalStyles.candidateName}>{props.candidate}</h3>
+                </div>
                 <button
                     className={modalStyles.closeModalBtn}
                     onClick={() => props.onClick()}
                 >
-                    Close
+                    X
                 </button>
             </div>
         </div>

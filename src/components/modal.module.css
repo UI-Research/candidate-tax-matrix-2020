@@ -20,6 +20,10 @@
     position: absolute;
     top: 10px;
     right: 10px;
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .modalBackdrop {
@@ -33,4 +37,36 @@
     bottom: 0;
     right: 0;
     z-index: 9;
+}
+
+.downloadPdfLink {
+    color: #46abdb;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.partyLogo {
+    height: 45px;
+    width: 45px;
+    background: #353535;
+    border-radius: 50%;
+    display: inline-block;
+    float: left;
+    margin-right: 16px;
+}
+
+.candidateName {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    float: left;
+    line-height: 45px;
+}
+
+.republican {
+    color: #a4201d;
+}
+
+.democrat {
+    color: #11719F;
 }
