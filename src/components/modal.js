@@ -18,7 +18,7 @@ function Modal(props) {
                     className={modalStyles.closeModalBtn}
                     onClick={() => props.onClick()}
                 >
-                    X
+                    ×
                 </button>
             </div>
         </div>
