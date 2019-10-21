@@ -242,6 +242,6 @@ export const query = graphql`
           name
           selected
         }
-  }
+      }
     }
 `
