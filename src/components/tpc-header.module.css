@@ -1,0 +1,207 @@
+#headerPinned {
+    font: 16px "Avenir LT W01_55 Roman1475520","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #333;
+    font-weight: 400;
+    /* margin-right: 100px; */
+    position: fixed;
+    /*top:-50px;*/
+    left: 0;
+    width: 100%;
+    background: #fff;
+    height: 56px;
+    border-bottom: 2px solid #eee;
+    z-index: 10000;
+    -webkit-transition: top 0.25s linear;
+    -moz-transition: top 0.25s linear;
+    -o-transition: top 0.25s linear;
+    transition: top 0.25s linear;
+}
+
+/*#header-pinned .content {
+    height: 53px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}*/
+
+#headerPinned *{
+    color:#333;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+.siteLogo {
+    display: block;
+    width: 44px;
+    height: 37px;
+    position: absolute;
+    left: 10px;
+    margin-top: 9px;
+    background: url(../images/tpcLogo.png) no-repeat;
+    background-size:44px 37px;
+}
+
+.title {
+    font-size: 20px;
+    line-height: 56px;
+    margin: 0 65px 0 80px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: uppercase;
+}
+
+.title span,
+.title a {
+    display: inline;
+    color: #333;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+.shareIcons {
+    background-color: transparent;
+    width: 69px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    width: 60px;
+    position: absolute;
+    right: 0;
+}
+
+.shareThisP {
+    border-top: 0;
+    border-left: 1px solid #e6e5e5;
+    height: 56px;
+    padding: 11px 0 0;
+}
+
+.shareThisB {
+    float: none;
+    display: block;
+    background-repeat: no-repeat;
+    background-image: url(https://www.urban.org/sites/all/themes/urban/images/generated/icons-s8fe141aaaa.png);
+    background-position: 0 -2396px;
+    height: 32px;
+    width: 32px;
+    float: none;
+    margin: 0 auto;
+}
+
+.shareThisB:hover {
+    background-position: 0 -1948px;
+}
+
+.shareThisW {
+    display: none;
+    float: none;
+    top: 50px;
+    right: 0;
+    left: auto;
+    text-align: right;
+    border: 0;
+    background: transparent;
+    background-color: #fff;
+    position: absolute;
+    left: -100px;
+    padding: 5px;
+    width: 160px;
+    z-index:3;
+}
+
+.visible {
+    display: inline-block;
+}
+
+.addthisToolbox {
+    display: inline-block;
+    width: auto;
+    /* border: 1px solid #e6e5e5; */
+    border-top: 0;
+    background: #fff;
+    padding: 10px 10px 0 0;
+    margin: 0 auto;
+}
+
+.addthisButtonFacebook {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url(https://www.urban.org/sites/all/themes/urban/images/generated/icons-s8fe141aaaa.png);
+    background-position: 0 -2056px;
+    height: 32px;
+    width: 32px;
+    margin-left: 14px;
+}
+
+.addthisButtonFacebook:hover {
+    background-position: 0 -1609px;
+}
+
+.addthisButtonTwitter {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url(https://www.urban.org/sites/all/themes/urban/images/generated/icons-s8fe141aaaa.png);
+    background-position: 0 -1169px;
+    height: 32px;
+    width: 32px;
+    margin-left: 15px;
+}
+
+.addthisButtonTwitter:hover {
+    background-position: 0 -1577px;
+}
+
+.addthisButtonEmail {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url(https://www.urban.org/sites/all/themes/urban/images/generated/icons-s8fe141aaaa.png);
+    background-position: 0 -1449px;
+    height: 32px;
+    width: 32px;
+    margin-left: 14px;
+}
+
+.addthisButtonEmail:hover {
+    background-position: 0 -1271px;
+}
+
+.addthisToolbox a {
+    margin-bottom: 5px;
+}
+
+.atA11y {
+    display: none;
+}
+
+/*
+@media(max-width:767px) {
+.header-links ul li {
+        width:28%;
+        font:400 13px/24px "Avenir LT W01_55 Roman1475520","Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    .tt-name, .tt-title {
+       font-size: 16px !important;
+    }
+    .featureLink{
+        display: none !important;
+    }
+    #header-pinned .title{
+        font-size: 15px !important;
+        margin-left: 55px !important;
+    }
+}
+
+.header-links a {
+    color: #fff;
+}
+
+.header-links ul li:hover,
+.header-links ul li.hover_effect {
+    background-color: rgba(0, 155, 210, .8);
+}*/
+
+/*end css for header*/
+

@@ -1,6 +1,7 @@
 // import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import TpcHeader from "./tpc-header"
 
 const Header = ({ siteTitle }) => (
   <header
@@ -10,6 +11,7 @@ const Header = ({ siteTitle }) => (
       width: `100%`,
     }}
   >
+    <TpcHeader />
     <div
       style={{
         margin: `0 auto`,
