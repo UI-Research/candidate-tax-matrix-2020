@@ -65,10 +65,10 @@ for candidate in candidates["last_name"]:
     candidate_dict["Issue areas"] = {}
     candidate_dict["Tax types"] = {}
     
-    for issue in issue_areas:
+    for issue in issue_areas["name"]:
         candidate_dict["Issue areas"][issue] = "None"
     
-    for tp in tax_types:
+    for tp in tax_types["name"]:
         candidate_dict["Tax types"][tp] = "None"
 
     data.append(candidate_dict)
