@@ -5,21 +5,34 @@ const cartProd = (arr1, arr2) =>
     arr1.flatMap(x => arr2.map(y => [x, y]));
 
 function Card(props) {
-    const candidate = props.candidate;
+    let candidate = props.candidate;
+    let cardTitle = "Overview";
     let viewMoreText = "View overview";
-    if(props.view === "Issue areas") viewMoreText = "View proposal by issue area";
-    else if(props.view === "Tax types") viewMoreText = "View proposal by tax type";
+
+    if(props.view === "Issue areas") {
+        viewMoreText = "View proposal by issue area";
+        candidate = props.candidate[0];
+        let issue = props.candidate[1];
+        cardTitle = issue;
+    }
+    else if(props.view === "Tax types") {
+        viewMoreText = "View proposal by tax type";
+        candidate = props.candidate[0];
+        let taxType = props.candidate[1];
+        cardTitle = taxType;
+    }
 
     return (
         <div
             className={cardStyles.card}
             onClick={() => props.onClick(candidate)}
         >
-            <h5 className={cardStyles.cardTitle}>{props.view}</h5>
+            <h5 className={cardStyles.cardTitle}>{cardTitle}</h5>
             <div style={{overflow: `auto`}}>
                 <div className={cardStyles.partyLogo}></div>
                 <h3 className={cardStyles.candidateName}>{candidate}</h3>
             </div>
+            <h4 className={cardStyles.sectionTitle}>Position</h4>
             <p className={cardStyles.viewMoreLink}>{viewMoreText}</p>
         </div>
     )
