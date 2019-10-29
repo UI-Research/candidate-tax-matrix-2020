@@ -1,4 +1,5 @@
 import React from "react"
+import Masonry from 'react-masonry-css'
 import cardData from "../data/data.json"
 import cardStyles from "./cards.module.css"
 
@@ -95,7 +96,12 @@ function Cards(props) {
         >
             <div style={{fontSize: 16, fontWeight: `bold`}}>{aboveCardText}</div>
             <div style={{fontSize: 16, fontWeight: `bold`, textDecoration: `underline`}}>Print this view</div>
-            <div className={cardStyles.cardContainer}>{candidateCards}</div>
+            <Masonry
+                breakpointCols={2}
+                className={cardStyles.myMasonryGrid}
+                columnClassName={cardStyles.myMasonryGridColumn}>
+                {candidateCards}
+            </Masonry>
         </div>
     )
 }

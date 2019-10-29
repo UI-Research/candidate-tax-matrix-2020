@@ -3,27 +3,41 @@
     margin-top: 50px;
 }
 
+.myMasonryGrid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+  margin-top: 50px;
+}
+
+.myMasonryGridColumn {
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
 .card {
     /*height: 400px;*/
-    width: 390px;
+    width: 380px;
     border: 1px solid #adabac;
     padding: 20px;
     margin-bottom: 20px;
-    display: inline-block;
-    float: left;
+    /*display: inline-block;*/
+    /*float: left;*/
     background-color: #fff;
     font-size: 16px;
     position: relative;
     box-sizing: border-box;
 }
 
-.card:nth-child(odd) {
+/*.card:nth-child(odd) {
     margin-right: 15px;
 }
 
 .card:nth-child(even) {
     margin-left: 15px;
-}
+}*/
 
 .cardTitle {
     font-size: 14px;
