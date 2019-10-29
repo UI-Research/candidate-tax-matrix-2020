@@ -7,19 +7,19 @@
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  margin-left: -30px; /* gutter size offset */
+  margin-left: -20px; /* gutter size offset */
   width: auto;
   margin-top: 50px;
 }
 
 .myMasonryGridColumn {
-  padding-left: 30px; /* gutter size */
+  padding-left: 20px; /* gutter size */
   background-clip: padding-box;
 }
 
 .card {
     /*height: 400px;*/
-    width: 380px;
+    width: 396px;
     border: 1px solid #adabac;
     padding: 20px;
     margin-bottom: 20px;
