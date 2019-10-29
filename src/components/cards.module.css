@@ -4,7 +4,7 @@
 }
 
 .card {
-    height: 400px;
+    /*height: 400px;*/
     width: 390px;
     border: 1px solid #adabac;
     padding: 20px;
@@ -60,6 +60,16 @@
     color: #353535;
     font-weight: bold;
     font-size: 16px;
+    margin-bottom: 0.8rem;
+}
+
+.contentList {
+    margin-left: 1rem;
+}
+
+.contentList li {
+    line-height: 1.4rem;
+    margin-bottom: 0.6rem;
 }
 
 .viewMoreLink {

@@ -1,38 +1,56 @@
 import React from "react"
+import cardData from "../data/data.json"
 import cardStyles from "./cards.module.css"
 
 const cartProd = (arr1, arr2) =>
-    arr1.flatMap(x => arr2.map(y => [x, y]));
+    arr1.flatMap(x => arr2.map(y => x + "|" + y));
 
 function Card(props) {
-    let candidate = props.candidate;
+    // console.log(cardData.filter((candidate) => candidate.Name === "Biden"));
+    let candidateLastName = props.candidate.split("|")[0];
+    let candidateFirstName = cardData[candidateLastName]["First name"];
+    let party = cardData[candidateLastName]["Party"];
     let cardTitle = "Overview";
     let viewMoreText = "View overview";
+    let cardBullets;
 
     if(props.view === "Issue areas") {
         viewMoreText = "View proposal by issue area";
-        candidate = props.candidate[0];
-        let issue = props.candidate[1];
+        let issue = props.candidate.split("|")[1];
         cardTitle = issue;
+
+        let cardText = cardData[candidateLastName]["Issue areas"][issue];
+
+        cardBullets = cardText.map((bullet, index) =>
+            <li key={index}>{bullet}</li>
+        );
     }
     else if(props.view === "Tax types") {
         viewMoreText = "View proposal by tax type";
-        candidate = props.candidate[0];
-        let taxType = props.candidate[1];
+        let taxType = props.candidate.split("|")[1];
         cardTitle = taxType;
+
+        let cardText = cardData[candidateLastName]["Tax types"][taxType];
+
+        cardBullets = cardText.map((bullet, index) =>
+            <li key={index}>{bullet}</li>
+        );
     }
 
     return (
         <div
             className={cardStyles.card}
-            onClick={() => props.onClick(candidate)}
+            onClick={() => props.onClick(props.candidate)}
         >
             <h5 className={cardStyles.cardTitle}>{cardTitle}</h5>
             <div style={{overflow: `auto`}}>
                 <div className={cardStyles.partyLogo}></div>
-                <h3 className={cardStyles.candidateName}>{candidate}</h3>
+                <h3 className={cardStyles.candidateName}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
             <h4 className={cardStyles.sectionTitle}>Position</h4>
+            <ul className={cardStyles.contentList}>
+                {cardBullets}
+            </ul>
             <p className={cardStyles.viewMoreLink}>{viewMoreText}</p>
         </div>
     )
@@ -40,7 +58,7 @@ function Card(props) {
 
 function Cards(props) {
     const view = props.view;
-    const selectedCandidates = props.candidates.filter((candidate) => candidate.selected).map((candidate) => candidate.first_name + " " + candidate.last_name);
+    const selectedCandidates = props.candidates.filter((candidate) => candidate.selected).map((candidate) => candidate.last_name);
     let allCards = selectedCandidates;
 
     const allCandidatesSelected = (selectedCandidates.length === props.candidates.length);
@@ -59,12 +77,12 @@ function Cards(props) {
 
     // console.log(allCards);
     const candidateCards = allCards.map((candidate) =>
-            <Card
-                key={candidate}
-                candidate={candidate}
-                view={view}
-                onClick={props.onClick}
-            />
+        <Card
+            key={candidate}
+            candidate={candidate}
+            view={view}
+            onClick={props.onClick}
+        />
     );
 
     return (

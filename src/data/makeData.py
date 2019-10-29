@@ -55,23 +55,25 @@ tax_types["selected"] = True
 tax_types.to_json("tax_types.json", orient = "records")
     
 # make skeleton json
-data = []
+data = {}
 
-for candidate in candidates["last_name"]:
+for index, row in candidates.iterrows():    
     candidate_dict = {}
     
-    candidate_dict["Name"] = candidate
+    candidate_dict["First name"] = row["first_name"]
+    candidate_dict["Last name"] = row["last_name"]
+    candidate_dict["Party"] = row["party"]
     candidate_dict["Overview"] = ""
     candidate_dict["Issue areas"] = {}
     candidate_dict["Tax types"] = {}
     
     for issue in issue_areas["name"]:
-        candidate_dict["Issue areas"][issue] = "None"
+        candidate_dict["Issue areas"][issue] = ["None"]
     
     for tp in tax_types["name"]:
-        candidate_dict["Tax types"][tp] = "None"
+        candidate_dict["Tax types"][tp] = ["None"]
 
-    data.append(candidate_dict)
+    data[row.last_name] = candidate_dict
 
 # group together all text items that apply to the same issue area or tax type
 # per candidate and put them in a list
@@ -88,17 +90,16 @@ candidate_tp = pd.concat([tp1, tp2])
 candidate_tp_grouped = candidate_tp.groupby(["Candidate", "Tax type"])["Text"].apply(list).reset_index()
 
 # populate json where applicable with text from spreadsheet
-for row in data:
-    candidate = row["Name"]
-    for issue in row["Issue areas"]:
+for candidate in data:
+    for issue in data[candidate]["Issue areas"]:
         text = candidate_ia_grouped.loc[(candidate_ia_grouped.Candidate == candidate) & (candidate_ia_grouped.Issue == issue), "Text"]
         if(len(text) > 0):
-            row["Issue areas"][issue] = text.values[0]
+            data[candidate]["Issue areas"][issue] = text.values[0]
 
-    for tp in row["Tax types"]:
+    for tp in data[candidate]["Tax types"]:
         text = candidate_tp_grouped.loc[(candidate_tp_grouped.Candidate == candidate) & (candidate_tp_grouped["Tax type"] == tp), "Text"]
         if(len(text) > 0):
-            row["Tax types"][tp] = text.values[0]
+            data[candidate]["Tax types"][tp] = text.values[0]
             
     
 with open("data.json", "w") as outfile:
