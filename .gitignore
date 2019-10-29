@@ -74,3 +74,7 @@ yarn-error.log
 # font folder
 tpc_candidate_tax_proposals-17102019/
 tpc_candidate_tax_proposals-17102019.zip
+
+# spreadsheets
+src/data/*.csv
+src/data/*.xlsx
