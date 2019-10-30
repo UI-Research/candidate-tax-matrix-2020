@@ -85,3 +85,41 @@
 .candidateName.democrat {
     color: #11719F;
 }
+
+.topicSubhead {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.topicSubhead.democrat {
+    color: #11719f;
+}
+
+.topicSubhead.republican {
+    color: #a4201d;
+}
+
+.contentList {
+    margin-left: 1rem;
+}
+
+.contentList li {
+    line-height: 1.4rem;
+    margin-bottom: 0.6rem;
+}
+
+.separator {
+    width: 100%;
+    text-align: center;
+    color: #adabac;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.separatorLine {
+    display: inline-block;
+    width: 200px;
+    border: 0.5px solid #adabac;
+    margin: 0 40px 4px 40px;
+}
