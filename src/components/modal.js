@@ -18,36 +18,38 @@ function ContentDiv(props) {
 }
 
 function ModalContent(props) {
-    let remainingTopics = <h4>Overview</h4>
-    let selectedTopicData;
     if(props.view === "Overview") {
+        return (
+            <div className="contentContainer"></div>
+        )
     }
     else {
         const data = cardData[props.candidateLastName][props.view];
-        selectedTopicData = data[props.topic];
 
-        let topics = Object.keys(data).sort();
-        let selectedTopicPos = topics.indexOf(props.topic);
+        const topics = Object.keys(data).sort();
+        const selectedTopicPos = topics.indexOf(props.topic);
         topics.splice(selectedTopicPos, 1);
-        remainingTopics = topics.map((topic) =>
+        const remainingTopics = topics.map((topic) =>
             <ContentDiv
                 party={props.party}
                 topic={topic}
                 data={data[topic]}
             />
         );
+
+        return (
+            <div className="contentContainer">
+                <ContentDiv
+                    party={props.party}
+                    topic={props.topic}
+                    data={data[props.topic]}
+                />
+                <div className={modalStyles.separator}><span className={modalStyles.separatorLine}></span>Other proposals by {props.view === "Issue areas" ? "issue area" : "type of tax"}<span className={modalStyles.separatorLine}></span></div>
+                {remainingTopics}
+            </div>
+        )
     }
-    return (
-        <div className="contentContainer">
-            <ContentDiv
-                party={props.party}
-                topic={props.topic}
-                data={selectedTopicData}
-            />
-            <div className={modalStyles.separator}><span className={modalStyles.separatorLine}></span>Other proposals by {props.view === "Issue areas" ? "issue area" : "type of tax"}<span className={modalStyles.separatorLine}></span></div>
-            {remainingTopics}
-        </div>
-    )
+
 }
 
 function Modal(props) {
