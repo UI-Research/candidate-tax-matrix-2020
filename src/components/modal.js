@@ -90,7 +90,10 @@ function Modal(props) {
 
     return (
         <div>
-            <div className={modalStyles.modalBackdrop}></div>
+            <div
+                className={modalStyles.modalBackdrop}
+                onClick={() => props.onClick()}>
+            </div>
             <div className={modalStyles.modal + " " + (props.isOpen ? null : modalStyles.closed)}>
                 <p className={modalStyles.downloadPdfLink}>Download PDF</p>
                 <div style={{overflow: `auto`}}>
