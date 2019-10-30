@@ -22,9 +22,25 @@ function Card(props) {
 
         let cardText = cardData[candidateLastName]["Issue areas"][issue];
 
-        cardBullets = cardText.map((bullet, index) =>
-            <li key={index}>{bullet}</li>
-        );
+        cardBullets = cardText.map((bullet, index) => {
+            if (bullet.indexOf("•") > -1) {
+                const subbullets = bullet.split("•");
+                const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
+                    <li key={index}>{subbullet}</li>
+                );
+
+                return (
+                    <li key={index}>{subbullets[0]}
+                        <ul>
+                            {subbulletsList}
+                        </ul>
+                    </li>
+                )
+            }
+            else {
+                return <li key={index}>{bullet}</li>
+            }
+        });
     }
     else if(props.view === "Tax types") {
         viewMoreText = "View proposal by tax type";
@@ -33,9 +49,25 @@ function Card(props) {
 
         let cardText = cardData[candidateLastName]["Tax types"][taxType];
 
-        cardBullets = cardText.map((bullet, index) =>
-            <li key={index}>{bullet}</li>
-        );
+        cardBullets = cardText.map((bullet, index) => {
+            if (bullet.indexOf("•") > -1) {
+                const subbullets = bullet.split("•");
+                const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
+                    <li key={index}>{subbullet}</li>
+                );
+
+                return (
+                    <li key={index}>{subbullets[0]}
+                        <ul>
+                            {subbulletsList}
+                        </ul>
+                    </li>
+                )
+            }
+            else {
+                return <li key={index}>{bullet}</li>
+            }
+        });
     }
 
     return (
