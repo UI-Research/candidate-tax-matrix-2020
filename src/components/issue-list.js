@@ -10,7 +10,7 @@ function IssueList(props) {
                 className={issueListStyles.menuButton + " " + (issue.selected ? issueListStyles.selected : null) + " " + issueListStyles.democrat}
                 onClick={() => props.onClick(issue.name)}
             >
-                {issue.name}
+                <span className={issueListStyles.buttonLabel}>{issue.name}</span>
                 <span className={issueListStyles.selectedIcon}>{issue.selected ? "×" : "+" }</span>
             </button>
         </li>

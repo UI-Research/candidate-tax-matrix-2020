@@ -10,7 +10,7 @@ function TaxPolicyList(props) {
                 className={taxPolicyListStyles.menuButton + " " + (taxPolicy.selected ? taxPolicyListStyles.selected : null) + " " + taxPolicyListStyles.democrat}
                 onClick={() => props.onClick(taxPolicy.name)}
             >
-                {taxPolicy.name}
+                <span className={taxPolicyListStyles.buttonLabel}>{taxPolicy.name}</span>
                 <span className={taxPolicyListStyles.selectedIcon}>{taxPolicy.selected ? "×" : "+" }</span>
             </button>
         </li>

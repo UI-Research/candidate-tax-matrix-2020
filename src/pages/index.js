@@ -173,10 +173,10 @@ class IndexPage extends Component {
                         onClick={this.handleViewClick}
                     />
                     <div style={{
-                        maxWidth: 375,
+                        maxWidth: 390,
                         display: `inline-block`,
                         float: `left`,
-                        marginRight: 40
+                        marginRight: 125
                     }}>
                         {this.state.view === "Issue areas" && <IssueList
                                                                 issues={this.state.selectedIssues}
