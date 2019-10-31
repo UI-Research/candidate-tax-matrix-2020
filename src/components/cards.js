@@ -3,6 +3,11 @@ import Masonry from 'react-masonry-css'
 import cardData from "../data/data.json"
 import cardStyles from "./cards.module.css"
 
+const breakpointColumnsObj = {
+  default: 2,
+  1094: 1
+};
+
 const cartProd = (arr1, arr2) =>
     arr1.flatMap(x => arr2.map(y => x + "|" + y));
 
@@ -121,6 +126,7 @@ function Cards(props) {
     return (
         <div
             style={{
+                width: `calc(100vw - 415px)`,
                 maxWidth: 811,
                 display: `inline-block`,
                 float: `left`
@@ -129,7 +135,7 @@ function Cards(props) {
             <div style={{fontSize: 16, fontWeight: `bold`}}>{aboveCardText}</div>
             <div style={{fontSize: 16, fontWeight: `bold`, textDecoration: `underline`}}>Print this view</div>
             <Masonry
-                breakpointCols={2}
+                breakpointCols={breakpointColumnsObj}
                 className={cardStyles.myMasonryGrid}
                 columnClassName={cardStyles.myMasonryGridColumn}>
                 {candidateCards}

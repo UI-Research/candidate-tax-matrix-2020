@@ -33,3 +33,10 @@
     color: #fff;
     border-color: #164b7c;
 }
+
+@media screen and (max-width: 1094px) {
+    .navLinkContainer {
+        position: static;
+        margin-bottom: 40px;
+    }
+}

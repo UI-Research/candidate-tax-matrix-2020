@@ -126,3 +126,15 @@
     border: 0.5px solid #adabac;
     margin: 0 40px 4px 40px;
 }
+
+@media screen and (max-width: 1094px) {
+    .modal {
+        width: 95vw;
+        height: 95vh;
+    }
+
+    .separatorLine {
+        width: 20%;
+        margin: 0 30px 4px 30px;
+    }
+}
