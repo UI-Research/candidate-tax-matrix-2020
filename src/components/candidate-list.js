@@ -27,7 +27,6 @@ function CandidateList(props) {
                 onClearSelectionClick={props.onClearSelectionClick}
             />
             <ul className={candidateListStyles.menuList}>{allCandidateListItems}</ul>
-            <div dangerouslySetInnerHTML={{__html: '<a href="www.urban.org">First &middot; Second</a>'}} />
         </div>
     );
 }
