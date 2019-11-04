@@ -5,14 +5,14 @@ function SelectAllButtons(props) {
     return (
         <div style={{marginBotton: 20}}>
             <div
-                className={selectAllBtnStyles.selectAllBtn}
+                className={selectAllBtnStyles.selectAllBtn + " " + (props.numItemsSelected === props.totalListLength ? selectAllBtnStyles.deselected : "")}
                 onClick={() => props.onSelectAllClick(props.list)}
             >
                 Select all
             </div>
             <span style={{padding: 10, fontWeight: `bold`}}>/</span>
             <div
-                className={selectAllBtnStyles.selectAllBtn}
+                className={selectAllBtnStyles.selectAllBtn + " " + (props.numItemsSelected === 0 ? selectAllBtnStyles.deselected : "")}
                 onClick={() => props.onClearSelectionClick(props.list)}
             >
                 Clear selection

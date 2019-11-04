@@ -4,6 +4,7 @@ import candidateListStyles from "./candidate-list.module.css"
 
 function CandidateList(props) {
     const candidates = props.candidates;
+    const numCandidatesSelected = candidates.reduce((accumulator, currentValue) => accumulator + currentValue.selected, 0);
     const allCandidateListItems = candidates.map((candidate, idx) =>
         <li key={candidate.id} onDragOver={() => props.onDragOver(idx)}>
             <button
@@ -23,6 +24,8 @@ function CandidateList(props) {
             <h4 className={candidateListStyles.menuTitle}>Choose candidates</h4>
             <SelectAllButtons
                 list="candidates"
+                numItemsSelected={numCandidatesSelected}
+                totalListLength={candidates.length}
                 onSelectAllClick={props.onSelectAllClick}
                 onClearSelectionClick={props.onClearSelectionClick}
             />

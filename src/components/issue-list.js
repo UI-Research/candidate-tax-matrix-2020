@@ -4,6 +4,7 @@ import issueListStyles from "./candidate-list.module.css"
 
 function IssueList(props) {
     const issues = props.issues;
+    const numIssuesSelected = issues.reduce((accumulator, currentValue) => accumulator + currentValue.selected, 0);
     const allIssueListItems = issues.map((issue, idx) =>
         <li key={issue.name}>
             <button
@@ -21,6 +22,8 @@ function IssueList(props) {
             <h4 className={issueListStyles.menuTitle}>Choose issue areas</h4>
             <SelectAllButtons
                 list="issue areas"
+                numItemsSelected={numIssuesSelected}
+                totalListLength={issues.length}
                 onSelectAllClick={props.onSelectAllClick}
                 onClearSelectionClick={props.onClearSelectionClick}
             />

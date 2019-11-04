@@ -13,3 +13,9 @@
 .selectAllBtn:hover {
     text-decoration: underline;
 }
+
+.deselected {
+    color: #adabac;
+    cursor: default;
+    pointer-events: none;
+}

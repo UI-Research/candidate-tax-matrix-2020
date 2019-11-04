@@ -133,7 +133,7 @@ function Cards(props) {
             }}
         >
             <div style={{fontSize: 16, fontWeight: `bold`}}>{aboveCardText}</div>
-            <div style={{fontSize: 16, fontWeight: `bold`, textDecoration: `underline`}}>Print this view</div>
+            <div style={{fontSize: 16, fontWeight: `bold`, color: `#46abdb`, cursor: `pointer`, textDecoration: `underline`}}>Print this view</div>
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className={cardStyles.myMasonryGrid}
