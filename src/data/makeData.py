@@ -44,13 +44,13 @@ master_lists = pd.read_excel("Candidate text.xlsx", sheet_name = "Lists (Don't d
 candidates["selected"] = True
 candidates.to_json("candidates.json", orient = "records")
 
-issue_areas = master_lists["Issue_areas"][master_lists["Issue_areas"].notnull()]
-
+issue_areas = master_lists["Issue_areas"][master_lists["Issue_areas"].notnull()].to_frame()
+issue_areas.rename(columns = {"Issue_areas": "name"}, inplace = True)
 issue_areas["selected"] = True
 issue_areas.to_json("issue_areas.json", orient = "records")
 
-tax_types = master_lists["Tax_types"][master_lists["Tax_types"].notnull()]
-
+tax_types = master_lists["Tax_types"][master_lists["Tax_types"].notnull()].to_frame()
+tax_types.rename(columns = {"Tax_types": "name"}, inplace = True)
 tax_types["selected"] = True
 tax_types.to_json("tax_types.json", orient = "records")
     
