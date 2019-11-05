@@ -42,6 +42,7 @@ class IndexPage extends Component {
             modalCandidate: null,
             selectedIssues: this.props.data.allIssueAreasJson.nodes,
             selectedTaxTypes: this.props.data.allTaxTypesJson.nodes,
+            mobileCandidatesMenuIsOpen: false,
         };
     }
 
@@ -136,6 +137,14 @@ class IndexPage extends Component {
         });
     }
 
+    handleMobileMenuBtnClick = () => {
+        this.setState({mobileCandidatesMenuIsOpen : true});
+    }
+
+    handleMobileMenuCloseBtnClick = () => {
+        this.setState({mobileCandidatesMenuIsOpen : false});
+    }
+
     // code from: https://www.freecodecamp.org/news/how-to-make-and-test-your-own-react-drag-and-drop-list-with-0-dependencies-6fb461603780/
     onDragStart = (e, index) => {
         this.draggedItem = this.state.selectedCandidates[index];
@@ -191,6 +200,9 @@ class IndexPage extends Component {
                             onDragStart={this.onDragStart}
                             onDragOver={this.onDragOver}
                             onDragEnd={this.onDragEnd}
+                            mobileCandidatesMenuIsOpen={this.state.mobileCandidatesMenuIsOpen}
+                            onMobileMenuBtnClick={this.handleMobileMenuBtnClick}
+                            onMobileMenuCloseBtnClick={this.handleMobileMenuCloseBtnClick}
                         />
                     </div>
                     <Cards

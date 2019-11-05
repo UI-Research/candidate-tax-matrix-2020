@@ -8,7 +8,7 @@ function CandidateList(props) {
     const allCandidateListItems = candidates.map((candidate, idx) =>
         <li key={candidate.id} onDragOver={() => props.onDragOver(idx)}>
             <button
-                className={candidateListStyles.menuButton + " " + candidateListStyles.moveable + " " + (candidate.selected ? candidateListStyles.selected : null) + " " + (candidate.party === "Democrat" ? candidateListStyles.democrat : candidateListStyles.republican)}
+                className={candidateListStyles.menuButton + " " + candidateListStyles.moveable + " " + (candidate.selected ? candidateListStyles.selected : "") + " " + (candidate.party === "Democrat" ? candidateListStyles.democrat : candidateListStyles.republican)}
                 onClick={() => props.onClick(candidate.id)}
                 draggable
                 onDragStart={(e) => props.onDragStart(e, idx)}
@@ -21,15 +21,37 @@ function CandidateList(props) {
 
     return (
         <div>
-            <h4 className={candidateListStyles.menuTitle}>Choose candidates</h4>
-            <SelectAllButtons
-                list="candidates"
-                numItemsSelected={numCandidatesSelected}
-                totalListLength={candidates.length}
-                onSelectAllClick={props.onSelectAllClick}
-                onClearSelectionClick={props.onClearSelectionClick}
-            />
-            <ul className={candidateListStyles.menuList}>{allCandidateListItems}</ul>
+            <button
+                className={candidateListStyles.openMenuButton}
+                onClick={() => props.onMobileMenuBtnClick()}
+            >
+                Choose candidates
+                <span style={{
+                   fontStyle: `normal`,
+                   color: `#11719f`,
+                   fontWeight: `bold`,
+                   fontSize: 24,
+                   position: `absolute`,
+                   right: 10
+                }}>+</span>
+            </button>
+            <div className={candidateListStyles.filterButtonContainer + " " + (props.mobileCandidatesMenuIsOpen ? candidateListStyles.opened : "")}>
+                <button
+                    className={candidateListStyles.closeMenuButton}
+                    onClick={() => props.onMobileMenuCloseBtnClick()}
+                >
+                    ×
+                </button>
+                <h4 className={candidateListStyles.menuTitle}>Choose candidates</h4>
+                <SelectAllButtons
+                    list="candidates"
+                    numItemsSelected={numCandidatesSelected}
+                    totalListLength={candidates.length}
+                    onSelectAllClick={props.onSelectAllClick}
+                    onClearSelectionClick={props.onClearSelectionClick}
+                />
+                <ul className={candidateListStyles.menuList}>{allCandidateListItems}</ul>
+            </div>
         </div>
     );
 }

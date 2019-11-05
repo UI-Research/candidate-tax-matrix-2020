@@ -57,3 +57,86 @@
 .menuButton.selected.republican .selectedIcon {
     color: #a4201d;
 }
+
+.openMenuButton {
+    height: 45px;
+    border: 1px solid #adabac;
+    background-color: #fff;
+    width: 100%;
+    max-width: 330px;
+    text-align: left;
+    padding-left: 17px;
+    font-style: italic;
+    color: #adabac;
+    display: none;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.closeMenuButton {
+    font-size: 24px;
+    font-weight: bold;
+    color: #46abdb;
+    position: absolute;
+    top: 15px;
+    right: 19px;
+    display: none;
+}
+
+@media screen and (max-width: 779px) {
+    .menuList {
+        width: 300px;
+        margin-bottom: 0;
+    }
+
+    .openMenuButton,
+    .closeMenuButton {
+        display: block;
+    }
+
+    .filterButtonContainer {
+        display: none;
+    }
+
+    .filterButtonContainer.opened {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: #fff;
+        width: 100%;
+        height: 100%;
+        overflow: scroll;
+        padding: 30px 40px;
+    }
+
+    li {
+        margin-bottom: 0;
+    }
+
+    .menuButton {
+        min-height: 45px;
+        border: 1px solid #c4c4c4;
+        padding: 9px 15px;
+        font-size: 16px;
+    }
+
+    li:not(:last-child) .menuButton {
+        border-bottom: none;
+    }
+
+    .selectedIcon {
+        right: 15px;
+    }
+}
+
+@media screen and (max-width: 379px) {
+    .filterButtonContainer.opened {
+        padding: 30px 15px;
+    }
+
+    .menuList {
+        width: 100%;
+    }
+}
