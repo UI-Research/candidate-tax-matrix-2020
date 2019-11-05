@@ -43,6 +43,8 @@ class IndexPage extends Component {
             selectedIssues: this.props.data.allIssueAreasJson.nodes,
             selectedTaxTypes: this.props.data.allTaxTypesJson.nodes,
             mobileCandidatesMenuIsOpen: false,
+            mobileIssuesMenuIsOpen: false,
+            mobileTaxTypesMenuIsOpen: false,
         };
     }
 
@@ -137,12 +139,28 @@ class IndexPage extends Component {
         });
     }
 
-    handleMobileMenuBtnClick = () => {
-        this.setState({mobileCandidatesMenuIsOpen : true});
+    handleMobileMenuBtnClick = (menu) => {
+        if(menu === "Candidates") {
+            this.setState({mobileCandidatesMenuIsOpen : true});
+        }
+        else if(menu === "Issue areas") {
+            this.setState({mobileIssuesMenuIsOpen : true});
+        }
+        else if(menu === "Tax types") {
+            this.setState({mobileTaxTypesMenuIsOpen : true});
+        }
     }
 
-    handleMobileMenuCloseBtnClick = () => {
-        this.setState({mobileCandidatesMenuIsOpen : false});
+    handleMobileMenuCloseBtnClick = (menu) => {
+        if(menu === "Candidates") {
+            this.setState({mobileCandidatesMenuIsOpen : false});
+        }
+        else if(menu === "Issue areas") {
+            this.setState({mobileIssuesMenuIsOpen : false});
+        }
+        else if(menu === "Tax types") {
+            this.setState({mobileTaxTypesMenuIsOpen : false});
+        }
     }
 
     // code from: https://www.freecodecamp.org/news/how-to-make-and-test-your-own-react-drag-and-drop-list-with-0-dependencies-6fb461603780/
@@ -186,12 +204,18 @@ class IndexPage extends Component {
                                                                 issues={this.state.selectedIssues}
                                                                 onSelectAllClick={this.handleSelectAllClick}
                                                                 onClearSelectionClick={this.handleClearSelectionClick}
-                                                                onClick={this.handleIssueClick} />}
+                                                                onClick={this.handleIssueClick}
+                                                                mobileIssuesMenuIsOpen={this.state.mobileIssuesMenuIsOpen}
+                                                                onMobileMenuBtnClick={this.handleMobileMenuBtnClick}
+                                                                onMobileMenuCloseBtnClick={this.handleMobileMenuCloseBtnClick} />}
                         {this.state.view === "Tax types" && <TaxPolicyList
                                                                 taxPolicies={this.state.selectedTaxTypes}
                                                                 onSelectAllClick={this.handleSelectAllClick}
                                                                 onClearSelectionClick={this.handleClearSelectionClick}
-                                                                onClick={this.handleTaxTypeClick} />}
+                                                                onClick={this.handleTaxTypeClick}
+                                                                mobileTaxTypesMenuIsOpen={this.state.mobileTaxTypesMenuIsOpen}
+                                                                onMobileMenuBtnClick={this.handleMobileMenuBtnClick}
+                                                                onMobileMenuCloseBtnClick={this.handleMobileMenuCloseBtnClick} />}
                         <CandidateList
                             candidates={this.state.selectedCandidates}
                             onSelectAllClick={this.handleSelectAllClick}

@@ -19,15 +19,37 @@ function TaxPolicyList(props) {
 
     return (
         <div>
-            <h4 className={taxPolicyListStyles.menuTitle}>Choose tax types</h4>
-            <SelectAllButtons
-                list="tax types"
-                numItemsSelected={numPoliciesSelected}
-                totalListLength={taxPolicies.length}
-                onSelectAllClick={props.onSelectAllClick}
-                onClearSelectionClick={props.onClearSelectionClick}
-            />
-            <ul className={taxPolicyListStyles.menuList}>{allTaxPolicyListItems}</ul>
+            <button
+                className={taxPolicyListStyles.openMenuButton}
+                onClick={() => props.onMobileMenuBtnClick("Tax types")}
+            >
+                Choose tax types
+                <span style={{
+                   fontStyle: `normal`,
+                   color: `#11719f`,
+                   fontWeight: `bold`,
+                   fontSize: 24,
+                   position: `absolute`,
+                   right: 10
+                }}>+</span>
+            </button>
+            <div className={taxPolicyListStyles.filterButtonContainer + " " + (props.mobileTaxTypesMenuIsOpen ? taxPolicyListStyles.opened : "")}>
+                <button
+                    className={taxPolicyListStyles.closeMenuButton}
+                    onClick={() => props.onMobileMenuCloseBtnClick("Tax types")}
+                >
+                    ×
+                </button>
+                <h4 className={taxPolicyListStyles.menuTitle}>Choose tax types</h4>
+                <SelectAllButtons
+                    list="tax types"
+                    numItemsSelected={numPoliciesSelected}
+                    totalListLength={taxPolicies.length}
+                    onSelectAllClick={props.onSelectAllClick}
+                    onClearSelectionClick={props.onClearSelectionClick}
+                />
+                <ul className={taxPolicyListStyles.menuList}>{allTaxPolicyListItems}</ul>
+            </div>
         </div>
     );
 }

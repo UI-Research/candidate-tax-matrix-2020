@@ -23,7 +23,7 @@ function CandidateList(props) {
         <div>
             <button
                 className={candidateListStyles.openMenuButton}
-                onClick={() => props.onMobileMenuBtnClick()}
+                onClick={() => props.onMobileMenuBtnClick("Candidates")}
             >
                 Choose candidates
                 <span style={{
@@ -38,7 +38,7 @@ function CandidateList(props) {
             <div className={candidateListStyles.filterButtonContainer + " " + (props.mobileCandidatesMenuIsOpen ? candidateListStyles.opened : "")}>
                 <button
                     className={candidateListStyles.closeMenuButton}
-                    onClick={() => props.onMobileMenuCloseBtnClick()}
+                    onClick={() => props.onMobileMenuCloseBtnClick("Candidates")}
                 >
                     ×
                 </button>
