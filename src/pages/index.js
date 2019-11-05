@@ -172,12 +172,7 @@ class IndexPage extends Component {
                         selectedView={this.state.view}
                         onClick={this.handleViewClick}
                     />
-                    <div style={{
-                        maxWidth: 390,
-                        display: `inline-block`,
-                        float: `left`,
-                        marginRight: 125
-                    }}>
+                    <div className="filterContainer">
                         {this.state.view === "Issue areas" && <IssueList
                                                                 issues={this.state.selectedIssues}
                                                                 onSelectAllClick={this.handleSelectAllClick}

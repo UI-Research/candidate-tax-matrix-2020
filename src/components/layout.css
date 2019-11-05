@@ -608,7 +608,27 @@ pre tt:after {
     font-size: 100%;
   }
 }
+@media screen and (max-width: 1225px) {
+    .mainContainer {
+        padding: 0 20px;
+    }
+
+}
 .modalOpen {
     height: 100vh;
     overflow: hidden;
+}
+.introParagraph {
+    font-size: 24px;
+    font-weight: lighter;
+    font-style: italic;
+    line-height: 35px;
+    margin-bottom: 3rem;
+}
+@media screen and (max-width: 450px) {
+    .introParagraph {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 24px;
+    }
 }

@@ -138,3 +138,9 @@
         margin: 0 30px 4px 30px;
     }
 }
+
+@media screen and (max-width: 779px) {
+    .contentList li {
+        line-height: 1.5rem;
+    }
+}

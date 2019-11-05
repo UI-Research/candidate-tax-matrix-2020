@@ -34,9 +34,26 @@
     border-color: #164b7c;
 }
 
+@media screen and (max-width: 1225px) {
+    .navLinkContainer {
+        right: 20px;
+    }
+}
+
 @media screen and (max-width: 1094px) {
     .navLinkContainer {
         position: static;
         margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .navLinkContainer {
+        width: 100%;
+    }
+
+    .navLink {
+        width: 33%;
+        min-width: 0;
     }
 }

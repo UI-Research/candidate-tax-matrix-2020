@@ -2,6 +2,7 @@
 import PropTypes from "prop-types"
 import React from "react"
 import TpcHeader from "./tpc-header"
+import headerStyles from "./header.module.css"
 
 const Header = ({ siteTitle }) => (
   <header
@@ -12,31 +13,11 @@ const Header = ({ siteTitle }) => (
     }}
   >
     <TpcHeader />
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 1226,
-        height: 268,
-        padding: `1.45rem 0`,
-      }}
-    >
-      <h1
-        style={{
-            margin: 0,
-            color: `white`,
-            fontSize: 60,
-            fontWeight: `bold`,
-            textDecoration: `none`,
-            marginTop: `1rem`
-        }}
-    >
+    <div className={headerStyles.headerContainerDiv}>
+      <h1 className={headerStyles.projectTitle}>
           {siteTitle}
       </h1>
-      <p style={{
-        color: `#fff`,
-        fontSize: 24,
-        marginTop: `2rem`
-      }}>
+      <p className={headerStyles.date}>
         Date XX, 2019
       </p>
     </div>

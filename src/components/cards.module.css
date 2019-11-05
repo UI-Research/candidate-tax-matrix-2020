@@ -1,8 +1,28 @@
 .cardContainer {
-    overflow: auto;
-    margin-top: 50px;
+    width: calc(100vw - 415px);
+    max-width: 811px;
+    display: inline-block;
+    float: left;
 }
 
+@media screen and (max-width: 1225px) {
+    .cardContainer {
+        width: calc(100vw - 455px);
+    }
+}
+
+@media screen and (min-width: 441px) and (max-width: 779px) {
+    .cardContainer {
+        display: block;
+        float: none;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 440px) {
+    .cardContainer {
+        width: 100%;
+    }
+}
 .myMasonryGrid {
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
@@ -35,6 +55,20 @@
 @media screen and (max-width: 1094px) {
     .card {
         width: 396px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .myMasonryGrid {
+        margin-left: 0;
+    }
+
+    .myMasonryGridColumn {
+        padding-left: 0;
+    }
+
+    .card {
+        width: 100%;
     }
 }
 

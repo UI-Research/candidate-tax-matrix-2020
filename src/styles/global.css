@@ -85,3 +85,20 @@ body {
     src:url("../../Fonts/6571c13d-e1f0-4876-bdff-98529f20937b.eot?#iefix");
     src:url("../../Fonts/6571c13d-e1f0-4876-bdff-98529f20937b.eot?#iefix") format("eot"),url("../../Fonts/98052579-0648-4e02-953f-ba7b46d13355.woff2") format("woff2"),url("../../Fonts/2bc28ff1-0120-47a3-8c4e-5864479e1a55.woff") format("woff"),url("../../Fonts/7d06e72d-5ebd-4e67-be44-8bffeb9a09ba.ttf") format("truetype"),url("../../Fonts/6f37f93f-ae97-4aee-804f-1e140267e040.svg#6f37f93f-ae97-4aee-804f-1e140267e040") format("svg");
 }
+.filterContainer {
+    max-width: 390px;
+    display: inline-block;
+    float: left;
+    margin-right: 125px;
+}
+@media screen and (min-width: 780px) and (max-width: 839px) {
+    .filterContainer {
+        margin-right: 65px;
+    }
+}
+@media screen and (max-width: 779px) {
+    .filterContainer {
+        float: none;
+        display: block;
+    }
+}

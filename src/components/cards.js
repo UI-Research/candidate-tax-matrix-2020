@@ -124,14 +124,7 @@ function Cards(props) {
     );
 
     return (
-        <div
-            style={{
-                width: `calc(100vw - 415px)`,
-                maxWidth: 811,
-                display: `inline-block`,
-                float: `left`
-            }}
-        >
+        <div className={cardStyles.cardContainer}>
             <div style={{fontSize: 16, fontWeight: `bold`}}>{aboveCardText}</div>
             <div style={{fontSize: 16, fontWeight: `bold`, color: `#46abdb`, cursor: `pointer`, textDecoration: `underline`}}>Print this view</div>
             <Masonry
