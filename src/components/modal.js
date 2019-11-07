@@ -1,4 +1,5 @@
 import React from "react"
+// import { Link } from "gatsby"
 import cardData from "../data/data.json"
 import modalStyles from "./modal.module.css"
 
@@ -88,6 +89,8 @@ function Modal(props) {
     const party = cardData[candidateLastName]["Party"];
     // console.log(view, candidate, topic);
 
+    const printLink = "/print/?candidate=" + candidateLastName;
+
     return (
         <div>
             <div
@@ -95,7 +98,9 @@ function Modal(props) {
                 onClick={() => props.onClick()}>
             </div>
             <div className={modalStyles.modal + " " + (props.isOpen ? null : modalStyles.closed)}>
-                <p className={modalStyles.downloadPdfLink}>Download PDF</p>
+                <a href={printLink} target="_blank" className={modalStyles.downloadPdfLink}>
+                    Download PDF
+                </a>
                 <div style={{overflow: `auto`}}>
                     <div className={modalStyles.partyLogo + " " + (party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
                     <h3 className={modalStyles.candidateName + " " + (party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
