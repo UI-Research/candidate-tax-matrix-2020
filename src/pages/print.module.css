@@ -1,0 +1,84 @@
+.print {
+    width: 8in;
+    border: 1px solid #d2d2d2;
+}
+
+.partyLogo {
+    height: 30px;
+    width: 30px;
+    background: #353535;
+    border-radius: 50%;
+    display: inline-block;
+    float: left;
+    margin-right: 16px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+    padding-left: 2px;
+}
+
+.partyLogo.democrat {
+    background: #11719f;
+}
+
+.partyLogo.republican {
+    background: #a4201d;
+}
+
+.candidateName {
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    float: left;
+    line-height: 30px;
+}
+
+.candidateName.republican {
+    color: #a4201d;
+}
+
+.candidateName.democrat {
+    color: #11719F;
+}
+
+.topicSubhead {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+.topicSubhead.democrat {
+    color: #11719f;
+}
+
+.topicSubhead.republican {
+    color: #a4201d;
+}
+
+.contentList {
+    margin-left: 1rem;
+}
+
+.contentList li {
+    line-height: 16px;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.separator {
+    width: 100%;
+    text-align: center;
+    color: #adabac;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin: 1.2rem 0;
+}
+
+.separatorLine {
+    display: inline-block;
+    width: 195px;
+    border: 0.5px solid #adabac;
+    margin: 0 40px 4px 40px;
+}
