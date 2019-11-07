@@ -76,10 +76,7 @@ function Card(props) {
     }
 
     return (
-        <div
-            className={cardStyles.card}
-            onClick={() => props.onClick(props.candidate)}
-        >
+        <div className={cardStyles.card}>
             <h5 className={cardStyles.cardTitle}>{cardTitle}</h5>
             <div style={{overflow: `auto`}}>
                 <div className={cardStyles.partyLogo + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
@@ -89,7 +86,12 @@ function Card(props) {
             <ul className={cardStyles.contentList}>
                 {cardBullets}
             </ul>
-            <p className={cardStyles.viewMoreLink}>{viewMoreText}</p>
+            <p
+                className={cardStyles.viewMoreLink}
+                onClick={() => props.onClick(props.candidate)}
+            >
+                {viewMoreText}
+            </p>
         </div>
     )
 }
