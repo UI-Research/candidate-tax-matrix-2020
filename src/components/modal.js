@@ -3,6 +3,9 @@ import React from "react"
 import cardData from "../data/data.json"
 import modalStyles from "./modal.module.css"
 
+const sanitizeString = (string) =>
+    string.split(" ").join("_");
+
 function ContentDiv(props) {
     const contentBullets = props.data.map((bullet, index) => {
         if (bullet.indexOf("•") > -1) {
@@ -89,7 +92,7 @@ function Modal(props) {
     const party = cardData[candidateLastName]["Party"];
     // console.log(view, candidate, topic);
 
-    const printLink = "/print/?candidate=" + candidateLastName;
+    const printLink = "/print/?candidate=" + candidateLastName + "&view=" + sanitizeString(view) + "&topic=" + sanitizeString(topic);
 
     return (
         <div>
