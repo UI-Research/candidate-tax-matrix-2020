@@ -84,6 +84,12 @@ function ModalContent(props) {
 }
 
 function PrintPage({ location }) {
+    if(location.search.indexOf("?") === -1) {
+        return (
+            <div></div>
+            )
+    }
+    else {
     const queryString = location.search.split("?")[1];
     const queryObj = parseQueryString(queryString);
 
@@ -107,6 +113,7 @@ function PrintPage({ location }) {
             />
         </div>
     )
+}
 }
 
 export default PrintPage
