@@ -27,10 +27,6 @@ Ouputs:
 import pandas as pd
 import json
 
-# TODO: update the following lines of code
-candidates = pd.read_csv("candidates.csv")
-issue_areas = pd.read_csv("issue_areas.csv")
-tax_types = pd.read_csv("tax_types.csv")
 
 candidate_text = pd.read_excel("Candidate text.xlsx", sheet_name = "Master", 
                                usecols = "A:F", 
@@ -40,7 +36,12 @@ master_lists = pd.read_excel("Candidate text.xlsx", sheet_name = "Lists (Don't d
                              usecols = "A:E",
                              names = ["Candidate_first", "Candidate_last", "Candidate_party", "Tax_types", "Issue_areas"])
 
+# filter out any blank rows from the data
+candidate_text = candidate_text[pd.notnull(candidate_text.Text)]
+
 # make master data jsons for candidate, issue areas and tax policies filter lists
+candidates = master_lists[["Candidate_first", "Candidate_last", "Candidate_party"]]
+candidates.rename(columns={"Candidate_first": "first_name", "Candidate_last":"last_name", "Candidate_party": "party"}, inplace = True)
 candidates["selected"] = True
 candidates.to_json("candidates.json", orient = "records")
 
