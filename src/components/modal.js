@@ -1,5 +1,6 @@
 import React from "react"
 // import { Link } from "gatsby"
+import ReactMarkdown from 'react-markdown';
 import cardData from "../data/data.json"
 import modalStyles from "./modal.module.css"
 
@@ -11,7 +12,7 @@ function ContentDiv(props) {
         if (bullet.indexOf("•") > -1) {
             const subbullets = bullet.split("•");
             const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
-                <li key={index}>{subbullet}</li>
+                <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" /></li>
             );
 
             return (
@@ -23,7 +24,7 @@ function ContentDiv(props) {
             )
         }
         else {
-            return <li key={index}>{bullet}</li>
+            return <li key={index}><ReactMarkdown source={bullet} linkTarget="_blank" /></li>
         }
     });
 

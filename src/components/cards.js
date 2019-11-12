@@ -1,5 +1,6 @@
 import React from "react"
 import Masonry from 'react-masonry-css'
+import ReactMarkdown from 'react-markdown';
 import cardData from "../data/data.json"
 import cardStyles from "./cards.module.css"
 
@@ -10,6 +11,22 @@ const breakpointColumnsObj = {
 
 const cartProd = (arr1, arr2) =>
     arr1.flatMap(x => arr2.map(y => x + "|" + y));
+
+// const makeLink = (text) => {
+//     const textRe = /\[.+\]/;
+//     const linkRe = /\{.+\}/;
+//     const re = /\[.+\]\{.+\}/;
+
+//     if(text.indexOf("http") > -1) {
+//         if(re.exec(text) !== null) {
+//             const textToBeLinked = textRe.exec(text)[0];
+//             const hyperlink = linkRe.exec(text)[0];
+//             console.log(textToBeLinked, hyperlink);
+//         }
+//     }
+
+//     return text;
+// }
 
 function Card(props) {
     // console.log(cardData.filter((candidate) => candidate.Name === "Biden"));
@@ -31,7 +48,7 @@ function Card(props) {
             if (bullet.indexOf("•") > -1) {
                 const subbullets = bullet.split("•");
                 const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
-                    <li key={index}>{subbullet}</li>
+                    <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" /></li>
                 );
 
                 return (
@@ -43,7 +60,7 @@ function Card(props) {
                 )
             }
             else {
-                return <li key={index}>{bullet}</li>
+                return <li key={index}><ReactMarkdown source={bullet} linkTarget="_blank" /></li>
             }
         });
     }
@@ -58,7 +75,7 @@ function Card(props) {
             if (bullet.indexOf("•") > -1) {
                 const subbullets = bullet.split("•");
                 const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
-                    <li key={index}>{subbullet}</li>
+                    <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" /></li>
                 );
 
                 return (
@@ -70,7 +87,7 @@ function Card(props) {
                 )
             }
             else {
-                return <li key={index}>{bullet}</li>
+                return <li key={index}><ReactMarkdown source={bullet} linkTarget="_blank" /></li>
             }
         });
     }
@@ -128,7 +145,7 @@ function Cards(props) {
     return (
         <div className={cardStyles.cardContainer}>
             <div style={{fontSize: 16, fontWeight: `bold`}}>{aboveCardText}</div>
-            <div style={{fontSize: 16, fontWeight: `bold`, color: `#46abdb`, cursor: `pointer`, textDecoration: `underline`}}>Print this view</div>
+            <div className={cardStyles.printLink}>Print this view</div>
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className={cardStyles.myMasonryGrid}
