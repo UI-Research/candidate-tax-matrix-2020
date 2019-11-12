@@ -101,25 +101,27 @@ function Modal(props) {
                 onClick={() => props.onClick()}>
             </div>
             <div className={modalStyles.modal + " " + (props.isOpen ? null : modalStyles.closed)}>
-                <a href={printLink} target="_blank" className={modalStyles.downloadPdfLink}>
-                    Download PDF
-                </a>
-                <div style={{overflow: `auto`}}>
-                    <div className={modalStyles.partyLogo + " " + (party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
-                    <h3 className={modalStyles.candidateName + " " + (party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
+                <div className={modalStyles.modalWindow}>
+                    <a href={printLink} target="_blank" className={modalStyles.downloadPdfLink}>
+                        Download PDF
+                    </a>
+                    <div style={{overflow: `auto`}}>
+                        <div className={modalStyles.partyLogo + " " + (party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
+                        <h3 className={modalStyles.candidateName + " " + (party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
+                    </div>
+                    <button
+                        className={modalStyles.closeModalBtn}
+                        onClick={() => props.onClick()}
+                    >
+                        ×
+                    </button>
+                    <ModalContent
+                        candidateLastName={candidateLastName}
+                        view={view}
+                        topic={topic}
+                        party={party}
+                    />
                 </div>
-                <button
-                    className={modalStyles.closeModalBtn}
-                    onClick={() => props.onClick()}
-                >
-                    ×
-                </button>
-                <ModalContent
-                    candidateLastName={candidateLastName}
-                    view={view}
-                    topic={topic}
-                    party={party}
-                />
             </div>
         </div>
     );

@@ -14,7 +14,8 @@ function CandidateList(props) {
                 onDragStart={(e) => props.onDragStart(e, idx)}
                 onDragEnd={props.onDragEnd}
             >
-                {candidate.first_name} {candidate.last_name} <span className={candidateListStyles.selectedIcon}>{candidate.selected ? "×" : "+" }</span>
+                {candidate.first_name} {candidate.last_name} ({candidate.party[0]})
+                <span className={candidateListStyles.selectedIcon}>{candidate.selected ? "×" : "+" }</span>
             </button>
         </li>
     );

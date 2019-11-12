@@ -85,8 +85,8 @@
 }
 
 .partyLogo {
-    height: 45px;
-    width: 45px;
+    height: 50px;
+    width: 50px;
     background: #353535;
     border-radius: 50%;
     display: inline-block;
@@ -95,7 +95,7 @@
     color: #fff;
     font-size: 26px;
     font-weight: bold;
-    line-height: 45px;
+    line-height: 49px;
     text-align: center;
     padding-left: 2px;
 }
@@ -109,7 +109,7 @@
 }
 
 .candidateName {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     display: inline-block;
     float: left;
@@ -165,5 +165,16 @@
 }
 
 .viewMoreLink:hover {
+    text-decoration: underline;
+}
+
+.printLink {
+    font-size: 16px;
+    font-weight: bold;
+    color: #008bb0;
+    cursor: pointer;
+}
+
+.printLink:hover {
     text-decoration: underline;
 }

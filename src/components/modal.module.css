@@ -8,8 +8,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-    overflow-y: scroll;
-    padding: 30px;
+    /*overflow-y: scroll;*/
+    /*padding: 30px;*/
 }
 
 .closed {
@@ -18,7 +18,7 @@
 
 .closeModalBtn {
     position: absolute;
-    top: 30px;
+    top: 0;
     right: 10px;
     background: none;
     border: none;
@@ -40,18 +40,32 @@
     z-index: 9;
 }
 
+.modalWindow {
+    height: 90%;
+    width: 100%;
+    position: absolute;
+    overflow-y: scroll;
+    top: 30px;
+    padding: 0 30px;
+}
+
 .downloadPdfLink {
-    color: #46abdb;
-    text-decoration: underline;
+    color: #008bb0;
     cursor: pointer;
     font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
     display: inline-block;
     margin-bottom: 20px;
 }
 
+.downloadPdfLink:hover {
+    text-decoration: underline;
+}
+
 .partyLogo {
-    height: 45px;
-    width: 45px;
+    height: 50px;
+    width: 50px;
     background: #353535;
     border-radius: 50%;
     display: inline-block;
@@ -60,7 +74,7 @@
     color: #fff;
     font-size: 26px;
     font-weight: bold;
-    line-height: 45px;
+    line-height: 49px;
     text-align: center;
     padding-left: 2px;
 }
@@ -74,7 +88,7 @@
 }
 
 .candidateName {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     display: inline-block;
     float: left;
