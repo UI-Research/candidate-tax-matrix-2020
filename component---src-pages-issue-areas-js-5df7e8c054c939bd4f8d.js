@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{212:function(e,a,n){"use strict";n.r(a);var t=n(0),l=n.n(t),r=n(205),u=n(206),c=n(204);a.default=function(){return l.a.createElement(r.a,null,l.a.createElement(c.a,{title:"Page two"}),l.a.createElement(u.a,null),l.a.createElement("h1",null,"Issue Areas"))}}}]);
-//# sourceMappingURL=component---src-pages-issue-areas-js-5df7e8c054c939bd4f8d.js.map
