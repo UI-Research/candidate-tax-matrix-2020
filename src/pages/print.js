@@ -1,4 +1,6 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import ReactMarkdown from 'react-markdown';
 import logo from "../images/tpcLogo.png"
 import cardData from "../data/data.json"
 import printStyles from "./print.module.css"
@@ -22,7 +24,7 @@ function ContentDiv(props) {
         if (bullet.indexOf("•") > -1) {
             const subbullets = bullet.split("•");
             const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
-                <li key={index}>{subbullet}</li>
+                <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" className={printStyles.printLink} /></li>
             );
 
             return (
@@ -34,7 +36,7 @@ function ContentDiv(props) {
             )
         }
         else {
-            return <li key={index}>{bullet}</li>
+            return <li key={index}><ReactMarkdown source={bullet} linkTarget="_blank" className={printStyles.printLink} /></li>
         }
     });
 
@@ -84,6 +86,16 @@ function ModalContent(props) {
 }
 
 function PrintPage({ location }) {
+    const data = useStaticQuery(graphql`
+        query PrintSiteTitleQuery {
+          site {
+            siteMetadata {
+              title
+            }
+          }
+        }
+  `)
+
     if(location.search.indexOf("?") === -1) {
         return (
             <div></div>
@@ -100,6 +112,8 @@ function PrintPage({ location }) {
         <div className={printStyles.print}>
             <div className="header">
                 <img src={logo} alt="TPC logo" style={{ width: 70 }} />
+                <h1 style={{fontSize: 20}}>{data.site.siteMetadata.title}</h1>
+                <p style={{fontSize: 12, lineHeight: `16px`}}>What are the 2020 presidential candidates proposing to do about taxes? Our tracker breaks down their plans by the issues, tallies up the cost, and shows how much tax bills would change for households with high, average, and low incomes.</p>
             </div>
             <div style={{ overflow: `auto` }}>
                 <div className={printStyles.partyLogo + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
