@@ -96,25 +96,17 @@ function PrintPage({ location }) {
         }
   `)
 
-    if(location.search.indexOf("?") === -1) {
-        return (
-            <div></div>
-            )
-    }
-    else {
-    const queryString = location.search.split("?")[1];
-    const queryObj = parseQueryString(queryString);
+    let printBody;
 
-    const candidateFirstName = cardData[queryObj.candidate]["First name"];
-    const party = cardData[queryObj.candidate]["Party"];
-    console.log(queryObj);
-    return (
-        <div className={printStyles.print}>
-            <div className="header">
-                <img src={logo} alt="TPC logo" style={{ width: 70 }} />
-                <h1 style={{fontSize: 20}}>{data.site.siteMetadata.title}</h1>
-                <p style={{fontSize: 12, lineHeight: `16px`}}>What are the 2020 presidential candidates proposing to do about taxes? Our tracker breaks down their plans by the issues, tallies up the cost, and shows how much tax bills would change for households with high, average, and low incomes.</p>
-            </div>
+    if(location.search.indexOf("?") > -1) {
+        const queryString = location.search.split("?")[1];
+        const queryObj = parseQueryString(queryString);
+
+        const candidateFirstName = cardData[queryObj.candidate]["First name"];
+        const party = cardData[queryObj.candidate]["Party"];
+        // console.log(queryObj);
+
+        printBody = <>
             <div style={{ overflow: `auto` }}>
                 <div className={printStyles.partyLogo + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
                 <h1 className={printStyles.candidateName + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + queryObj.candidate}</h1>
@@ -125,9 +117,18 @@ function PrintPage({ location }) {
                 topic={queryObj.topic}
                 party={party}
             />
+        </>
+    }
+    return (
+        <div className={printStyles.print}>
+            <div className="header">
+                <img src={logo} alt="TPC logo" style={{ width: 70 }} />
+                <h1 style={{fontSize: 20}}>{data.site.siteMetadata.title}</h1>
+                <p style={{fontSize: 12, lineHeight: `16px`}}>What are the 2020 presidential candidates proposing to do about taxes? Our tracker breaks down their plans by the issues, tallies up the cost, and shows how much tax bills would change for households with high, average, and low incomes.</p>
+            </div>
+            {printBody}
         </div>
     )
-}
 }
 
 export default PrintPage
