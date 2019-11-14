@@ -8,7 +8,7 @@ function CandidateList(props) {
     const allCandidateListItems = candidates.map((candidate, idx) =>
         <li key={candidate.id} onDragOver={() => props.onDragOver(idx)}>
             <button
-                className={candidateListStyles.menuButton + " " + candidateListStyles.moveable + " " + (candidate.selected ? candidateListStyles.selected : "") + " " + (candidate.party === "Democrat" ? candidateListStyles.democrat : candidateListStyles.republican)}
+                className={candidateListStyles.menuButton + " " + candidateListStyles.moveable + " " + (candidate.selected ? candidateListStyles.selected : "")}
                 onClick={() => props.onClick(candidate.id)}
                 draggable
                 onDragStart={(e) => props.onDragStart(e, idx)}

@@ -50,12 +50,8 @@
     align-items: center;
 }
 
-.menuButton.selected.democrat .selectedIcon {
-    color: #11719F;
-}
-
-.menuButton.selected.republican .selectedIcon {
-    color: #a4201d;
+.menuButton.selected .selectedIcon {
+    color: #008bb0;
 }
 
 .openMenuButton {
