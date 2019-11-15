@@ -12,21 +12,32 @@ const breakpointColumnsObj = {
 const cartProd = (arr1, arr2) =>
     arr1.flatMap(x => arr2.map(y => x + "|" + y));
 
-// const makeLink = (text) => {
-//     const textRe = /\[.+\]/;
-//     const linkRe = /\{.+\}/;
-//     const re = /\[.+\]\{.+\}/;
+const sanitizeString = (string) =>
+    string.split(" ").join("_");
 
-//     if(text.indexOf("http") > -1) {
-//         if(re.exec(text) !== null) {
-//             const textToBeLinked = textRe.exec(text)[0];
-//             const hyperlink = linkRe.exec(text)[0];
-//             console.log(textToBeLinked, hyperlink);
-//         }
-//     }
+function buildQueryString(view, candidates, props) {
+    let candidatesQueryString = (candidates.length > 0) && candidates[0];
+    if(candidates.length > 1) {
+        candidatesQueryString = candidates.slice(1).reduce((accumulator, currentValue) => accumulator + "," + currentValue, candidatesQueryString);
+    }
 
-//     return text;
-// }
+    let topics = "overview";
+    if(view === "Issue areas") {
+        let issues = props.issues.filter((issue) => issue.selected).map((issue) => issue.name);
+        topics = (issues.length > 0) && issues[0];
+        topics = issues.slice(1).reduce((accumulator, currentValue) => accumulator + "," + sanitizeString(currentValue), topics);
+    }
+    else if(view === "Tax types") {
+        let taxTypes = props.taxPolicies.filter((taxPolicy) => taxPolicy.selected).map((taxPolicy) => taxPolicy.name);
+        topics = (taxTypes.length > 0) && taxTypes[0];
+        topics = taxTypes.slice(1).reduce((accumulator, currentValue) => accumulator + "," + sanitizeString(currentValue), topics);
+    }
+    // console.log(candidatesQueryString);
+
+    let queryString = `/print?cards=true&view=${sanitizeString(view)}&candidates=${candidatesQueryString}&topic=${topics}`;
+
+    return queryString;
+}
 
 function Card(props) {
     // console.log(cardData.filter((candidate) => candidate.Name === "Biden"));
@@ -142,10 +153,16 @@ function Cards(props) {
         />
     );
 
+    const queryString = buildQueryString(view, selectedCandidates, props);
+
     return (
         <div className={cardStyles.cardContainer}>
             <div style={{fontSize: 16, fontWeight: `bold`}}>{aboveCardText}</div>
-            <div className={cardStyles.printLink}>Print this view</div>
+            <div>
+                <a href={queryString} state={{candidates: props.candidates}} target="_blank" className={cardStyles.printLink}>
+                    Print this view
+                </a>
+            </div>
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className={cardStyles.myMasonryGrid}

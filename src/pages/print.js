@@ -19,6 +19,85 @@ const parseQueryString = (queryString) => {
     return queryObj;
 }
 
+const cartProd = (arr1, arr2) =>
+    arr1.flatMap(x => arr2.map(y => x + "|" + y));
+
+function Card(props) {
+    // console.log(cardData.filter((candidate) => candidate.Name === "Biden"));
+    let candidateLastName = props.candidate.split("|")[0];
+    let candidateFirstName = cardData[candidateLastName]["First name"];
+    let party = cardData[candidateLastName]["Party"];
+    let cardTitle = "Overview";
+    let cardBullets;
+
+    if(props.view === "Issue areas") {
+        let issue = props.candidate.split("|")[1];
+        cardTitle = issue;
+
+        let cardText = cardData[candidateLastName]["Issue areas"][issue];
+
+        cardBullets = cardText.map((bullet, index) => {
+            if (bullet.indexOf("•") > -1) {
+                const subbullets = bullet.split("•");
+                const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
+                    <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" className={printStyles.printLink} /></li>
+                );
+
+                return (
+                    <li key={index}>{subbullets[0]}
+                        <ul>
+                            {subbulletsList}
+                        </ul>
+                    </li>
+                )
+            }
+            else {
+                return <li key={index}><ReactMarkdown source={bullet} linkTarget="_blank" className={printStyles.printLink} /></li>
+            }
+        });
+    }
+    else if(props.view === "Tax types") {
+        let taxType = props.candidate.split("|")[1];
+        cardTitle = taxType;
+
+        let cardText = cardData[candidateLastName]["Tax types"][taxType];
+
+        cardBullets = cardText.map((bullet, index) => {
+            if (bullet.indexOf("•") > -1) {
+                const subbullets = bullet.split("•");
+                const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
+                    <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" /></li>
+                );
+
+                return (
+                    <li key={index}>{subbullets[0]}
+                        <ul>
+                            {subbulletsList}
+                        </ul>
+                    </li>
+                )
+            }
+            else {
+                return <li key={index}><ReactMarkdown source={bullet} linkTarget="_blank" /></li>
+            }
+        });
+    }
+
+    return (
+        <div className={printStyles.card}>
+            <h5 className={printStyles.cardTitle}>{cardTitle}</h5>
+            <div style={{overflow: `auto`}}>
+                <div className={printStyles.partyLogo + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
+                <h3 className={printStyles.candidateName + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
+            </div>
+            <h4 className={printStyles.topicSubhead + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>Proposal</h4>
+            <ul className={printStyles.contentList}>
+                {cardBullets}
+            </ul>
+        </div>
+    )
+}
+
 function ContentDiv(props) {
     const contentBullets = props.data.map((bullet, index) => {
         if (bullet.indexOf("•") > -1) {
@@ -102,22 +181,46 @@ function PrintPage({ location }) {
         const queryString = location.search.split("?")[1];
         const queryObj = parseQueryString(queryString);
 
-        const candidateFirstName = cardData[queryObj.candidate]["First name"];
-        const party = cardData[queryObj.candidate]["Party"];
-        // console.log(queryObj);
+        if(Object.keys(queryObj).indexOf("cards") > -1) {
+            let candidates = queryObj["candidates"].split(",");
+            let view = queryObj["view"];
+            let topics = queryObj["topic"].split(",");
 
-        printBody = <>
-            <div style={{ overflow: `auto` }}>
-                <div className={printStyles.partyLogo + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
-                <h1 className={printStyles.candidateName + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + queryObj.candidate}</h1>
+            let allCards = candidates;
+            if(view !== "Overview") {
+                allCards = cartProd(candidates, topics);
+            }
+
+            const candidateCards = allCards.map((candidate) =>
+                <Card
+                    key={candidate}
+                    candidate={candidate}
+                    view={view}
+                />
+            );
+
+            printBody = <div>
+                {candidateCards}
             </div>
-            <ModalContent
-                candidateLastName={queryObj.candidate}
-                view={queryObj.view}
-                topic={queryObj.topic}
-                party={party}
-            />
-        </>
+        }
+        else {
+            const candidateFirstName = cardData[queryObj.candidate]["First name"];
+            const party = cardData[queryObj.candidate]["Party"];
+            // console.log(queryObj);
+
+            printBody = <>
+                <div style={{ overflow: `auto` }}>
+                    <div className={printStyles.partyLogo + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
+                    <h1 className={printStyles.candidateName + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + queryObj.candidate}</h1>
+                </div>
+                <ModalContent
+                    candidateLastName={queryObj.candidate}
+                    view={queryObj.view}
+                    topic={queryObj.topic}
+                    party={party}
+                />
+            </>
+        }
     }
     return (
         <div className={printStyles.print}>
