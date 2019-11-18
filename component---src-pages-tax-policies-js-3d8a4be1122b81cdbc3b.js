@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{217:function(e,a,n){"use strict";n.r(a);var t=n(0),l=n.n(t),c=n(207),i=n(208),r=n(206);a.default=function(){return l.a.createElement(c.a,null,l.a.createElement(r.a,{title:"Tax policies"}),l.a.createElement(i.a,null),l.a.createElement("h1",null,"Tax Policies"))}}}]);
+//# sourceMappingURL=component---src-pages-tax-policies-js-3d8a4be1122b81cdbc3b.js.map
