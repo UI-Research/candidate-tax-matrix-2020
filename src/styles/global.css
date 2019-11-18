@@ -104,3 +104,9 @@ body {
         max-width: 330px;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .filterContainer {
+        max-width: 100%;
+    }
+}
