@@ -15,11 +15,7 @@ const Header = ({ siteTitle }) => (
   >
     <TpcHeader />
     <div className={headerStyles.headerContainerDiv}>
-      <div style={{
-        display: `inline-block`,
-        maxWidth: `75%`,
-        paddingRight: 20
-      }}>
+      <div className={headerStyles.innerContainerDiv}>
           <h1 className={headerStyles.projectTitle}>
               {siteTitle}
           </h1>

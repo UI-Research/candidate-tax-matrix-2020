@@ -5,6 +5,12 @@
     padding: 1.45rem 0;
 }
 
+.innerContainerDiv {
+    display: inline-block;
+    width: 75%;
+    padding-right: 20px;
+}
+
 .projectTitle {
     margin: 0;
     color: #fff;
@@ -39,11 +45,19 @@
     .headerContainerDiv {
         padding: 1.45rem 20px;
     }
+
+    .innerContainerDiv {
+        width: 100%;
+    }
 }
 
 @media screen and (min-width: 451px) and (max-width: 779px) {
     .headerContainerDiv {
         height: auto;
+    }
+
+    .innerContainerDiv {
+        width: 100%;
     }
 
     .projectTitle {
@@ -54,6 +68,10 @@
 @media screen and (max-width: 450px) {
     .headerContainerDiv {
         height: auto;
+    }
+
+    .innerContainerDiv {
+        width: 100%;
     }
 
     .projectTitle {
@@ -68,5 +86,9 @@
         font-size: 16px;
         font-weight: normal;
         line-height: 24px;
+    }
+
+    .headerImage {
+        height: 250px;
     }
 }
