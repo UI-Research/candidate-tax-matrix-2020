@@ -23,7 +23,7 @@ const Header = ({ siteTitle }) => (
             Date XX, 2019
           </p>
           <p className={headerStyles.introParagraph}>
-            What are the 2020 presidential candidates proposing to do about taxes? Our tracker breaks down their plans by the issues, tallies up the cost, and shows how much tax bills would change for households with high, average, and low incomes.
+            How would the 2020 presidential candidates change the tax code? We dig into the details of their latest proposals.
           </p>
       </div>
       <img src={headerImage} className={headerStyles.headerImage} alt="" />

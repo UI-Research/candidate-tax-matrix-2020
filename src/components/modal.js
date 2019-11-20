@@ -30,7 +30,7 @@ function ContentDiv(props) {
 
     return (
         <div>
-            <h4 className={modalStyles.topicSubhead + " " + (props.party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>Proposal on {props.topic.toLowerCase()}</h4>
+            <h4 className={modalStyles.topicSubhead + " " + (props.party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{props.topic}</h4>
             <ul className={modalStyles.contentList}>
                 {contentBullets}
             </ul>

@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `2020 Candidate Tax Matrix Title`,
+    title: `Where the 2020 Presidential Candidates Stand on Tax Policy`,
     description: `A tool to understand and compare tax plans among the 2020 presidential candidates.`,
     author: `@alicefeng`,
   },
