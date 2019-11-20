@@ -39,14 +39,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        projectID: '847ecb19-cb74-45f9-b379-92686dbe694b',
-        version: 12345,
-        loadAllfonts: true,
+        monotype: {
+          projectId: '847ecb19-cb74-45f9-b379-92686dbe694b',
+          loadAllFonts: true,
+        },
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
-  ],
-  pathPrefix: "/candidate-tax-matrix-2020"
+  ]
 }
