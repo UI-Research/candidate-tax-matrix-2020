@@ -24,6 +24,8 @@
     line-height: 30px;
     text-align: center;
     padding-left: 2px;
+    -webkit-print-color-adjust: exact; /* for chrome and safari */
+    color-adjust: exact;  /* for Firefox and IE */
 }
 
 .partyLogo.democrat {

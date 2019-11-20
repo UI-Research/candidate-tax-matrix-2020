@@ -1,0 +1,94 @@
+.headerContainerDiv {
+    margin: 0 auto;
+    max-width: 1226px;
+    /*height: 268px;*/
+    padding: 1.45rem 0;
+}
+
+.innerContainerDiv {
+    display: inline-block;
+    width: 75%;
+    padding-right: 20px;
+}
+
+.projectTitle {
+    margin: 0;
+    color: #fff;
+    font-size: 60px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+.date {
+    color: #fff;
+    font-size: 24px;
+    margin-top: 2rem;
+}
+
+.introParagraph {
+    font-size: 24px;
+    font-weight: lighter;
+    font-style: italic;
+    line-height: 35px;
+    margin-bottom: 3rem;
+    color: #fff;
+}
+
+.headerImage {
+    max-height: 300px;
+    vertical-align: bottom;
+    /*float: right;*/
+}
+
+@media screen and (max-width: 1225px) {
+    .headerContainerDiv {
+        padding: 1.45rem 20px;
+    }
+
+    .innerContainerDiv {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 451px) and (max-width: 779px) {
+    .headerContainerDiv {
+        height: auto;
+    }
+
+    .innerContainerDiv {
+        width: 100%;
+    }
+
+    .projectTitle {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .headerContainerDiv {
+        height: auto;
+    }
+
+    .innerContainerDiv {
+        width: 100%;
+    }
+
+    .projectTitle {
+        font-size: 24px;
+    }
+
+    .date {
+        font-size: 14px;
+    }
+
+    .introParagraph {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 24px;
+    }
+
+    .headerImage {
+        height: 250px;
+    }
+}
