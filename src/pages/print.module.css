@@ -11,19 +11,19 @@
 }
 
 .partyLogo {
-    height: 30px;
-    width: 30px;
+    height: 30pt;
+    width: 30pt;
     background: #353535;
     border-radius: 50%;
     display: inline-block;
     float: left;
-    margin-right: 16px;
+    margin-right: 16pt;
     color: #fff;
-    font-size: 20px;
+    font-size: 20pt;
     font-weight: bold;
-    line-height: 30px;
+    line-height: 30pt;
     text-align: center;
-    padding-left: 2px;
+    padding-left: 2pt;
     -webkit-print-color-adjust: exact; /* for chrome and safari */
     color-adjust: exact;  /* for Firefox and IE */
 }
@@ -37,11 +37,11 @@
 }
 
 .candidateName {
-    font-size: 16px;
+    font-size: 16pt;
     font-weight: bold;
     display: inline-block;
     float: left;
-    line-height: 30px;
+    line-height: 30pt;
 }
 
 .candidateName.republican {
@@ -53,9 +53,9 @@
 }
 
 .topicSubhead {
-    font-size: 14px;
+    font-size: 14pt;
     font-weight: bold;
-    margin-bottom: 14px;
+    margin-bottom: 14pt;
 }
 
 .topicSubhead.democrat {
@@ -71,27 +71,27 @@
 }
 
 .contentList li {
-    line-height: 16px;
-    margin-bottom: 10px;
-    font-size: 12px;
+    line-height: 16pt;
+    margin-bottom: 10pt;
+    font-size: 12pt;
 }
 
 .separator {
     width: 100%;
     text-align: center;
     color: #adabac;
-    font-size: 12px;
+    font-size: 10pt;
     text-transform: uppercase;
     margin: 1.2rem 0;
 }
 
 .separatorLine {
     display: inline-block;
-    width: 195px;
-    border: 0.5px solid #adabac;
-    margin: 0 40px 4px 40px;
+    width: 130pt;
+    border: 0.5pt solid #adabac;
+    margin: 0 30pt 4pt 30pt;
 }
 
 .card {
-    margin-bottom: 50px;
+    margin-bottom: 50pt;
 }
