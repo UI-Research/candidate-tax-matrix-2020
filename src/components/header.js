@@ -1,35 +1,25 @@
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import TpcHeader from "./tpc-header"
+import headerStyles from "./header.module.css"
 
 const Header = ({ siteTitle }) => (
   <header
     style={{
-      background: `#696969`,
+      background: `#164B7C`,
       marginBottom: `1.45rem`,
+      width: `100%`,
     }}
   >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          Header
-        </Link>
+    <TpcHeader />
+    <div className={headerStyles.headerContainerDiv}>
+      <h1 className={headerStyles.projectTitle}>
+          {siteTitle}
       </h1>
-      <h2 style={{ color: `#fff`}}>
-        {siteTitle}
-      </h2>
+      <p className={headerStyles.date}>
+        Date XX, 2019
+      </p>
     </div>
   </header>
 )

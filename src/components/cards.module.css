@@ -1,12 +1,180 @@
 .cardContainer {
-    overflow: auto;
+    width: calc(100vw - 415px);
+    max-width: 811px;
+    display: inline-block;
+    float: left;
+}
+
+@media screen and (max-width: 1225px) {
+    .cardContainer {
+        width: calc(100vw - 455px);
+    }
+}
+
+@media screen and (min-width: 441px) and (max-width: 779px) {
+    .cardContainer {
+        display: block;
+        float: none;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 440px) {
+    .cardContainer {
+        width: 100%;
+    }
+}
+.myMasonryGrid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -20px; /* gutter size offset */
+  width: auto;
+  margin-top: 50px;
+}
+
+.myMasonryGridColumn {
+  padding-left: 20px; /* gutter size */
+  background-clip: padding-box;
 }
 
 .card {
-    height: 200px;
-    width: 200px;
-    border: 1px solid #000;
-    margin: 10px;
+    /*height: 400px;*/
+    max-width: 396px;
+    border: 1px solid #adabac;
+    padding: 20px;
+    margin-bottom: 20px;
+    /*display: inline-block;*/
+    /*float: left;*/
+    background-color: #fff;
+    font-size: 16px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1094px) {
+    .card {
+        width: 396px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .myMasonryGrid {
+        margin-left: 0;
+    }
+
+    .myMasonryGridColumn {
+        padding-left: 0;
+    }
+
+    .card {
+        width: 100%;
+    }
+}
+
+/*.card:nth-child(odd) {
+    margin-right: 15px;
+}
+
+.card:nth-child(even) {
+    margin-left: 15px;
+}*/
+
+.cardTitle {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.partyLogo {
+    height: 50px;
+    width: 50px;
+    background: #353535;
+    border-radius: 50%;
     display: inline-block;
     float: left;
+    margin-right: 16px;
+    color: #fff;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 49px;
+    text-align: center;
+    padding-left: 2px;
+}
+
+.partyLogo.democrat {
+    background: #11719f;
+}
+
+.partyLogo.republican {
+    background: #a4201d;
+}
+
+.candidateName {
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+    float: left;
+    line-height: 45px;
+}
+
+.candidateName.democrat {
+    color: #11719f;
+}
+
+.candidateName.republican {
+    color: #a4201d;
+}
+/*.republican {
+    color: #a4201d;
+}
+
+.democrat {
+    color: #11719F;
+}*/
+
+.sectionTitle {
+    color: #353535;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 0.8rem;
+}
+
+.sectionTitle.democrat {
+    color: #11719f;
+}
+
+.sectionTitle.republican {
+    color: #a4201d;
+}
+
+.contentList {
+    margin-left: 1rem;
+}
+
+.contentList li {
+    line-height: 1.4rem;
+    margin-bottom: 0.6rem;
+}
+
+.viewMoreLink {
+    font-style: italic;
+    color: #adabac;
+    position: absolute;
+    bottom: 14px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.viewMoreLink:hover {
+    text-decoration: underline;
+}
+
+.printLink {
+    font-size: 16px;
+    font-weight: bold;
+    color: #008bb0;
+    cursor: pointer;
+}
+
+.printLink:hover {
+    text-decoration: underline;
 }

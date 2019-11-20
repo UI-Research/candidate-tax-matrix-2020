@@ -1,13 +1,45 @@
-import { Link } from "gatsby"
+//import { Link } from "gatsby"
 import React from "react"
 import navLinksStyles from "./nav-links.module.css"
 
-const NavLinks = () => (
-    <div className={navLinksStyles.navLinkContainer}>
-        <Link to="/" className={navLinksStyles.navLink}>Overview</Link>
-        <Link to="/issue-areas/" className={navLinksStyles.navLink}>Issue Areas</Link>
-        <Link to="/tax-policies/" className={navLinksStyles.navLink}>Tax Policies</Link>
-    </div>
-)
+const views = ["Overview", "Issue areas", "Tax types"];
+
+const NavLink = props => {
+    return (
+        <div
+            className={navLinksStyles.navLink + " " + (props.selectedView === props.viewName ? navLinksStyles.selected : null)}
+            onClick={() => props.onClick(props.viewName)}
+        >
+            {props.viewName}
+        </div>
+    );
+}
+
+const NavButtons = props => {
+    const navButtons = props.views.map((view) => {
+        return (
+            <NavLink
+                key={view}
+                selectedView={props.selectedView}
+                viewName={view}
+                onClick={props.onClick}
+            />
+        )
+    })
+
+    return navButtons;
+}
+
+function NavLinks(props) {
+    return (
+        <div className={navLinksStyles.navLinkContainer}>
+            <NavButtons
+                selectedView={props.selectedView}
+                views={views}
+                onClick={props.onClick}
+            />
+        </div>
+    );
+}
 
 export default NavLinks

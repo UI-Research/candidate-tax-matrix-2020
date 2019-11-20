@@ -1,0 +1,21 @@
+.selectAllBtn {
+    border: none;
+    background: none;
+    padding-left: 0;
+    text-align: left;
+    height: 40px;
+    font-weight: bold;
+    color: #008bb0;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.selectAllBtn:hover {
+    text-decoration: underline;
+}
+
+.deselected {
+    color: #adabac;
+    cursor: default;
+    pointer-events: none;
+}

@@ -67,3 +67,14 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# text data
+*.docx
+
+# font folder
+tpc_candidate_tax_proposals-17102019/
+tpc_candidate_tax_proposals-17102019.zip
+
+# spreadsheets
+src/data/*.csv
+src/data/*.xlsx

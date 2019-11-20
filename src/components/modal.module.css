@@ -1,0 +1,162 @@
+.modal {
+    width: 1000px;
+    height: 600px;
+    background: #fff;
+    /*border: 1px solid #000;*/
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    /*overflow-y: scroll;*/
+    /*padding: 30px;*/
+}
+
+.closed {
+    display: none;
+}
+
+.closeModalBtn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.modalBackdrop {
+    /*width: 100%;*/
+    /*height: 100%;*/
+    background-color: #000;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9;
+}
+
+.modalWindow {
+    height: 90%;
+    width: 100%;
+    position: absolute;
+    overflow-y: scroll;
+    top: 30px;
+    padding: 0 30px;
+}
+
+.downloadPdfLink {
+    color: #008bb0;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.downloadPdfLink:hover {
+    text-decoration: underline;
+}
+
+.partyLogo {
+    height: 50px;
+    width: 50px;
+    background: #353535;
+    border-radius: 50%;
+    display: inline-block;
+    float: left;
+    margin-right: 16px;
+    color: #fff;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 49px;
+    text-align: center;
+    padding-left: 2px;
+}
+
+.partyLogo.democrat {
+    background: #11719f;
+}
+
+.partyLogo.republican {
+    background: #a4201d;
+}
+
+.candidateName {
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+    float: left;
+    line-height: 45px;
+}
+
+.candidateName.republican {
+    color: #a4201d;
+}
+
+.candidateName.democrat {
+    color: #11719F;
+}
+
+.topicSubhead {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.topicSubhead.democrat {
+    color: #11719f;
+}
+
+.topicSubhead.republican {
+    color: #a4201d;
+}
+
+.contentList {
+    margin-left: 1rem;
+}
+
+.contentList li {
+    line-height: 1.2rem;
+    margin-bottom: 0.6rem;
+    font-size: 16px;
+}
+
+.separator {
+    width: 100%;
+    text-align: center;
+    color: #adabac;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+}
+
+.separatorLine {
+    display: inline-block;
+    width: 200px;
+    border: 0.5px solid #adabac;
+    margin: 0 40px 4px 40px;
+}
+
+@media screen and (max-width: 1094px) {
+    .modal {
+        width: 95vw;
+        height: 95vh;
+    }
+
+    .separatorLine {
+        width: 20%;
+        margin: 0 30px 4px 30px;
+    }
+}
+
+@media screen and (max-width: 779px) {
+    .contentList li {
+        line-height: 1.5rem;
+    }
+}
