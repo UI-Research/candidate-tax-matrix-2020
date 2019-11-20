@@ -9,78 +9,87 @@ body {
     background-color: #fff;
 }
 
-
-@font-face{
+@font-face {
     font-family:"Avenir LT W01_35 Light1475496";
     src: ...;
 }
-@font-face{
+
+@font-face {
     font-family:"Avenir LT W01_35 Light_1475502";
     src: ...;
 }
-@font-face{
+
+@font-face {
     font-family:"Avenir LT W01_45 Book1475508";
     src: ...;
 }
-@font-face{
+
+@font-face {
     font-family:"Avenir LT W01_45 Book O1475514";
     src: ...;
 }
-@font-face{
+
+@font-face {
     font-family:"Avenir LT W01_55 Roman1475520";
     src: ...;
 }
-@font-face{
+@font-face {
     font-family:"Avenir LT W01_55 Obliqu1475526";
     src: ...;
 }
-@font-face{
+@font-face {
     font-family:"Avenir LT W01_65 Medium1475532";
     src: ...;
 }
-@font-face{
+@font-face {
     font-family:"Avenir LT W01_65 Medium1475538";
     src: ...;
 }
-@font-face{
+
+@font-face {
     font-family:"Avenir LT W01_85 Heavy1475544";
     src: ...;
 }
-@font-face{
+
+@font-face {
     font-family:"Avenir LT W01_85 Heavy_1475550";
     src: ...;
 }
-@font-face{
+@font-face {
     font-family:"Avenir LT W01_95 Black1475556";
     src: ...;
 }
-@font-face{
+@font-face {
     font-family:"Avenir LT W01_95 Black_1475562";
     src: ...;
 }
-@font-face{
+@font-face {
     font-family:"Calvert MT W01 Light1488602";
     src: ...;
 }
-@font-face{
+@font-face {
     font-family:"Calvert MT W01 Regular";
     src: ...;
 }
-@font-face{
+
+@font-face {
     font-family:"Calvert MT W01 Bold1488614";
     src: ...;
 }
+
 .filterContainer {
     max-width: 390px;
     display: inline-block;
     float: left;
     margin-right: 125px;
 }
+
 @media screen and (min-width: 780px) and (max-width: 839px) {
     .filterContainer {
         margin-right: 65px;
     }
 }
+
 @media screen and (max-width: 779px) {
     .filterContainer {
         float: none;
