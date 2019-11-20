@@ -110,16 +110,17 @@ function Card(props) {
                 <div className={cardStyles.partyLogo + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
                 <h3 className={cardStyles.candidateName + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
-            <h4 className={cardStyles.sectionTitle + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>Proposal</h4>
+            <h4 className={cardStyles.sectionTitle + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
             <ul className={cardStyles.contentList}>
                 {cardBullets}
             </ul>
-            <p
-                className={cardStyles.viewMoreLink}
-                onClick={() => props.onClick(props.candidate)}
-            >
-                {viewMoreText}
-            </p>
+            {props.view !== "Overview" && <p
+                                            className={cardStyles.viewMoreLink}
+                                            onClick={() => props.onClick(props.candidate)}
+                                        >
+                                            {viewMoreText}
+                                        </p>
+            }
         </div>
     )
 }
