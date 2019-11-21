@@ -46,7 +46,7 @@ function Card(props) {
     let party = cardData[candidateLastName]["Party"];
     let cardTitle = "Overview";
     let viewMoreText = "View overview";
-    let cardBullets;
+    let cardBullets = cardData[candidateLastName]["Overview"];
 
     if(props.view === "Issue areas") {
         viewMoreText = "View proposal by issue area";
@@ -111,9 +111,11 @@ function Card(props) {
                 <h3 className={cardStyles.candidateName + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
             <h4 className={cardStyles.sectionTitle + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
-            <ul className={cardStyles.contentList}>
-                {cardBullets}
-            </ul>
+            {props.view === "Overview" && <p>{cardBullets}</p>}
+            {props.view !== "Overview" && <ul className={cardStyles.contentList}>
+                                            {cardBullets}
+                                        </ul>
+            }
             {props.view !== "Overview" && <p
                                             className={cardStyles.viewMoreLink}
                                             onClick={() => props.onClick(props.candidate)}

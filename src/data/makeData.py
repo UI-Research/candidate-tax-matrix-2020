@@ -36,6 +36,9 @@ master_lists = pd.read_excel("Candidate text.xlsx", sheet_name = "Lists (Don't d
                              usecols = "A:E",
                              names = ["Candidate_first", "Candidate_last", "Candidate_party", "Tax_types", "Issue_areas"])
 
+# TEMPORARY: final overview data will look different after analyses are completed
+overview_text = pd.read_csv("overviews.csv", index_col = "Candidate")
+
 # filter out any blank rows from the data
 candidate_text = candidate_text[pd.notnull(candidate_text.Text)]
 
@@ -64,7 +67,10 @@ for index, row in candidates.iterrows():
     candidate_dict["First name"] = row["first_name"]
     candidate_dict["Last name"] = row["last_name"]
     candidate_dict["Party"] = row["party"]
-    candidate_dict["Overview"] = ""
+    try:
+        candidate_dict["Overview"] = overview_text.loc[row.last_name, "Overview"]
+    except:
+        candidate_dict["Overview"] = ""
     candidate_dict["Issue areas"] = {}
     candidate_dict["Tax types"] = {}
     
