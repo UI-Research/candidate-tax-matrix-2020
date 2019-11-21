@@ -8,7 +8,17 @@ jobs:
       - checkout
       - aws-cli/setup:
           profile-name: gatsby
-      - run: npm install && npm run build && npm run deploy
+      - run: 
+          name: Install Node and NPM
+          command: |
+            sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+            sudo apt-get install nodejs build-essential libssl-dev
+            
+      - run:
+          name: Build and deploy
+          command: |
+            npm install && npm run build && npm run deploy
+
 workflows:
   version: 2
   aws-cli:
