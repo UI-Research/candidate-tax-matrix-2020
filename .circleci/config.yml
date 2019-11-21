@@ -83,7 +83,7 @@ workflows:
             branches:
               only:
                 - master
-                - live
+                - WDT-3251/ci-cd
 
       - deploy-stg:
           filters:
