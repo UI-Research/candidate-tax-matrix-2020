@@ -8,10 +8,10 @@ jobs:
     steps:
 
       - run: 
-        name: Install Node and NPM
-        command: |
-          sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-          sudo apt-get install nodejs build-essential libssl-dev
+          name: Install Node and NPM
+          command: |
+            sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+            sudo apt-get install nodejs build-essential libssl-dev
           
       - checkout
 
