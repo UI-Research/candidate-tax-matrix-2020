@@ -6,6 +6,12 @@ jobs:
   build-deploy:
     executor: aws-cli/default
     steps:
+      - run: 
+          name: Install Node and NPM
+          command: |
+            sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+            sudo apt-get install nodejs build-essential libssl-dev
+            
       - checkout
       - aws-cli/setup:
         profile-name: gatsby
@@ -29,11 +35,6 @@ jobs:
           root: .
           paths:
             - node_modules
-      - run: 
-          name: Install Node and NPM
-          command: |
-            sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-            sudo apt-get install nodejs build-essential libssl-dev
 
       - run:
           name: Build and deploy
