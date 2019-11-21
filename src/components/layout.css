@@ -603,6 +603,13 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
+.mainContainer {
+  margin: 0 auto;
+  max-width: 1226px;
+  overflow: auto;
+  position: relative;
+  padding: 40px 0;
+}
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;
@@ -617,18 +624,4 @@ pre tt:after {
 .modalOpen {
     height: 100vh;
     overflow: hidden;
-}
-.introParagraph {
-    font-size: 24px;
-    font-weight: lighter;
-    font-style: italic;
-    line-height: 35px;
-    margin-bottom: 3rem;
-}
-@media screen and (max-width: 450px) {
-    .introParagraph {
-        font-size: 16px;
-        font-weight: normal;
-        line-height: 24px;
-    }
 }

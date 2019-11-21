@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/UI-Research/candidate-tax-matrix-2020/tree/master.svg?style=svg&circle-token=5d92533183bae9b79b4d43c6e2e43b148b17972a)](https://circleci.com/gh/UI-Research/candidate-tax-matrix-2020/tree/master)
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
