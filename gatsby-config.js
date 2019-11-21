@@ -45,5 +45,13 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+          bucketName: "candidate-tax-matrix-2020",
+          // protocol: "https",
+          // hostname: "www.example.com",
+      },
+    },
   ]
 }
