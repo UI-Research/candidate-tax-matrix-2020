@@ -42,48 +42,61 @@ jobs:
   deploy-stg:
     executor: aws-cli/default
     steps:
+      - run: 
+        name: Install Node and NPM
+        command: |
+          sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+          sudo apt-get install nodejs build-essential libssl-dev
+          
       - checkout
 
       - aws-cli/setup:
         profile-name: gatsby
 
-      - attach_workspace:
-          at: .
+      # - attach_workspace:
+      #     at: .
             
       - run:
           name: Build and Deploy to stg
           command: |
             export DEPLOY_BUCKET=candidate-tax-matrix-2020-stg
-            npm run build && npm run deploy
+            npm install && npm run build && npm run deploy
 
 
   deploy-live:
     executor: aws-cli/default
     steps:
+
+      - run: 
+          name: Install Node and NPM
+          command: |
+            sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+            sudo apt-get install nodejs build-essential libssl-dev      
+
       - checkout
 
       - aws-cli/setup:
         profile-name: gatsby
 
-      - attach_workspace:
-          at: .
+      # - attach_workspace:
+      #     at: .
             
       - run:
           name: Build and Deploy to stg
           command: |
             export DEPLOY_BUCKET=candidate-tax-matrix-2020
-            npm run build && npm run deploy
+            npm install && npm run build && npm run deploy
 
 workflows:
   version: 2
   aws-cli:
     jobs:
-      - prepare-env:
-          filters:
-            branches:
-              only:
-                - master
-                - WDT-3251/ci-cd
+      # - prepare-env:
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      #           - WDT-3251/ci-cd
 
       - deploy-stg:
           filters:
