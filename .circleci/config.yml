@@ -2,25 +2,46 @@ version: 2.1
 orbs:
   aws-cli: circleci/aws-cli@0.1.17
 jobs:
-  aws-cli-gatsby:
+
+  prepare-environment:
     executor: aws-cli/default
     steps:
       - checkout
       - aws-cli/setup:
-          profile-name: gatsby
+        profile-name: gatsby
+
+      - attach_workspace:
+          at: .
+
+      - restore_cache:
+          key: node-v2-{{ checksum "package.json" }}-{{ arch }}
+
+      - run:
+          name: NPM Install
+          command: npm install
+
+      - save_cache:
+          key: node-v2-{{ checksum "package.json" }}-{{ arch }}
+          paths:
+            - node_modules
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
       - run: 
           name: Install Node and NPM
           command: |
             sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
             sudo apt-get install nodejs build-essential libssl-dev
-            
+
       - run:
           name: Build and deploy
           command: |
-            npm install && npm run build && npm run deploy
+            npm run build && npm run deploy
 
 workflows:
   version: 2
   aws-cli:
     jobs:
-      - aws-cli-gatsby
+      - build-deploy
