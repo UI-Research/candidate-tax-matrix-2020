@@ -13,5 +13,4 @@ workflows:
   version: 2
   aws-cli:
     jobs:
-      - aws-cli-gatsby:
-          context: aws
+      - aws-cli-gatsby
