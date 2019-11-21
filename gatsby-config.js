@@ -1,3 +1,7 @@
+
+let deployBucket =
+  process.env.DEPLOY_BUCKET || "candidate-tax-matrix-2020-stg";
+
 module.exports = {
   siteMetadata: {
     title: `2020 Candidate Tax Matrix Title`,
@@ -48,7 +52,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-          bucketName: "candidate-tax-matrix-2020",
+          bucketName: deployBucket,
           // protocol: "https",
           // hostname: "www.example.com",
       },
