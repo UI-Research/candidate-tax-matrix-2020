@@ -54,7 +54,7 @@ workflows:
             branches:
               only:
                 - staging
-                - WDT-3251/ci-cd      
+ 
       - deploy-live:
           filters:
             branches:
