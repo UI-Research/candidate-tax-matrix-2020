@@ -29,9 +29,7 @@ const Footer = () => (
             <h5 className={footerStyles.job}>Development</h5>
             <p className={footerStyles.footerText}>Alice Feng</p>
             <h5 className={footerStyles.job}>Editing</h5>
-            <p className={footerStyles.footerText}>Michael Marazzi</p>
-            <h5 className={footerStyles.job}>Writing</h5>
-            <p className={footerStyles.footerText}>Serena Lei</p>
+            <p className={footerStyles.footerText}>Michael Marazzi and Serena Lei</p>
             <p className={footerStyles.githubLink}>View this project on GitHub</p>
         </div>
     </footer>

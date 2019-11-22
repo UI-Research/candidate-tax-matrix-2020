@@ -28,7 +28,7 @@ function Card(props) {
     let candidateFirstName = cardData[candidateLastName]["First name"];
     let party = cardData[candidateLastName]["Party"];
     let cardTitle = "Overview";
-    let cardBullets;
+    let cardBullets = cardData[candidateLastName]["Overview"];
 
     if(props.view === "Issue areas") {
         let issue = props.candidate.split("|")[1];
@@ -91,9 +91,10 @@ function Card(props) {
                 <h3 className={printStyles.candidateName + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
             <h4 className={printStyles.topicSubhead + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>Proposal</h4>
-            <ul className={printStyles.contentList}>
+            {props.view === "Overview" && <p>{cardBullets}</p>}
+            {props.view !== "Overview" && <ul className={printStyles.contentList}>
                 {cardBullets}
-            </ul>
+            </ul> }
         </div>
     )
 }
@@ -226,8 +227,8 @@ function PrintPage({ location }) {
         <div className={printStyles.print}>
             <div className="header">
                 <img src={logo} alt="TPC logo" style={{ width: 70 }} />
-                <h1 style={{fontSize: 20}}>{data.site.siteMetadata.title}</h1>
-                <p style={{fontSize: 12, lineHeight: `16px`}}>What are the 2020 presidential candidates proposing to do about taxes? Our tracker breaks down their plans by the issues, tallies up the cost, and shows how much tax bills would change for households with high, average, and low incomes.</p>
+                <h1 style={{fontSize: `12pt`}}>{data.site.siteMetadata.title}</h1>
+                <p style={{fontSize: `12pt`, lineHeight: `16pt`}}>How would the 2020 presidential candidates change the tax code? We dig into the details of their latest proposals.</p>
             </div>
             {printBody}
         </div>

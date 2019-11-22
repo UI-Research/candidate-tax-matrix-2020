@@ -4,9 +4,11 @@ let deployBucket =
 
 module.exports = {
   siteMetadata: {
-    title: `2020 Candidate Tax Matrix Title`,
-    description: `A tool to understand and compare tax plans among the 2020 presidential candidates.`,
-    author: `@alicefeng`,
+    title: `Where the 2020 Presidential Candidates Stand on Tax Policy`,
+    description: `Our tracker breaks down the candidates’ tax plans by the issues, tallies up the cost, and shows how much household tax bills would change.`,
+    author: `@urbaninstitute`,
+    url:  `https://urbn.is/2020tax`,
+    image: `/images/social.jpg`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

@@ -7,7 +7,7 @@
 
 .innerContainerDiv {
     display: inline-block;
-    width: 75%;
+    width: 71%;
     padding-right: 20px;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .headerImage {
-    max-height: 300px;
+    max-height: 350px;
     vertical-align: bottom;
     /*float: right;*/
 }

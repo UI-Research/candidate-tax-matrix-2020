@@ -30,7 +30,7 @@ function ContentDiv(props) {
 
     return (
         <div>
-            <h4 className={modalStyles.topicSubhead + " " + (props.party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>Proposal on {props.topic.toLowerCase()}</h4>
+            <h4 className={modalStyles.topicSubhead + " " + (props.party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{props.topic}</h4>
             <ul className={modalStyles.contentList}>
                 {contentBullets}
             </ul>
@@ -104,7 +104,7 @@ function Modal(props) {
             <div className={modalStyles.modal + " " + (props.isOpen ? null : modalStyles.closed)}>
                 <div className={modalStyles.modalWindow}>
                     <a href={printLink} target="_blank" className={modalStyles.downloadPdfLink}>
-                        Download PDF
+                        Print view
                     </a>
                     <div style={{overflow: `auto`}}>
                         <div className={modalStyles.partyLogo + " " + (party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>

@@ -6,7 +6,7 @@ Build status: [![CircleCI](https://circleci.com/gh/UI-Research/candidate-tax-mat
 
 1. **Install Dependencies**
 
-    Prepare your local development environment by installing a few dependencies as well as gatsby-cli. Check out the [Gatsby Quick Start](https://www.gatsbyjs.org/docs/quick-start/) for the most up-to-date dependency install info for your system of choice. 
+    Prepare your local development environment by installing a few dependencies as well as gatsby-cli. Check out the [Gatsby Quick Start](https://www.gatsbyjs.org/docs/quick-start/) for the most up-to-date dependency install info for your system of choice.
 
     Clone the repo and install the application dependencies:
 
@@ -91,4 +91,4 @@ When you are ready to deploy, all you need to do is push your changes to one of 
 
 `master` branch will build and deploy to the [Live site](http://candidate-tax-matrix-2020.s3-website-us-east-1.amazonaws.com/). This will be cached so it may take a few minutes for changes to appear.
 
-Please note, it is highly encouraged that you use Pull Requests to merge changes into the master (live) branch. This adds an extra step and formalizes the process of deploying files to a public-facing, live site.  
+Please note, it is highly encouraged that you use Pull Requests to merge changes into the master (live) branch. This adds an extra step and formalizes the process of deploying files to a public-facing, live site.

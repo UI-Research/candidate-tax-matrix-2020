@@ -24,12 +24,12 @@ function buildQueryString(view, candidates, props) {
     let topics = "overview";
     if(view === "Issue areas") {
         let issues = props.issues.filter((issue) => issue.selected).map((issue) => issue.name);
-        topics = (issues.length > 0) && issues[0];
+        topics = (issues.length > 0) && sanitizeString(issues[0]);
         topics = issues.slice(1).reduce((accumulator, currentValue) => accumulator + "," + sanitizeString(currentValue), topics);
     }
     else if(view === "Tax types") {
         let taxTypes = props.taxPolicies.filter((taxPolicy) => taxPolicy.selected).map((taxPolicy) => taxPolicy.name);
-        topics = (taxTypes.length > 0) && taxTypes[0];
+        topics = (taxTypes.length > 0) && sanitizeString(taxTypes[0]);
         topics = taxTypes.slice(1).reduce((accumulator, currentValue) => accumulator + "," + sanitizeString(currentValue), topics);
     }
     // console.log(candidatesQueryString);
@@ -46,7 +46,7 @@ function Card(props) {
     let party = cardData[candidateLastName]["Party"];
     let cardTitle = "Overview";
     let viewMoreText = "View overview";
-    let cardBullets;
+    let cardBullets = cardData[candidateLastName]["Overview"];
 
     if(props.view === "Issue areas") {
         viewMoreText = "View proposal by issue area";
@@ -110,16 +110,19 @@ function Card(props) {
                 <div className={cardStyles.partyLogo + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
                 <h3 className={cardStyles.candidateName + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
-            <h4 className={cardStyles.sectionTitle + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>Proposal</h4>
-            <ul className={cardStyles.contentList}>
-                {cardBullets}
-            </ul>
-            <p
-                className={cardStyles.viewMoreLink}
-                onClick={() => props.onClick(props.candidate)}
-            >
-                {viewMoreText}
-            </p>
+            <h4 className={cardStyles.sectionTitle + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
+            {props.view === "Overview" && <p>{cardBullets}</p>}
+            {props.view !== "Overview" && <ul className={cardStyles.contentList}>
+                                            {cardBullets}
+                                        </ul>
+            }
+            {props.view !== "Overview" && <p
+                                            className={cardStyles.viewMoreLink}
+                                            onClick={() => props.onClick(props.candidate)}
+                                        >
+                                            {viewMoreText}
+                                        </p>
+            }
         </div>
     )
 }
