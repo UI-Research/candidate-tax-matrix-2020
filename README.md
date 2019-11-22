@@ -1,38 +1,31 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+Build status: [![CircleCI](https://circleci.com/gh/UI-Research/candidate-tax-matrix-2020/tree/master.svg?style=svg&circle-token=5d92533183bae9b79b4d43c6e2e43b148b17972a)](https://circleci.com/gh/UI-Research/candidate-tax-matrix-2020/tree/master)
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
 
 ## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
+1. **Install Dependencies**
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+    Prepare your local development environment by installing a few dependencies as well as gatsby-cli. Check out the [Gatsby Quick Start](https://www.gatsbyjs.org/docs/quick-start/) for the most up-to-date dependency install info for your system of choice.
+
+    Clone the repo and install the application dependencies:
 
     ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
+    git clone git@github.com:UI-Research/candidate-tax-matrix-2020.git
+    cd candidate-tax-matrix-2020
+    npm install
     ```
 
-1.  **Start developing.**
+2.  **Start developing.**
 
     Navigate into your new site’s directory and start it up.
 
     ```shell
-    cd my-default-starter/
+    cd candidate-tax-matrix-2020
     gatsby develop
     ```
 
-1.  **Open the source code and start editing!**
+3.  **Open the source code and start editing!**
 
     Your site is now running at `http://localhost:8000`!
 
@@ -92,6 +85,10 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 ## 💫 Deploy
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+When you are ready to deploy, all you need to do is push your changes to one of the designated branches:
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+`staging` branch will build and deploy to the [Staging site](http://candidate-tax-matrix-2020-stg.s3-website-us-east-1.amazonaws.com/), with no cache layer.
+
+`master` branch will build and deploy to the [Live site](http://candidate-tax-matrix-2020.s3-website-us-east-1.amazonaws.com/). This will be cached so it may take a few minutes for changes to appear.
+
+Please note, it is highly encouraged that you use Pull Requests to merge changes into the master (live) branch. This adds an extra step and formalizes the process of deploying files to a public-facing, live site.

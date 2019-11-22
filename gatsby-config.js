@@ -1,3 +1,7 @@
+
+let deployBucket =
+  process.env.DEPLOY_BUCKET || "candidate-tax-matrix-2020-stg";
+
 module.exports = {
   siteMetadata: {
     title: `Where the 2020 Presidential Candidates Stand on Tax Policy`,
@@ -38,9 +42,22 @@ module.exports = {
         icon: `src/images/tpcLogo.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
-  ],
-  pathPrefix: "/candidate-tax-matrix-2020"
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        monotype: {
+          projectId: '847ecb19-cb74-45f9-b379-92686dbe694b',
+          loadAllFonts: true,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+          bucketName: deployBucket,
+          // protocol: "https",
+          // hostname: "www.example.com",
+      },
+    },
+  ]
 }

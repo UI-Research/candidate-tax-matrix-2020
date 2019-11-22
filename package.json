@@ -10,7 +10,9 @@
     "gatsby-plugin-manifest": "^2.2.18",
     "gatsby-plugin-offline": "^3.0.8",
     "gatsby-plugin-react-helmet": "^3.1.8",
+    "gatsby-plugin-s3": "^0.3.2",
     "gatsby-plugin-sharp": "^2.2.25",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^2.1.26",
     "gatsby-transformer-json": "^2.2.13",
     "gatsby-transformer-sharp": "^2.2.16",
@@ -22,7 +24,6 @@
     "react-masonry-css": "^1.0.14"
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1",
     "prettier": "^1.18.2"
   },
   "keywords": [
@@ -36,7 +37,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "deploy": "gatsby-plugin-s3 deploy"
   },
   "repository": {
     "type": "git",
