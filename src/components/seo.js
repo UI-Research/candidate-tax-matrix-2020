@@ -9,6 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import socialImage from "../images/tpcLogo.png"
 
 function SEO({ description, lang, meta, title }) {
   const { site } = useStaticQuery(
@@ -27,70 +28,39 @@ function SEO({ description, lang, meta, title }) {
     `
   )
 
+  const siteURL =site.siteMetadata.url
   const metaDescription = description || site.siteMetadata.description
 
+  const schemaJSONLD = {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": `${site.siteMetadata.title}`,
+        "url": `${siteURL}`,
+        "thumbnailUrl": `${siteURL}${socialImage}`,
+        "dateCreated": "2019-12-10T05:00:00.000Z",
+        "articleSection": "Interactive Feature",
+        "creator": ["Janet Holtzblatt","Nikhita Airi","Allison Feldman","Alice Feng","Michael Marazzi","Serena Lei"],
+        "keywords": ["Taxes and Budget"]
+      };
+
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-            property: `og:image`,
-            content: site.siteMetadata.image,
-        },
-        {
-            property: `og:image:type`,
-            content: `image/jpeg`,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-            property: `og:url`,
-            content: site.siteMetadata.url,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary_large_image`,
-        },
-        {
-            name: `twitter:site`,
-            content: `@urbaninstitute`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-        {
-            name: `twitter:image`,
-            content: site.siteMetadata.image,
-        },
-      ].concat(meta)}
-    />
+    <Helmet>
+        <html lang="en" />
+        <title>{site.siteMetadata.title}</title>
+        <meta name="description" content={metaDescription} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@urbaninstitute" />
+        <meta name="twitter:creator" content="@urbaninstitute" />
+        <meta name="twitter:title" content="Where the 2020 Presidential Candidates Stand on Tax Policy" />
+        <meta name="twitter:description" content="Our tracker breaks down the candidates’ tax plans by the issues, tallies up the cost, and shows how much household tax bills would change." />
+        <meta name="twitter:image" content={`${siteURL}${socialImage}`} />
+        <meta property="og:title" content="Where the 2020 Presidential Candidates Stand on Tax Policy" />
+        <meta property="og:description" content="Our tracker breaks down the candidates’ tax plans by the issues, tallies up the cost, and shows how much household tax bills would change." />
+        <meta property="og:image" content={`${siteURL}${socialImage}`} />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:url" content={`${siteURL}`} />
+        <script type="application/ld+json">{JSON.stringify(schemaJSONLD)}</script>
+    </Helmet>
   )
 }
 
