@@ -19,6 +19,8 @@ function SEO({ description, lang, meta, title }) {
             title
             description
             author
+            url
+            image
           }
         }
       }
@@ -48,12 +50,28 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
         {
+            property: `og:image`,
+            content: site.siteMetadata.image,
+        },
+        {
+            property: `og:image:type`,
+            content: `image/jpeg`,
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
         {
+            property: `og:url`,
+            content: site.siteMetadata.url,
+        },
+        {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
+        },
+        {
+            name: `twitter:site`,
+            content: `@urbaninstitute`,
         },
         {
           name: `twitter:creator`,
@@ -66,6 +84,10 @@ function SEO({ description, lang, meta, title }) {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+            name: `twitter:image`,
+            content: site.siteMetadata.image,
         },
       ].concat(meta)}
     />
