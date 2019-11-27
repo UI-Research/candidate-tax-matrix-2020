@@ -87,10 +87,10 @@ function Card(props) {
         <div className={printStyles.card}>
             <h5 className={printStyles.cardTitle}>{cardTitle}</h5>
             <div style={{overflow: `auto`}}>
-                <div className={printStyles.partyLogo + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
-                <h3 className={printStyles.candidateName + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
+                <div className={printStyles.partyLogo + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
+                <h3 className={printStyles.candidateName + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
-            <h4 className={printStyles.topicSubhead + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>Proposal</h4>
+            <h4 className={printStyles.topicSubhead + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>Proposal</h4>
             {props.view === "Overview" && <p>{cardBullets}</p>}
             {props.view !== "Overview" && <ul className={printStyles.contentList}>
                 {cardBullets}
@@ -122,7 +122,7 @@ function ContentDiv(props) {
 
     return (
         <div>
-            <h4 className={printStyles.topicSubhead + " " + (props.party === "Democrat" ? printStyles.democrat : printStyles.republican)}>Proposal on {props.topic.toLowerCase()}</h4>
+            <h4 className={printStyles.topicSubhead + " " + (props.party === "Democratic" ? printStyles.democrat : printStyles.republican)}>Proposal on {props.topic.toLowerCase()}</h4>
             <ul className={printStyles.contentList}>
                 {contentBullets}
             </ul>
@@ -185,7 +185,7 @@ function PrintPage({ location }) {
         if(Object.keys(queryObj).indexOf("cards") > -1) {
             let candidates = queryObj["candidates"].split(",");
             let view = queryObj["view"];
-            let topics = queryObj["topic"].split(",");
+            let topics = queryObj["topic"].split("-");
 
             let allCards = candidates;
             if(view !== "Overview") {
@@ -211,8 +211,8 @@ function PrintPage({ location }) {
 
             printBody = <>
                 <div style={{ overflow: `auto` }}>
-                    <div className={printStyles.partyLogo + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
-                    <h1 className={printStyles.candidateName + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + queryObj.candidate}</h1>
+                    <div className={printStyles.partyLogo + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
+                    <h1 className={printStyles.candidateName + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + queryObj.candidate}</h1>
                 </div>
                 <ModalContent
                     candidateLastName={queryObj.candidate}

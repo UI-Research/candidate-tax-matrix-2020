@@ -30,7 +30,7 @@ function ContentDiv(props) {
 
     return (
         <div>
-            <h4 className={modalStyles.topicSubhead + " " + (props.party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{props.topic}</h4>
+            <h4 className={modalStyles.topicSubhead + " " + (props.party === "Democratic" ? modalStyles.democrat : modalStyles.republican)}>{props.topic}</h4>
             <ul className={modalStyles.contentList}>
                 {contentBullets}
             </ul>
@@ -107,8 +107,8 @@ function Modal(props) {
                         Print view
                     </a>
                     <div style={{overflow: `auto`}}>
-                        <div className={modalStyles.partyLogo + " " + (party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
-                        <h3 className={modalStyles.candidateName + " " + (party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
+                        <div className={modalStyles.partyLogo + " " + (party === "Democratic" ? modalStyles.democrat : modalStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
+                        <h3 className={modalStyles.candidateName + " " + (party === "Democratic" ? modalStyles.democrat : modalStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
                     </div>
                     <button
                         className={modalStyles.closeModalBtn}
