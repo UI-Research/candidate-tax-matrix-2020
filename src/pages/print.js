@@ -39,12 +39,12 @@ function Card(props) {
         cardBullets = cardText.map((bullet, index) => {
             if (bullet.indexOf("•") > -1) {
                 const subbullets = bullet.split("•");
-                const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
+                const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
                     <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" className={printStyles.printLink} /></li>
                 );
 
                 return (
-                    <li key={index}>{subbullets[0]}
+                    <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" className={printStyles.printLink} />
                         <ul>
                             {subbulletsList}
                         </ul>
@@ -65,12 +65,12 @@ function Card(props) {
         cardBullets = cardText.map((bullet, index) => {
             if (bullet.indexOf("•") > -1) {
                 const subbullets = bullet.split("•");
-                const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
+                const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
                     <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" /></li>
                 );
 
                 return (
-                    <li key={index}>{subbullets[0]}
+                    <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" />
                         <ul>
                             {subbulletsList}
                         </ul>
@@ -103,12 +103,12 @@ function ContentDiv(props) {
     const contentBullets = props.data.map((bullet, index) => {
         if (bullet.indexOf("•") > -1) {
             const subbullets = bullet.split("•");
-            const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
+            const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
                 <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" className={printStyles.printLink} /></li>
             );
 
             return (
-                <li key={index}>{subbullets[0]}
+                <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" className={printStyles.printLink} />
                     <ul>
                         {subbulletsList}
                     </ul>
