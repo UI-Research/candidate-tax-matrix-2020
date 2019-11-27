@@ -25,12 +25,12 @@ function buildQueryString(view, candidates, props) {
     if(view === "Issue areas") {
         let issues = props.issues.filter((issue) => issue.selected).map((issue) => issue.name);
         topics = (issues.length > 0) && sanitizeString(issues[0]);
-        topics = issues.slice(1).reduce((accumulator, currentValue) => accumulator + "," + sanitizeString(currentValue), topics);
+        topics = issues.slice(1).reduce((accumulator, currentValue) => accumulator + "-" + sanitizeString(currentValue), topics);
     }
     else if(view === "Tax types") {
         let taxTypes = props.taxPolicies.filter((taxPolicy) => taxPolicy.selected).map((taxPolicy) => taxPolicy.name);
         topics = (taxTypes.length > 0) && sanitizeString(taxTypes[0]);
-        topics = taxTypes.slice(1).reduce((accumulator, currentValue) => accumulator + "," + sanitizeString(currentValue), topics);
+        topics = taxTypes.slice(1).reduce((accumulator, currentValue) => accumulator + "-" + sanitizeString(currentValue), topics);
     }
     // console.log(candidatesQueryString);
 
@@ -107,10 +107,10 @@ function Card(props) {
         <div className={cardStyles.card}>
             <h5 className={cardStyles.cardTitle}>{cardTitle}</h5>
             <div style={{overflow: `auto`}}>
-                <div className={cardStyles.partyLogo + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
-                <h3 className={cardStyles.candidateName + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
+                <div className={cardStyles.partyLogo + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
+                <h3 className={cardStyles.candidateName + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
-            <h4 className={cardStyles.sectionTitle + " " + (party === "Democrat" ? cardStyles.democrat : cardStyles.republican)}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
+            <h4 className={cardStyles.sectionTitle + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
             {props.view === "Overview" && <p>{cardBullets}</p>}
             {props.view !== "Overview" && <ul className={cardStyles.contentList}>
                                             {cardBullets}
