@@ -66,11 +66,11 @@ function Card(props) {
             if (bullet.indexOf("•") > -1) {
                 const subbullets = bullet.split("•");
                 const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
-                    <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" /></li>
+                    <li key={index}><ReactMarkdown source={subbullet}  className={printStyles.printLink}  linkTarget="_blank" /></li>
                 );
 
                 return (
-                    <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" />
+                    <li key={index}><ReactMarkdown source={subbullets[0]} className={printStyles.printLink}  linkTarget="_blank" />
                         <ul>
                             {subbulletsList}
                         </ul>
@@ -78,7 +78,7 @@ function Card(props) {
                 )
             }
             else {
-                return <li key={index}><ReactMarkdown source={bullet} linkTarget="_blank" /></li>
+                return <li key={index}><ReactMarkdown source={bullet} className={printStyles.printLink}  linkTarget="_blank" /></li>
             }
         });
     }
