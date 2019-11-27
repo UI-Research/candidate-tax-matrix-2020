@@ -28,11 +28,11 @@ import pandas as pd
 import json
 
 
-candidate_text = pd.read_excel("Candidate text.xlsx", sheet_name = "Master", 
+candidate_text = pd.read_excel("Candidate text_edited.xlsx", sheet_name = "Master", 
                                usecols = "A:F", 
                                names = ["Candidate", "Tax1", "Tax2", "Issue1", "Issue2", "Text"])
 
-master_lists = pd.read_excel("Candidate text.xlsx", sheet_name = "Lists (Don't delete!)",
+master_lists = pd.read_excel("Candidate text_edited.xlsx", sheet_name = "Lists (Don't delete!)",
                              usecols = "A:E",
                              names = ["Candidate_first", "Candidate_last", "Candidate_party", "Tax_types", "Issue_areas"])
 
