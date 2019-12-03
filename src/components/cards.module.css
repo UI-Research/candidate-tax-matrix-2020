@@ -173,6 +173,7 @@
     font-weight: bold;
     color: #008bb0;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .printLink:hover {
