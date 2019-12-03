@@ -111,7 +111,7 @@ function Card(props) {
                 <h3 className={cardStyles.candidateName + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
             <h4 className={cardStyles.sectionTitle + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
-            {props.view === "Overview" && <p>{cardBullets}</p>}
+            {props.view === "Overview" && <p style={{marginBottom: 0}}>{cardBullets}</p>}
             {props.view !== "Overview" && <ul className={cardStyles.contentList}>
                                             {cardBullets}
                                         </ul>
