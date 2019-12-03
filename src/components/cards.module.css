@@ -155,6 +155,15 @@
     margin-bottom: 0.6rem;
 }
 
+.contentList a {
+    color: #008bb0;
+    text-decoration: none;
+}
+
+.contentList a:hover {
+    text-decoration: underline;
+}
+
 .viewMoreLink {
     font-style: italic;
     color: #adabac;
