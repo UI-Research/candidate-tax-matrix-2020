@@ -162,7 +162,7 @@ function Cards(props) {
         <div className={cardStyles.cardContainer}>
             <div style={{fontSize: 16, fontWeight: `bold`}}>{aboveCardText}</div>
             <div>
-                <a href={queryString} state={{candidates: props.candidates}} target="_blank" className={cardStyles.printLink}>
+                <a href={queryString} state={{candidates: props.candidates}} target="_blank" rel="noopener noreferrer" className={cardStyles.printLink}>
                     Print this view
                 </a>
             </div>

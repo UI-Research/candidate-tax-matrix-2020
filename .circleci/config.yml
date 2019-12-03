@@ -22,7 +22,8 @@ jobs:
           name: Build and Deploy to stg
           command: |
             export DEPLOY_BUCKET=candidate-tax-matrix-2020-stg
-            npm install && npm run build && npm run deploy
+            export DEPLOY_ADDRESS=http://candidate-tax-matrix-2020-stg.s3-website-us-east-1.amazonaws.com
+            npm install && npm run build && npm run stage
 
   deploy-live:
     executor: aws-cli/default
@@ -40,9 +41,10 @@ jobs:
         profile-name: gatsby
             
       - run:
-          name: Build and Deploy to stg
+          name: Build and deploy to LIVE and invalidate cache
           command: |
             export DEPLOY_BUCKET=candidate-tax-matrix-2020
+            export DEPLOY_ADDRESS=https://2020-presidential-candidates-tax-policy.urban.org
             npm install && npm run build && npm run deploy
 
 workflows:
