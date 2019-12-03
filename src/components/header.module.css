@@ -2,19 +2,19 @@
     margin: 0 auto;
     max-width: 1226px;
     /*height: 268px;*/
-    padding: 1.45rem 0;
+    padding: 1rem 0;
 }
 
 .innerContainerDiv {
     display: inline-block;
-    width: 71%;
-    padding-right: 20px;
+    width: 61%;
+    margin-right: 70px;
 }
 
 .projectTitle {
     margin: 0;
     color: #fff;
-    font-size: 60px;
+    font-size: 50px;
     font-weight: bold;
     text-decoration: none;
     margin-top: 1rem;
@@ -38,6 +38,7 @@
 .headerImage {
     max-height: 350px;
     vertical-align: bottom;
+    margin-bottom: 0;
     /*float: right;*/
 }
 
