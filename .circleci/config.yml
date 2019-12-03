@@ -41,7 +41,7 @@ jobs:
         profile-name: gatsby
             
       - run:
-          name: Build and Deploy to stg
+          name: Build and deploy to LIVE and invalidate cache
           command: |
             export DEPLOY_BUCKET=candidate-tax-matrix-2020
             export DEPLOY_ADDRESS=https://2020-presidential-candidates-tax-policy.urban.org
