@@ -20,7 +20,7 @@ class TpcHeader extends Component {
               }}
               className={TpcHeaderStyles.headerPinned}
             >
-                <a target="_blank" href="https://www.taxpolicycenter.org/" title="Home" rel="home noopener noreferrer" className={TpcHeaderStyles.siteLogo}></a>
+                <a href="https://www.taxpolicycenter.org/" target="_blank"  title="Home" rel="noopener noreferrer" className={TpcHeaderStyles.siteLogo}>&nbsp;</a>
                 <div className={TpcHeaderStyles.title}>
                     <span className={TpcHeaderStyles.featureLink}>
                         <a href="https://www.taxpolicycenter.org/features" target="_blank" rel="noopener noreferrer" alt="Tax Policy Center Logo">Features</a>

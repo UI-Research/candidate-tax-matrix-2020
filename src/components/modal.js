@@ -103,7 +103,7 @@ function Modal(props) {
             </div>
             <div className={modalStyles.modal + " " + (props.isOpen ? null : modalStyles.closed)}>
                 <div className={modalStyles.modalWindow}>
-                    <a href={printLink} target="_blank" className={modalStyles.downloadPdfLink}>
+                    <a href={printLink} target="_blank" rel="noopener noreferrer" className={modalStyles.downloadPdfLink}>
                         Print view
                     </a>
                     <div style={{overflow: `auto`}}>
