@@ -11,12 +11,12 @@ function ContentDiv(props) {
     const contentBullets = props.data.map((bullet, index) => {
         if (bullet.indexOf("•") > -1) {
             const subbullets = bullet.split("•");
-            const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
+            const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
                 <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" /></li>
             );
 
             return (
-                <li key={index}>{subbullets[0]}
+                <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" />
                     <ul>
                         {subbulletsList}
                     </ul>
@@ -30,7 +30,7 @@ function ContentDiv(props) {
 
     return (
         <div>
-            <h4 className={modalStyles.topicSubhead + " " + (props.party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>Proposal on {props.topic.toLowerCase()}</h4>
+            <h4 className={modalStyles.topicSubhead + " " + (props.party === "Democratic" ? modalStyles.democrat : modalStyles.republican)}>{props.topic}</h4>
             <ul className={modalStyles.contentList}>
                 {contentBullets}
             </ul>
@@ -103,12 +103,12 @@ function Modal(props) {
             </div>
             <div className={modalStyles.modal + " " + (props.isOpen ? null : modalStyles.closed)}>
                 <div className={modalStyles.modalWindow}>
-                    <a href={printLink} target="_blank" className={modalStyles.downloadPdfLink}>
-                        Download PDF
+                    <a href={printLink} target="_blank" rel="noopener noreferrer" className={modalStyles.downloadPdfLink}>
+                        Print view
                     </a>
                     <div style={{overflow: `auto`}}>
-                        <div className={modalStyles.partyLogo + " " + (party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
-                        <h3 className={modalStyles.candidateName + " " + (party === "Democrat" ? modalStyles.democrat : modalStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
+                        <div className={modalStyles.partyLogo + " " + (party === "Democratic" ? modalStyles.democrat : modalStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
+                        <h3 className={modalStyles.candidateName + " " + (party === "Democratic" ? modalStyles.democrat : modalStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
                     </div>
                     <button
                         className={modalStyles.closeModalBtn}

@@ -2,11 +2,18 @@
 let deployBucket =
   process.env.DEPLOY_BUCKET || "candidate-tax-matrix-2020-stg";
 
-module.exports = {
+let deployAddress =
+  process.env.DEPLOY_ADDRESS || "http://candidate-tax-matrix-2020-stg.s3-website-us-east-1.amazonaws.com";
+
+const siteAddress = new URL(deployAddress);
+
+  module.exports = {
   siteMetadata: {
-    title: `2020 Candidate Tax Matrix Title`,
-    description: `A tool to understand and compare tax plans among the 2020 presidential candidates.`,
-    author: `@alicefeng`,
+    title: `Where the 2020 Presidential Candidates Stand on Tax Policy`,
+    description: `Our tracker breaks down the candidates’ tax plans by the issues, tallies up the cost, and shows how much household tax bills would change.`,
+    author: `@urbaninstitute`,
+    url:  `https://urbn.is/2020tax`,
+    image: `/images/social.jpg`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -50,11 +57,17 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+          siteUrl: siteAddress.href.slice(0, -1),
+      }
+    },
+    {
       resolve: `gatsby-plugin-s3`,
       options: {
           bucketName: deployBucket,
-          // protocol: "https",
-          // hostname: "www.example.com",
+          protocol: siteAddress.protocol.slice(0, -1),
+          hostname: siteAddress.hostname,
       },
     },
   ]

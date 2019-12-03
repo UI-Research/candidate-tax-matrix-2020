@@ -28,7 +28,7 @@ function Card(props) {
     let candidateFirstName = cardData[candidateLastName]["First name"];
     let party = cardData[candidateLastName]["Party"];
     let cardTitle = "Overview";
-    let cardBullets;
+    let cardBullets = cardData[candidateLastName]["Overview"];
 
     if(props.view === "Issue areas") {
         let issue = props.candidate.split("|")[1];
@@ -39,12 +39,12 @@ function Card(props) {
         cardBullets = cardText.map((bullet, index) => {
             if (bullet.indexOf("•") > -1) {
                 const subbullets = bullet.split("•");
-                const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
+                const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
                     <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" className={printStyles.printLink} /></li>
                 );
 
                 return (
-                    <li key={index}>{subbullets[0]}
+                    <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" className={printStyles.printLink} />
                         <ul>
                             {subbulletsList}
                         </ul>
@@ -65,12 +65,12 @@ function Card(props) {
         cardBullets = cardText.map((bullet, index) => {
             if (bullet.indexOf("•") > -1) {
                 const subbullets = bullet.split("•");
-                const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
+                const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
                     <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" /></li>
                 );
 
                 return (
-                    <li key={index}>{subbullets[0]}
+                    <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" />
                         <ul>
                             {subbulletsList}
                         </ul>
@@ -87,13 +87,14 @@ function Card(props) {
         <div className={printStyles.card}>
             <h5 className={printStyles.cardTitle}>{cardTitle}</h5>
             <div style={{overflow: `auto`}}>
-                <div className={printStyles.partyLogo + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
-                <h3 className={printStyles.candidateName + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
+                <div className={printStyles.partyLogo + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
+                <h3 className={printStyles.candidateName + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
-            <h4 className={printStyles.topicSubhead + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>Proposal</h4>
-            <ul className={printStyles.contentList}>
+            <h4 className={printStyles.topicSubhead + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>Proposal</h4>
+            {props.view === "Overview" && <p>{cardBullets}</p>}
+            {props.view !== "Overview" && <ul className={printStyles.contentList}>
                 {cardBullets}
-            </ul>
+            </ul> }
         </div>
     )
 }
@@ -102,12 +103,12 @@ function ContentDiv(props) {
     const contentBullets = props.data.map((bullet, index) => {
         if (bullet.indexOf("•") > -1) {
             const subbullets = bullet.split("•");
-            const subbulletsList = subbullets.slice(0).map((subbullet, index) =>
+            const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
                 <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" className={printStyles.printLink} /></li>
             );
 
             return (
-                <li key={index}>{subbullets[0]}
+                <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" className={printStyles.printLink} />
                     <ul>
                         {subbulletsList}
                     </ul>
@@ -121,7 +122,7 @@ function ContentDiv(props) {
 
     return (
         <div>
-            <h4 className={printStyles.topicSubhead + " " + (props.party === "Democrat" ? printStyles.democrat : printStyles.republican)}>Proposal on {props.topic.toLowerCase()}</h4>
+            <h4 className={printStyles.topicSubhead + " " + (props.party === "Democratic" ? printStyles.democrat : printStyles.republican)}>Proposal on {props.topic.toLowerCase()}</h4>
             <ul className={printStyles.contentList}>
                 {contentBullets}
             </ul>
@@ -184,7 +185,7 @@ function PrintPage({ location }) {
         if(Object.keys(queryObj).indexOf("cards") > -1) {
             let candidates = queryObj["candidates"].split(",");
             let view = queryObj["view"];
-            let topics = queryObj["topic"].split(",");
+            let topics = queryObj["topic"].split("-");
 
             let allCards = candidates;
             if(view !== "Overview") {
@@ -210,8 +211,8 @@ function PrintPage({ location }) {
 
             printBody = <>
                 <div style={{ overflow: `auto` }}>
-                    <div className={printStyles.partyLogo + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{party === "Democrat" ? "D" : "R"}</div>
-                    <h1 className={printStyles.candidateName + " " + (party === "Democrat" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + queryObj.candidate}</h1>
+                    <div className={printStyles.partyLogo + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
+                    <h1 className={printStyles.candidateName + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + queryObj.candidate}</h1>
                 </div>
                 <ModalContent
                     candidateLastName={queryObj.candidate}
@@ -226,8 +227,8 @@ function PrintPage({ location }) {
         <div className={printStyles.print}>
             <div className="header">
                 <img src={logo} alt="TPC logo" style={{ width: 70 }} />
-                <h1 style={{fontSize: 20}}>{data.site.siteMetadata.title}</h1>
-                <p style={{fontSize: 12, lineHeight: `16px`}}>What are the 2020 presidential candidates proposing to do about taxes? Our tracker breaks down their plans by the issues, tallies up the cost, and shows how much tax bills would change for households with high, average, and low incomes.</p>
+                <h1 style={{fontSize: `12pt`}}>{data.site.siteMetadata.title}</h1>
+                <p style={{fontSize: `12pt`, lineHeight: `16pt`}}>How would the 2020 presidential candidates change the tax code? We dig into the details of their latest proposals.</p>
             </div>
             {printBody}
         </div>
