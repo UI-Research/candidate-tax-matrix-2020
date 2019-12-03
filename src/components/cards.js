@@ -10,7 +10,7 @@ const breakpointColumnsObj = {
 };
 
 const cartProd = (arr1, arr2) =>
-    arr1.flatMap(x => arr2.map(y => x + "|" + y));
+    arr2.flatMap(x => arr1.map(y => x + "|" + y));
 
 const sanitizeString = (string) =>
     string.split(" ").join("_");
@@ -41,7 +41,8 @@ function buildQueryString(view, candidates, props) {
 
 function Card(props) {
     // console.log(cardData.filter((candidate) => candidate.Name === "Biden"));
-    let candidateLastName = props.candidate.split("|")[0];
+    let candidateLastName = props.candidate;
+    if(props.view !== "Overview") candidateLastName = props.candidate.split("|")[1];
     let candidateFirstName = cardData[candidateLastName]["First name"];
     let party = cardData[candidateLastName]["Party"];
     let cardTitle = "Overview";
@@ -50,7 +51,7 @@ function Card(props) {
 
     if(props.view === "Issue areas") {
         viewMoreText = "View proposal by issue area";
-        let issue = props.candidate.split("|")[1];
+        let issue = props.candidate.split("|")[0];
         cardTitle = issue;
 
         let cardText = cardData[candidateLastName]["Issue areas"][issue];
@@ -77,7 +78,7 @@ function Card(props) {
     }
     else if(props.view === "Tax types") {
         viewMoreText = "View proposal by tax type";
-        let taxType = props.candidate.split("|")[1];
+        let taxType = props.candidate.split("|")[0];
         cardTitle = taxType;
 
         let cardText = cardData[candidateLastName]["Tax types"][taxType];
