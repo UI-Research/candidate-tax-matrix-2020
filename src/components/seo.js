@@ -28,6 +28,8 @@ function SEO({ description, lang, meta, title }) {
     `
   )
 
+  const siteTitle = site.siteMetadata.title
+  const siteAuthor = site.siteMetadata.author
   const siteURL =site.siteMetadata.url
   const metaDescription = description || site.siteMetadata.description
 
@@ -36,7 +38,7 @@ function SEO({ description, lang, meta, title }) {
         "@type": "NewsArticle",
         "headline": `${site.siteMetadata.title}`,
         "url": `${siteURL}`,
-        "thumbnailUrl": `${siteURL}${socialImage}`,
+        "thumbnailUrl": `${siteURL}${site.siteMetadata.image}`,
         "dateCreated": "2019-12-10T05:00:00.000Z",
         "articleSection": "Interactive Feature",
         "creator": ["Janet Holtzblatt","Nikhita Airi","Allison Feldman","Alice Feng","Michael Marazzi","Serena Lei"],
@@ -47,16 +49,16 @@ function SEO({ description, lang, meta, title }) {
     <Helmet>
         <html lang="en" />
         <title>{site.siteMetadata.title}</title>
-        <meta name="description" content={metaDescription} />
+        <meta name="description" content={ metaDescription } />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@urbaninstitute" />
-        <meta name="twitter:creator" content="@urbaninstitute" />
-        <meta name="twitter:title" content="Where the 2020 Presidential Candidates Stand on Tax Policy" />
-        <meta name="twitter:description" content="Our tracker breaks down the candidates’ tax plans by the issues, tallies up the cost, and shows how much household tax bills would change." />
-        <meta name="twitter:image" content={`${siteURL}${socialImage}`} />
-        <meta property="og:title" content="Where the 2020 Presidential Candidates Stand on Tax Policy" />
-        <meta property="og:description" content="Our tracker breaks down the candidates’ tax plans by the issues, tallies up the cost, and shows how much household tax bills would change." />
-        <meta property="og:image" content={`${siteURL}${socialImage}`} />
+        <meta name="twitter:site" content={ siteAuthor } />
+        <meta name="twitter:creator" content={ siteAuthor } />
+        <meta name="twitter:title" content={ siteTitle } />
+        <meta name="twitter:description" content={ metaDescription } />
+        <meta name="twitter:image" content={ socialImage } />
+        <meta property="og:title" content={ siteTitle } />
+        <meta property="og:description" content={ metaDescription } />
+        <meta property="og:image" content={ socialImage } />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:url" content={`${siteURL}`} />
         <script type="application/ld+json">{JSON.stringify(schemaJSONLD)}</script>
