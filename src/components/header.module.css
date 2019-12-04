@@ -2,7 +2,7 @@
     margin: 0 auto;
     max-width: 1226px;
     /*height: 268px;*/
-    padding: 1rem 0;
+    padding: 2rem 0;
 }
 
 .innerContainerDiv {
@@ -17,7 +17,7 @@
     font-size: 50px;
     font-weight: bold;
     text-decoration: none;
-    margin-top: 1rem;
+    margin-top: 1.4rem;
 }
 
 .date {
@@ -31,7 +31,7 @@
     font-weight: lighter;
     font-style: italic;
     line-height: 35px;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     color: #fff;
 }
 
