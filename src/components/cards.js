@@ -34,7 +34,7 @@ function buildQueryString(view, candidates, props) {
     }
     // console.log(candidatesQueryString);
 
-    let queryString = `/print?cards=true&view=${sanitizeString(view)}&candidates=${candidatesQueryString}&topic=${topics}`;
+    let queryString = `/print/?cards=true&view=${sanitizeString(view)}&candidates=${candidatesQueryString}&topic=${topics}`;
 
     return queryString;
 }
