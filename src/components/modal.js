@@ -86,8 +86,8 @@ function Modal(props) {
         candidateLastName = props.candidate;
     }
     else {
-        candidateLastName = props.candidate.split("|")[0];
-        topic = props.candidate.split("|")[1];
+        candidateLastName = props.candidate.split("|")[1];
+        topic = props.candidate.split("|")[0];
     }
     const candidateFirstName = cardData[candidateLastName]["First name"];
     const party = cardData[candidateLastName]["Party"];
