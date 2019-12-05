@@ -77,6 +77,8 @@
     top: 15px;
     right: 19px;
     display: none;
+    border: none;
+    background-color: #fff;
 }
 
 @media screen and (max-width: 779px) {
