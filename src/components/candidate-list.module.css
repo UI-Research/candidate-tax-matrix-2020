@@ -81,6 +81,17 @@
     background-color: #fff;
 }
 
+.viewSelectionsButton {
+    display: none;
+    border: 1px solid #46abdb;
+    color: #46abdb;
+    font-weight: bold;
+    background-color: #fff;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    margin: 25px auto;
+}
+
 @media screen and (max-width: 779px) {
     .menuList {
         width: 100%;
@@ -88,7 +99,8 @@
     }
 
     .openMenuButton,
-    .closeMenuButton {
+    .closeMenuButton,
+    .viewSelectionsButton {
         display: block;
     }
 

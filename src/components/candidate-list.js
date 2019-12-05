@@ -52,6 +52,12 @@ function CandidateList(props) {
                     onClearSelectionClick={props.onClearSelectionClick}
                 />
                 <ul className={candidateListStyles.menuList}>{allCandidateListItems}</ul>
+                <button
+                    className={candidateListStyles.viewSelectionsButton}
+                    onClick={() => props.onMobileMenuCloseBtnClick("Candidates")}
+                >
+                    View Selections
+                </button>
             </div>
         </div>
     );

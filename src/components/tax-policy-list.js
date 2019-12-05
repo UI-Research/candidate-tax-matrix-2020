@@ -49,6 +49,12 @@ function TaxPolicyList(props) {
                     onClearSelectionClick={props.onClearSelectionClick}
                 />
                 <ul className={taxPolicyListStyles.menuList}>{allTaxPolicyListItems}</ul>
+                <button
+                    className={taxPolicyListStyles.viewSelectionsButton}
+                    onClick={() => props.onMobileMenuCloseBtnClick("Tax types")}
+                >
+                    View Selections
+                </button>
             </div>
         </div>
     );
