@@ -43,8 +43,7 @@ class IndexPage extends Component {
             selectedIssues: this.props.data.allIssueAreasJson.nodes,
             selectedTaxTypes: this.props.data.allTaxTypesJson.nodes,
             mobileCandidatesMenuIsOpen: false,
-            mobileIssuesMenuIsOpen: false,
-            mobileTaxTypesMenuIsOpen: false,
+            mobileMenuIsOpen: false,
         };
     }
 
@@ -143,11 +142,8 @@ class IndexPage extends Component {
         if(menu === "Candidates") {
             this.setState({mobileCandidatesMenuIsOpen : true});
         }
-        else if(menu === "Issue areas") {
-            this.setState({mobileIssuesMenuIsOpen : true});
-        }
-        else if(menu === "Tax types") {
-            this.setState({mobileTaxTypesMenuIsOpen : true});
+        else if(menu === "issue areas" || menu === "tax types") {
+            this.setState({mobileMenuIsOpen : true});
         }
     }
 
@@ -155,11 +151,8 @@ class IndexPage extends Component {
         if(menu === "Candidates") {
             this.setState({mobileCandidatesMenuIsOpen : false});
         }
-        else if(menu === "Issue areas") {
-            this.setState({mobileIssuesMenuIsOpen : false});
-        }
-        else if(menu === "Tax types") {
-            this.setState({mobileTaxTypesMenuIsOpen : false});
+        else if(menu === "issue areas" || menu === "tax types") {
+            this.setState({mobileMenuIsOpen : false});
         }
     }
 
@@ -200,20 +193,22 @@ class IndexPage extends Component {
                         onClick={this.handleViewClick}
                     />
                     <div className="filterContainer">
-                        {this.state.view === "Issue areas" && <IssueList
-                                                                issues={this.state.selectedIssues}
+                        {this.state.view === "Issue areas" && <TaxPolicyList
+                                                                listName="issue areas"
+                                                                taxPolicies={this.state.selectedIssues}
                                                                 onSelectAllClick={this.handleSelectAllClick}
                                                                 onClearSelectionClick={this.handleClearSelectionClick}
                                                                 onClick={this.handleIssueClick}
-                                                                mobileIssuesMenuIsOpen={this.state.mobileIssuesMenuIsOpen}
+                                                                mobileMenuIsOpen={this.state.mobileMenuIsOpen}
                                                                 onMobileMenuBtnClick={this.handleMobileMenuBtnClick}
                                                                 onMobileMenuCloseBtnClick={this.handleMobileMenuCloseBtnClick} />}
                         {this.state.view === "Tax types" && <TaxPolicyList
+                                                                listName="tax types"
                                                                 taxPolicies={this.state.selectedTaxTypes}
                                                                 onSelectAllClick={this.handleSelectAllClick}
                                                                 onClearSelectionClick={this.handleClearSelectionClick}
                                                                 onClick={this.handleTaxTypeClick}
-                                                                mobileTaxTypesMenuIsOpen={this.state.mobileTaxTypesMenuIsOpen}
+                                                                mobileMenuIsOpen={this.state.mobileMenuIsOpen}
                                                                 onMobileMenuBtnClick={this.handleMobileMenuBtnClick}
                                                                 onMobileMenuCloseBtnClick={this.handleMobileMenuCloseBtnClick} />}
                         <CandidateList
