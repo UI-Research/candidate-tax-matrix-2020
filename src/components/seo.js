@@ -30,7 +30,7 @@ function SEO({ description, lang, meta, title }) {
 
   const siteTitle = site.siteMetadata.title
   const siteAuthor = site.siteMetadata.author
-  const siteURL =site.siteMetadata.url
+  const siteURL = "https://2020-presidential-candidates-tax-policy.urban.org"
   const metaDescription = description || site.siteMetadata.description
 
   const schemaJSONLD = {
@@ -55,10 +55,10 @@ function SEO({ description, lang, meta, title }) {
         <meta name="twitter:creator" content={ siteAuthor } />
         <meta name="twitter:title" content={ siteTitle } />
         <meta name="twitter:description" content={ metaDescription } />
-        <meta name="twitter:image" content={ socialImage } />
+        <meta name="twitter:image" content={`${siteURL}` + socialImage} />
         <meta property="og:title" content={ siteTitle } />
         <meta property="og:description" content={ metaDescription } />
-        <meta property="og:image" content={ socialImage } />
+        <meta property="og:image" content={`${siteURL}` + socialImage} />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:url" content={`${siteURL}`} />
         <script type="application/ld+json">{JSON.stringify(schemaJSONLD)}</script>
