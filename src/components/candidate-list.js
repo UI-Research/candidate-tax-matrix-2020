@@ -3,30 +3,48 @@ import SelectAllButtons from "./select-all-buttons.js"
 import candidateListStyles from "./candidate-list.module.css"
 
 function CandidateList(props) {
-    const candidates = props.candidates;
-    const numCandidatesSelected = candidates.reduce((accumulator, currentValue) => accumulator + currentValue.selected, 0);
-    const allCandidateListItems = candidates.map((candidate, idx) =>
-        <li key={candidate.id} onDragOver={() => props.onDragOver(idx)}>
-            <button
-                className={candidateListStyles.menuButton + " " + candidateListStyles.moveable + " " + (candidate.selected ? candidateListStyles.selected : "")}
-                onClick={() => props.onClick(candidate.id)}
-                draggable
-                onDragStart={(e) => props.onDragStart(e, idx)}
-                onDragEnd={props.onDragEnd}
-            >
-                {candidate.first_name} {candidate.last_name} ({candidate.party[0]})
-                <span className={candidateListStyles.selectedIcon}>{candidate.selected ? "×" : "+" }</span>
-            </button>
-        </li>
-    );
+    const listName = props.listName;
+    const items = props.items;
+    const numItemsSelected = items.reduce((accumulator, currentValue) => accumulator + currentValue.selected, 0);
+    const allListItems = items.map((item, idx) => {
+        if(listName === "candidates") {
+            return (
+                <li key={item.id} onDragOver={() => props.onDragOver(idx)}>
+                    <button
+                        className={candidateListStyles.menuButton + " " + candidateListStyles.moveable + " " + (item.selected ? candidateListStyles.selected : "")}
+                        onClick={() => props.onClick(item.id)}
+                        draggable
+                        onDragStart={(e) => props.onDragStart(e, idx)}
+                        onDragEnd={props.onDragEnd}
+                    >
+                        {item.first_name} {item.last_name} ({item.party[0]})
+                        <span className={candidateListStyles.selectedIcon}>{item.selected ? "×" : "+" }</span>
+                    </button>
+                </li>
+            )
+        }
+        else {
+            return (
+                <li key={item.name}>
+                    <button
+                        className={candidateListStyles.menuButton + " " + (item.selected ? candidateListStyles.selected : null)}
+                        onClick={() => props.onClick(item.name)}
+                    >
+                        <span className={candidateListStyles.buttonLabel}>{item.name}</span>
+                        <span className={candidateListStyles.selectedIcon}>{item.selected ? "×" : "+" }</span>
+                    </button>
+                </li>
+            )
+        }
+    });
 
     return (
         <div>
             <button
                 className={candidateListStyles.openMenuButton}
-                onClick={() => props.onMobileMenuBtnClick("Candidates")}
+                onClick={() => props.onMobileMenuBtnClick(listName)}
             >
-                Choose candidates
+                Choose {listName}
                 <span style={{
                    fontStyle: `normal`,
                    color: `#11719f`,
@@ -36,22 +54,28 @@ function CandidateList(props) {
                    right: 10
                 }}>+</span>
             </button>
-            <div className={candidateListStyles.filterButtonContainer + " " + (props.mobileCandidatesMenuIsOpen ? candidateListStyles.opened : "")}>
+            <div className={candidateListStyles.filterButtonContainer + " " + (props.mobileMenuIsOpen ? candidateListStyles.opened : "")}>
                 <button
                     className={candidateListStyles.closeMenuButton}
-                    onClick={() => props.onMobileMenuCloseBtnClick("Candidates")}
+                    onClick={() => props.onMobileMenuCloseBtnClick(listName)}
                 >
                     ×
                 </button>
-                <h4 className={candidateListStyles.menuTitle}>Choose candidates</h4>
+                <h4 className={candidateListStyles.menuTitle}>Choose {listName}</h4>
                 <SelectAllButtons
-                    list="candidates"
-                    numItemsSelected={numCandidatesSelected}
-                    totalListLength={candidates.length}
+                    list={listName}
+                    numItemsSelected={numItemsSelected}
+                    totalListLength={items.length}
                     onSelectAllClick={props.onSelectAllClick}
                     onClearSelectionClick={props.onClearSelectionClick}
                 />
-                <ul className={candidateListStyles.menuList}>{allCandidateListItems}</ul>
+                <ul className={candidateListStyles.menuList}>{allListItems}</ul>
+                <button
+                    className={candidateListStyles.viewSelectionsButton}
+                    onClick={() => props.onMobileMenuCloseBtnClick(listName)}
+                >
+                    View Selections
+                </button>
             </div>
         </div>
     );

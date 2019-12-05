@@ -15,6 +15,7 @@ const Header = ({ siteTitle }) => (
   >
     <TpcHeader />
     <div className={headerStyles.headerContainerDiv}>
+      <img src={headerImage} className={headerStyles.headerImage} alt="" />
       <div className={headerStyles.innerContainerDiv}>
           <h1 className={headerStyles.projectTitle}>
               {siteTitle}
@@ -26,7 +27,6 @@ const Header = ({ siteTitle }) => (
             How would the 2020 presidential candidates change the tax code? We dig into the details of their latest proposals.
           </p>
       </div>
-      <img src={headerImage} className={headerStyles.headerImage} alt="" />
     </div>
   </header>
 )

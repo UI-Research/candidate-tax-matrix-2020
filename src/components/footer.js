@@ -23,7 +23,7 @@ const Footer = () => (
             </p>
             <h4 className={footerStyles.footerHeader}>Project Credits</h4>
             <h5 className={footerStyles.job}>Research</h5>
-            <p className={footerStyles.footerText}>Janet Holtzblatt and Nikhita Airi</p>
+            <p className={footerStyles.footerText}><a href="https://www.urban.org/author/janet-holtzblatt" target="_blank" rel="noopener noreferrer">Janet Holtzblatt</a> and <a href="https://www.urban.org/author/nikhita-airi" target="_blank" rel="noopener noreferrer">Nikhita Airi</a></p>
             <h5 className={footerStyles.job}>Design</h5>
             <p className={footerStyles.footerText}>Allison Feldman</p>
             <h5 className={footerStyles.job}>Development</h5>

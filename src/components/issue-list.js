@@ -49,6 +49,12 @@ function IssueList(props) {
                     onClearSelectionClick={props.onClearSelectionClick}
                 />
                 <ul className={issueListStyles.menuList}>{allIssueListItems}</ul>
+                <button
+                    className={issueListStyles.viewSelectionsButton}
+                    onClick={() => props.onMobileMenuCloseBtnClick("Issue areas")}
+                >
+                    View Selections
+                </button>
             </div>
         </div>
     );

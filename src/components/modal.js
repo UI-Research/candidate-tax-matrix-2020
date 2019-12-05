@@ -52,6 +52,7 @@ function ModalContent(props) {
         topics.splice(selectedTopicPos, 1);
         const remainingTopics = topics.map((topic) =>
             <ContentDiv
+                key={topic}
                 party={props.party}
                 topic={topic}
                 data={data[topic]}
@@ -86,8 +87,8 @@ function Modal(props) {
         candidateLastName = props.candidate;
     }
     else {
-        candidateLastName = props.candidate.split("|")[0];
-        topic = props.candidate.split("|")[1];
+        candidateLastName = props.candidate.split("|")[1];
+        topic = props.candidate.split("|")[0];
     }
     const candidateFirstName = cardData[candidateLastName]["First name"];
     const party = cardData[candidateLastName]["Party"];
