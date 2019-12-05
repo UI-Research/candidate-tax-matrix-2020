@@ -111,10 +111,6 @@
 
     .filterButtonContainer {
         display: none;
-    }
-
-    .filterButtonContainer.opened {
-        display: block;
         position: fixed;
         top: 0;
         left: 0;
@@ -125,7 +121,10 @@
         overflow: scroll;
         padding: 30px 40px;
         box-sizing: border-box;
+    }
 
+    .filterButtonContainer.opened {
+        display: block;
     }
 
     li {
