@@ -39,7 +39,8 @@
     max-height: 350px;
     vertical-align: bottom;
     margin-bottom: 0;
-    /*float: right;*/
+    float: right;
+    padding-right: 50px;
 }
 
 @media screen and (max-width: 1225px) {
@@ -49,6 +50,13 @@
 
     .innerContainerDiv {
         width: 100%;
+    }
+
+    .headerImage {
+        display: block;
+        margin: 0 auto;
+        float: none;
+        padding: 0;
     }
 }
 
