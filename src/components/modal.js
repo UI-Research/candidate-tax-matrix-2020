@@ -52,6 +52,7 @@ function ModalContent(props) {
         topics.splice(selectedTopicPos, 1);
         const remainingTopics = topics.map((topic) =>
             <ContentDiv
+                key={topic}
                 party={props.party}
                 topic={topic}
                 data={data[topic]}

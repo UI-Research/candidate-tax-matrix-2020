@@ -4,8 +4,6 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import NavLinks from "../components/nav-links"
-import IssueList from "../components/issue-list"
-import TaxPolicyList from "../components/tax-policy-list"
 import CandidateList from "../components/candidate-list"
 import Cards from "../components/cards"
 import Modal from "../components/modal"
@@ -140,25 +138,25 @@ class IndexPage extends Component {
     }
 
     handleMobileMenuBtnClick = (menu) => {
-        if(menu === "Candidates") {
+        if(menu === "candidates") {
             this.setState({mobileCandidatesMenuIsOpen : true});
         }
-        else if(menu === "Issue areas") {
+        else if(menu === "issue areas") {
             this.setState({mobileIssuesMenuIsOpen : true});
         }
-        else if(menu === "Tax types") {
+        else if(menu === "tax types") {
             this.setState({mobileTaxTypesMenuIsOpen : true});
         }
     }
 
     handleMobileMenuCloseBtnClick = (menu) => {
-        if(menu === "Candidates") {
+        if(menu === "candidates") {
             this.setState({mobileCandidatesMenuIsOpen : false});
         }
-        else if(menu === "Issue areas") {
+        else if(menu === "issue areas") {
             this.setState({mobileIssuesMenuIsOpen : false});
         }
-        else if(menu === "Tax types") {
+        else if(menu === "tax types") {
             this.setState({mobileTaxTypesMenuIsOpen : false});
         }
     }
@@ -200,31 +198,34 @@ class IndexPage extends Component {
                         onClick={this.handleViewClick}
                     />
                     <div className="filterContainer">
-                        {this.state.view === "Issue areas" && <IssueList
-                                                                issues={this.state.selectedIssues}
+                        {this.state.view === "Issue areas" && <CandidateList
+                                                                listName="issue areas"
+                                                                items={this.state.selectedIssues}
                                                                 onSelectAllClick={this.handleSelectAllClick}
                                                                 onClearSelectionClick={this.handleClearSelectionClick}
                                                                 onClick={this.handleIssueClick}
-                                                                mobileIssuesMenuIsOpen={this.state.mobileIssuesMenuIsOpen}
+                                                                mobileMenuIsOpen={this.state.mobileIssuesMenuIsOpen}
                                                                 onMobileMenuBtnClick={this.handleMobileMenuBtnClick}
                                                                 onMobileMenuCloseBtnClick={this.handleMobileMenuCloseBtnClick} />}
-                        {this.state.view === "Tax types" && <TaxPolicyList
-                                                                taxPolicies={this.state.selectedTaxTypes}
+                        {this.state.view === "Tax types" && <CandidateList
+                                                                listName="tax types"
+                                                                items={this.state.selectedTaxTypes}
                                                                 onSelectAllClick={this.handleSelectAllClick}
                                                                 onClearSelectionClick={this.handleClearSelectionClick}
                                                                 onClick={this.handleTaxTypeClick}
-                                                                mobileTaxTypesMenuIsOpen={this.state.mobileTaxTypesMenuIsOpen}
+                                                                mobileMenuIsOpen={this.state.mobileTaxTypesMenuIsOpen}
                                                                 onMobileMenuBtnClick={this.handleMobileMenuBtnClick}
                                                                 onMobileMenuCloseBtnClick={this.handleMobileMenuCloseBtnClick} />}
                         <CandidateList
-                            candidates={this.state.selectedCandidates}
+                            listName="candidates"
+                            items={this.state.selectedCandidates}
                             onSelectAllClick={this.handleSelectAllClick}
                             onClearSelectionClick={this.handleClearSelectionClick}
                             onClick={this.handleCandidateClick}
                             onDragStart={this.onDragStart}
                             onDragOver={this.onDragOver}
                             onDragEnd={this.onDragEnd}
-                            mobileCandidatesMenuIsOpen={this.state.mobileCandidatesMenuIsOpen}
+                            mobileMenuIsOpen={this.state.mobileCandidatesMenuIsOpen}
                             onMobileMenuBtnClick={this.handleMobileMenuBtnClick}
                             onMobileMenuCloseBtnClick={this.handleMobileMenuCloseBtnClick}
                         />
