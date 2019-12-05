@@ -30,7 +30,7 @@ const Footer = () => (
             <p className={footerStyles.footerText}>Alice Feng</p>
             <h5 className={footerStyles.job}>Editing</h5>
             <p className={footerStyles.footerText}>Michael Marazzi and Serena Lei</p>
-            <p className={footerStyles.githubLink}>View this project on GitHub</p>
+            <p className={footerStyles.githubLink}><a href="https://github.com/UI-Research/candidate-tax-matrix-2020" target="_blank" rel="noopener noreferrer">View this project on GitHub</a></p>
         </div>
     </footer>
 )
