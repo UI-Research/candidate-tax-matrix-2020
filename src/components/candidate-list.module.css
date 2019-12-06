@@ -65,7 +65,7 @@
     font-style: italic;
     color: #adabac;
     display: none;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     position: relative;
 }
 
@@ -74,8 +74,8 @@
     font-weight: bold;
     color: #46abdb;
     position: absolute;
-    top: 15px;
-    right: 32px;
+    top: 30px;
+    right: 30px;
     display: none;
     border: none;
     background-color: #fff;
@@ -89,7 +89,12 @@
     background-color: #fff;
     text-transform: uppercase;
     padding: 10px 20px;
-    margin: 25px auto;
+    margin: 25px auto 40px;
+}
+
+.viewSelectionsButton:active {
+    background-color: #46abdb;
+    color: #fff;
 }
 
 @media screen and (max-width: 779px) {
@@ -119,7 +124,7 @@
         width: 100vw;
         height: 100vh;
         overflow: scroll;
-        padding: 30px 40px;
+        padding: 30px 40px 50px;
         box-sizing: border-box;
     }
 
