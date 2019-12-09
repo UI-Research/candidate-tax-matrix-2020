@@ -261,7 +261,7 @@ export const query = graphql`
           selected
         }
       }
-      allTaxTypesJson(sort: {fields: name}) {
+      allTaxTypesJson {
         nodes {
           id
           name
