@@ -19,6 +19,16 @@
     text-transform: uppercase;
 }
 
+.mediaInquiries {
+    margin-bottom: 1.45rem;
+}
+
+.mediaInquiries p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
 .githubLink {
     font-size: 14px;
     line-height: 1.6;
