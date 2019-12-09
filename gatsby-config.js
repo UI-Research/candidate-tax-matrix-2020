@@ -5,7 +5,7 @@ let deployBucket =
 let deployAddress =
   process.env.DEPLOY_ADDRESS || "http://candidate-tax-matrix-2020-stg.s3-website-us-east-1.amazonaws.com";
 
-// const siteAddress = new URL(deployAddress);
+const siteAddress = new URL(deployAddress);
 
   module.exports = {
   siteMetadata: {
@@ -56,19 +56,19 @@ let deployAddress =
         },
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-canonical-urls`,
-    //   options: {
-    //       siteUrl: siteAddress.href.slice(0, -1),
-    //   }
-    // },
-    // {
-    //   resolve: `gatsby-plugin-s3`,
-    //   options: {
-    //       bucketName: deployBucket,
-    //       protocol: siteAddress.protocol.slice(0, -1),
-    //       hostname: siteAddress.hostname,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+          siteUrl: siteAddress.href.slice(0, -1),
+      }
+    },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+          bucketName: deployBucket,
+          protocol: siteAddress.protocol.slice(0, -1),
+          hostname: siteAddress.hostname,
+      },
+    },
   ]
 }
