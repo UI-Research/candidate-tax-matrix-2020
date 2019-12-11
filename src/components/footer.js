@@ -17,7 +17,7 @@ const Footer = () => (
                 padding: `1.45rem 1.0875rem`,
             }}
         >
-            <h4 className={footerStyles.footerHeader}>About the data</h4>
+            <h4 className={footerStyles.footerHeader}>About</h4>
             <p className={footerStyles.footerText}>View and download the <a href="../../Methodology.pdf" target="_blank" rel="noopener noreferrer">technical appendix</a>.</p>
 
             <h4 className={footerStyles.footerHeader}>Project Credits</h4>
@@ -32,6 +32,11 @@ const Footer = () => (
             <p className={footerStyles.footerText}>Alice Feng</p>
             <h5 className={footerStyles.job}>Editing</h5>
             <p className={footerStyles.footerText}>Michael Marazzi and Serena Lei</p>
+            <div className={footerStyles.mediaInquiries}>
+                <h5 className={footerStyles.job}>For media inquiries</h5>
+                <p><a mailto="media@urban.org">media@urban.org</a></p>
+                <p>202-261-5709</p>
+            </div>
             <p className={footerStyles.githubLink}><a href="https://github.com/UI-Research/candidate-tax-matrix-2020" target="_blank" rel="noopener noreferrer">View this project on GitHub</a></p>
         </div>
     </footer>

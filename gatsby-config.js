@@ -10,10 +10,10 @@ const siteAddress = new URL(deployAddress);
   module.exports = {
   siteMetadata: {
     title: `Where the 2020 Presidential Candidates Stand on Tax Policy`,
-    description: `Our tracker breaks down the candidates’ tax plans by the issues, tallies up the cost, and shows how much household tax bills would change.`,
+    description: `How would the 2020 presidential candidates change the tax code? Dig into the details of their latest proposals.`,
     author: `@urbaninstitute`,
     url:  `https://urbn.is/2020tax`,
-    image: `/images/social.jpg`,
+    image: `/images/social.png`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
