@@ -47,7 +47,7 @@ function Card(props) {
     let party = cardData[candidateLastName]["Party"];
     let cardTitle = "Overview";
     let viewMoreText = "View overview";
-    let cardBullets = cardData[candidateLastName]["Overview"];
+    let cardBullets = <ReactMarkdown source={cardData[candidateLastName]["Overview"]} linkTarget="_blank" />;
 
     if(props.view === "Issue areas") {
         viewMoreText = "View proposal by issue area";
