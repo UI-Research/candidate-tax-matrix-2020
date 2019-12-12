@@ -71,10 +71,22 @@ const siteAddress = new URL(deployAddress);
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-gtag`,
       options: {
-        trackingId: "UA-392952-2",
+        // your google analytics tracking id
+        trackingId: `UA-392952-2`,
+        // Puts tracking script in the head instead of the body
+        head: false,
+        // enable ip anonymization
+        anonymize: true,
       },
     },
+    {
+    resolve: `gatsby-plugin-parsely-analytics`,
+    options: {
+      apikey: `80cf182213`,
+      enableInDevelopment: false // send page views when NODE_ENV !== prod
+    },
+  }
   ]
 }
