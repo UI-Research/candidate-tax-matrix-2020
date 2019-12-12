@@ -76,5 +76,12 @@ const siteAddress = new URL(deployAddress);
         trackingId: "UA-392952-2",
       },
     },
+      {
+    resolve: `gatsby-plugin-parsely-analytics`,
+    options: {
+      apikey: "80cf182213",
+      enableInDevelopment: false // send page views when NODE_ENV !== prod
+    },
+  }
   ]
 }
