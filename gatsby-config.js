@@ -70,5 +70,11 @@ const siteAddress = new URL(deployAddress);
           hostname: siteAddress.hostname,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-392952-2",
+      },
+    },
   ]
 }
