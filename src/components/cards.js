@@ -64,6 +64,7 @@ function Cards(props) {
             candidate={candidate}
             view={view}
             onClick={props.onClick}
+            isPrint={false}
         />
     );
 

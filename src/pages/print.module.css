@@ -65,16 +65,3 @@
 .topicSubhead.democrat {
     color: #11719f;
 }
-
-.card {
-    margin-bottom: 50pt;
-}
-
-.card:last-child {
-    margin-bottom: 0;
-}
-
-.card p {
-    font-size: 12pt;
-    line-height: 16pt;
-}

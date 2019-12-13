@@ -12,6 +12,19 @@
     box-sizing: border-box;
 }
 
+.printCard {
+    margin-bottom: 50pt;
+}
+
+.printCard:last-child {
+    margin-bottom: 0;
+}
+
+.printCard p {
+    font-size: 12pt;
+    line-height: 16pt;
+}
+
 @media screen and (max-width: 1094px) {
     .card {
         width: 396px;

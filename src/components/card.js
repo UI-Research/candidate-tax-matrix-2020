@@ -5,6 +5,7 @@ import cardStyles from "./card.module.css"
 import ContentDiv from "./content-div.js"
 
 function Card(props) {
+    const isPrint = props.isPrint;
     // console.log(cardData.filter((candidate) => candidate.Name === "Biden"));
     let candidateLastName = props.candidate;
     if(props.view !== "Overview") candidateLastName = props.candidate.split("|")[1];
@@ -42,7 +43,7 @@ function Card(props) {
     }
 
     return (
-        <div className={cardStyles.card}>
+        <div className={isPrint ? cardStyles.printCard : cardStyles.card}>
             <h5 className={cardStyles.cardTitle}>{cardTitle}</h5>
             <div style={{overflow: `auto`}}>
                 <div className={cardStyles.partyLogo + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
@@ -50,7 +51,7 @@ function Card(props) {
             </div>
             <h4 className={cardStyles.sectionTitle + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
             <div>{cardBullets}</div>
-            {props.view !== "Overview" && <p
+            {props.view !== "Overview" && !isPrint && <p
                                             className={cardStyles.viewMoreLink}
                                             onClick={() => props.onClick(props.candidate)}
                                         >

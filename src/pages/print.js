@@ -1,11 +1,10 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-// import ReactMarkdown from 'react-markdown'
 import logo from "../images/tpcLogo.png"
 import cardData from "../data/data.json"
 import printStyles from "./print.module.css"
 import ModalContent from "../components/modal-content.js"
-import ContentDiv from "../components/content-div.js"
+import Card from "../components/card.js"
 
 const unsanitizeString = (string) =>
     string.split("_").join(" ");
@@ -23,53 +22,6 @@ const parseQueryString = (queryString) => {
 
 const cartProd = (arr1, arr2) =>
     arr2.flatMap(x => arr1.map(y => x + "|" + y));
-
-function Card(props) {
-    // console.log(cardData.filter((candidate) => candidate.Name === "Biden"));
-    let candidateLastName = props.candidate;
-    if(props.view !== "Overview") candidateLastName = props.candidate.split("|")[1];
-    let candidateFirstName = cardData[candidateLastName]["First name"];
-    let party = cardData[candidateLastName]["Party"];
-    let cardTitle = "Overview";
-    let cardBullets = cardData[candidateLastName]["Overview"];
-
-    if(props.view === "Issue areas") {
-        let issue = props.candidate.split("|")[0];
-        cardTitle = issue;
-
-        let cardText = cardData[candidateLastName]["Issue areas"][issue];
-
-        cardBullets = <ContentDiv
-            party={party}
-            topic=""
-            data={cardText}
-        />
-    }
-    else if(props.view === "Tax types") {
-        let taxType = props.candidate.split("|")[0];
-        cardTitle = taxType;
-
-        let cardText = cardData[candidateLastName]["Tax types"][taxType];
-
-        cardBullets = <ContentDiv
-            party={party}
-            topic=""
-            data={cardText}
-        />
-    }
-
-    return (
-        <div className={printStyles.card}>
-            <h5 className={printStyles.cardTitle}>{cardTitle}</h5>
-            <div style={{overflow: `auto`}}>
-                <div className={printStyles.partyLogo + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
-                <h3 className={printStyles.candidateName + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
-            </div>
-            <h4 className={printStyles.topicSubhead + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>Proposal</h4>
-            <div>{cardBullets}</div>
-        </div>
-    )
-}
 
 function PrintPage({ location }) {
     const data = useStaticQuery(graphql`
@@ -103,6 +55,7 @@ function PrintPage({ location }) {
                     key={candidate}
                     candidate={candidate}
                     view={view}
+                    isPrint={true}
                 />
             );
 
@@ -125,7 +78,7 @@ function PrintPage({ location }) {
                     view={queryObj.view}
                     topic={queryObj.topic}
                     party={party}
-                    isPrint="true"
+                    isPrint={true}
                 />
             </>
         }
