@@ -10,33 +10,7 @@
     pointer-events: none;
 }
 
-.partyLogo {
-    height: 30pt;
-    width: 30pt;
-    background: #353535;
-    border-radius: 50%;
-    display: inline-block;
-    float: left;
-    margin-right: 16pt;
-    color: #fff;
-    font-size: 20pt;
-    font-weight: bold;
-    line-height: 30pt;
-    text-align: center;
-    padding-left: 2pt;
-    -webkit-print-color-adjust: exact; /* for chrome and safari */
-    color-adjust: exact;  /* for Firefox and IE */
-}
-
-.partyLogo.democrat {
-    background: #11719f;
-}
-
-.partyLogo.republican {
-    background: #a4201d;
-}
-
-.candidateName {
+/*.candidateName {
     font-size: 16pt;
     font-weight: bold;
     display: inline-block;
@@ -64,4 +38,4 @@
 
 .topicSubhead.democrat {
     color: #11719f;
-}
+}*/

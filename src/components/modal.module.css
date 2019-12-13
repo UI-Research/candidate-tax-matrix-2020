@@ -63,46 +63,6 @@
     text-decoration: underline;
 }
 
-.partyLogo {
-    height: 50px;
-    width: 50px;
-    background: #353535;
-    border-radius: 50%;
-    display: inline-block;
-    float: left;
-    margin-right: 16px;
-    color: #fff;
-    font-size: 26px;
-    font-weight: bold;
-    line-height: 49px;
-    text-align: center;
-    padding-left: 2px;
-}
-
-.partyLogo.democrat {
-    background: #11719f;
-}
-
-.partyLogo.republican {
-    background: #a4201d;
-}
-
-.candidateName {
-    font-size: 24px;
-    font-weight: bold;
-    display: inline-block;
-    float: left;
-    line-height: 45px;
-}
-
-.candidateName.republican {
-    color: #a4201d;
-}
-
-.candidateName.democrat {
-    color: #11719F;
-}
-
 @media screen and (max-width: 1094px) {
     .modal {
         width: 95vw;

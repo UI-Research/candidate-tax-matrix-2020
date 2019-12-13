@@ -41,10 +41,6 @@ function Modal(props) {
                     <a href={printLink} target="_blank" rel="noopener noreferrer" className={modalStyles.downloadPdfLink}>
                         Print view
                     </a>
-                    <div style={{overflow: `auto`}}>
-                        <div className={modalStyles.partyLogo + " " + (party === "Democratic" ? modalStyles.democrat : modalStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
-                        <h3 className={modalStyles.candidateName + " " + (party === "Democratic" ? modalStyles.democrat : modalStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
-                    </div>
                     <button
                         className={modalStyles.closeModalBtn}
                         onClick={() => props.onClick()}
@@ -52,11 +48,12 @@ function Modal(props) {
                         ×
                     </button>
                     <ModalContent
+                        candidateFirstName={candidateFirstName}
                         candidateLastName={candidateLastName}
                         view={view}
                         topic={topic}
                         party={party}
-                        isPrint="false"
+                        isPrint={false}
                     />
                 </div>
             </div>

@@ -69,11 +69,8 @@ function PrintPage({ location }) {
             // console.log(queryObj);
 
             printBody = <>
-                <div style={{ overflow: `auto` }}>
-                    <div className={printStyles.partyLogo + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
-                    <h1 className={printStyles.candidateName + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + queryObj.candidate}</h1>
-                </div>
                 <ModalContent
+                    candidateFirstName={candidateFirstName}
                     candidateLastName={queryObj.candidate}
                     view={queryObj.view}
                     topic={queryObj.topic}
