@@ -1,0 +1,129 @@
+.card {
+    /*height: 400px;*/
+    max-width: 396px;
+    border: 1px solid #adabac;
+    padding: 20px;
+    margin-bottom: 20px;
+    /*display: inline-block;*/
+    /*float: left;*/
+    background-color: #fff;
+    font-size: 16px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.card.print {
+    margin-bottom: 50pt;
+    padding: 0;
+    max-width: 100%;
+    border: none;
+}
+
+.card.print:last-child {
+    margin-bottom: 0;
+}
+
+.card.print p {
+    font-size: 12pt;
+    line-height: 16pt;
+}
+
+@media screen and (max-width: 1094px) {
+    .card {
+        width: 396px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .card {
+        width: 100%;
+    }
+}
+
+.cardTitle {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.partyLogo {
+    height: 50px;
+    width: 50px;
+    background: #353535;
+    border-radius: 50%;
+    display: inline-block;
+    float: left;
+    margin-right: 16px;
+    color: #fff;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 49px;
+    text-align: center;
+    padding-left: 2px;
+}
+
+.partyLogo.print {
+    height: 30pt;
+    width: 30pt;
+    font-size: 20pt;
+    line-height: 30pt;
+    padding-left: 2pt;
+    -webkit-print-color-adjust: exact; /* for chrome and safari */
+    color-adjust: exact;  /* for Firefox and IE */
+}
+
+.partyLogo.democrat {
+    background: #11719f;
+}
+
+.partyLogo.republican {
+    background: #a4201d;
+}
+
+.candidateName {
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+    float: left;
+    line-height: 45px;
+}
+
+.print.candidateName {
+    font-size: 16pt;
+    line-height: 30pt;
+}
+
+.candidateName.democrat {
+    color: #11719f;
+}
+
+.candidateName.republican {
+    color: #a4201d;
+}
+
+.sectionTitle {
+    color: #353535;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 0.8rem;
+}
+
+.sectionTitle.democrat {
+    color: #11719f;
+}
+
+.sectionTitle.republican {
+    color: #a4201d;
+}
+
+.viewMoreLink {
+    font-style: italic;
+    color: #adabac;
+    position: absolute;
+    bottom: 14px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.viewMoreLink:hover {
+    text-decoration: underline;
+}
