@@ -27,7 +27,7 @@ function ContentDiv(props) {
     return (
         <>
             <h4 className={contentDivStyles.topicSubhead + " " + (props.party === "Democratic" ? contentDivStyles.democrat : contentDivStyles.republican)}>{props.topic}</h4>
-            <ul className={contentDivStyles.contentList}>
+            <ul className={contentDivStyles.contentList + " " + (props.isPrint ? contentDivStyles.print : "")}>
                 {contentBullets}
             </ul>
         </>
