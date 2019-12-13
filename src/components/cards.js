@@ -1,8 +1,7 @@
 import React from "react"
 import Masonry from 'react-masonry-css'
-import ReactMarkdown from 'react-markdown';
-import cardData from "../data/data.json"
 import cardStyles from "./cards.module.css"
+import Card from "./card.js"
 
 const breakpointColumnsObj = {
   default: 2,
@@ -39,95 +38,6 @@ function buildQueryString(view, candidates, props) {
     return queryString;
 }
 
-function Card(props) {
-    // console.log(cardData.filter((candidate) => candidate.Name === "Biden"));
-    let candidateLastName = props.candidate;
-    if(props.view !== "Overview") candidateLastName = props.candidate.split("|")[1];
-    let candidateFirstName = cardData[candidateLastName]["First name"];
-    let party = cardData[candidateLastName]["Party"];
-    let cardTitle = "Overview";
-    let viewMoreText = "View overview";
-    let cardBullets = <ReactMarkdown source={cardData[candidateLastName]["Overview"]} linkTarget="_blank" />;
-
-    if(props.view === "Issue areas") {
-        viewMoreText = "View proposal by issue area";
-        let issue = props.candidate.split("|")[0];
-        cardTitle = issue;
-
-        let cardText = cardData[candidateLastName]["Issue areas"][issue];
-
-        cardBullets = cardText.map((bullet, index) => {
-            if (bullet.indexOf("•") > -1) {
-                const subbullets = bullet.split("•");
-                const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
-                    <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" /></li>
-                );
-
-                return (
-                    <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" />
-                        <ul>
-                            {subbulletsList}
-                        </ul>
-                    </li>
-                )
-            }
-            else {
-                return <li key={index}><ReactMarkdown source={bullet} linkTarget="_blank" /></li>
-            }
-        });
-    }
-    else if(props.view === "Tax types") {
-        viewMoreText = "View proposal by tax type";
-        let taxType = props.candidate.split("|")[0];
-        cardTitle = taxType;
-
-        let cardText = cardData[candidateLastName]["Tax types"][taxType];
-
-        cardBullets = cardText.map((bullet, index) => {
-            if (bullet.indexOf("•") > -1) {
-                const subbullets = bullet.split("•");
-                const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
-                    <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" /></li>
-                );
-
-                return (
-                    <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" />
-                        <ul>
-                            {subbulletsList}
-                        </ul>
-                    </li>
-                )
-            }
-            else {
-                return <li key={index}><ReactMarkdown source={bullet} linkTarget="_blank" /></li>
-            }
-        });
-    }
-
-    return (
-        <div className={cardStyles.card}>
-            <h5 className={cardStyles.cardTitle}>{cardTitle}</h5>
-            <div style={{overflow: `auto`}}>
-                <div className={cardStyles.partyLogo + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
-                <h3 className={cardStyles.candidateName + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
-            </div>
-            <h4 className={cardStyles.sectionTitle + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
-            {props.view === "Overview" && <p style={{marginBottom: 0}}>{cardBullets}</p>}
-            {props.view !== "Overview" && <ul className={cardStyles.contentList}>
-                                            {cardBullets}
-                                        </ul>
-            }
-            {props.view !== "Overview" && <p
-                                            className={cardStyles.viewMoreLink}
-                                            onClick={() => props.onClick(props.candidate)}
-                                        >
-                                            {viewMoreText}
-                                        </p>
-            }
-        </div>
-    )
-}
-
 function Cards(props) {
     const view = props.view;
     const selectedCandidates = props.candidates.filter((candidate) => candidate.selected).map((candidate) => candidate.last_name);
@@ -154,6 +64,7 @@ function Cards(props) {
             candidate={candidate}
             view={view}
             onClick={props.onClick}
+            isPrint={false}
         />
     );
 
