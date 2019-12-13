@@ -1,0 +1,38 @@
+.separator {
+    width: 100%;
+    text-align: center;
+    color: #adabac;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+}
+
+.separatorLine {
+    display: inline-block;
+    width: 200px;
+    border: 0.5px solid #adabac;
+    margin: 0 40px 4px 40px;
+}
+
+.printSeparator {
+    width: 100%;
+    text-align: center;
+    color: #adabac;
+    font-size: 10pt;
+    text-transform: uppercase;
+    margin: 1.2rem 0;
+}
+
+.printSeparatorLine {
+    display: inline-block;
+    width: 130pt;
+    border: 0.5pt solid #adabac;
+    margin: 0 30pt 4pt 30pt;
+}
+
+@media screen and (max-width: 1094px) {
+    .separatorLine {
+        width: 20%;
+        margin: 0 30px 4px 30px;
+    }
+}

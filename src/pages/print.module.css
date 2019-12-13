@@ -52,46 +52,6 @@
     color: #11719F;
 }
 
-.topicSubhead {
-    font-size: 12pt;
-    font-weight: bold;
-    margin-bottom: 14pt;
-}
-
-.topicSubhead.democrat {
-    color: #11719f;
-}
-
-.topicSubhead.republican {
-    color: #a4201d;
-}
-
-.contentList {
-    margin-left: 1rem;
-}
-
-.contentList li {
-    line-height: 16pt;
-    margin-bottom: 10pt;
-    font-size: 12pt;
-}
-
-.separator {
-    width: 100%;
-    text-align: center;
-    color: #adabac;
-    font-size: 10pt;
-    text-transform: uppercase;
-    margin: 1.2rem 0;
-}
-
-.separatorLine {
-    display: inline-block;
-    width: 130pt;
-    border: 0.5pt solid #adabac;
-    margin: 0 30pt 4pt 30pt;
-}
-
 .card {
     margin-bottom: 50pt;
 }
