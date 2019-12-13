@@ -1,8 +1,9 @@
 import React from "react"
 import Masonry from 'react-masonry-css'
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown'
 import cardData from "../data/data.json"
 import cardStyles from "./cards.module.css"
+import ContentDiv from "./content-div.js"
 
 const breakpointColumnsObj = {
   default: 2,
@@ -56,25 +57,11 @@ function Card(props) {
 
         let cardText = cardData[candidateLastName]["Issue areas"][issue];
 
-        cardBullets = cardText.map((bullet, index) => {
-            if (bullet.indexOf("•") > -1) {
-                const subbullets = bullet.split("•");
-                const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
-                    <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" /></li>
-                );
-
-                return (
-                    <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" />
-                        <ul>
-                            {subbulletsList}
-                        </ul>
-                    </li>
-                )
-            }
-            else {
-                return <li key={index}><ReactMarkdown source={bullet} linkTarget="_blank" /></li>
-            }
-        });
+        cardBullets = <ContentDiv
+            party={party}
+            topic=""
+            data={cardText}
+        />
     }
     else if(props.view === "Tax types") {
         viewMoreText = "View proposal by tax type";
@@ -83,25 +70,11 @@ function Card(props) {
 
         let cardText = cardData[candidateLastName]["Tax types"][taxType];
 
-        cardBullets = cardText.map((bullet, index) => {
-            if (bullet.indexOf("•") > -1) {
-                const subbullets = bullet.split("•");
-                const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
-                    <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" /></li>
-                );
-
-                return (
-                    <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" />
-                        <ul>
-                            {subbulletsList}
-                        </ul>
-                    </li>
-                )
-            }
-            else {
-                return <li key={index}><ReactMarkdown source={bullet} linkTarget="_blank" /></li>
-            }
-        });
+        cardBullets = <ContentDiv
+            party={party}
+            topic=""
+            data={cardText}
+        />
     }
 
     return (
@@ -112,11 +85,7 @@ function Card(props) {
                 <h3 className={cardStyles.candidateName + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
             <h4 className={cardStyles.sectionTitle + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
-            {props.view === "Overview" && <p style={{marginBottom: 0}}>{cardBullets}</p>}
-            {props.view !== "Overview" && <ul className={cardStyles.contentList}>
-                                            {cardBullets}
-                                        </ul>
-            }
+            <div>{cardBullets}</div>
             {props.view !== "Overview" && <p
                                             className={cardStyles.viewMoreLink}
                                             onClick={() => props.onClick(props.candidate)}

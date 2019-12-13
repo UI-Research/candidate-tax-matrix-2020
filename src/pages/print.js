@@ -1,10 +1,11 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import ReactMarkdown from 'react-markdown'
+// import ReactMarkdown from 'react-markdown'
 import logo from "../images/tpcLogo.png"
 import cardData from "../data/data.json"
 import printStyles from "./print.module.css"
 import ModalContent from "../components/modal-content.js"
+import ContentDiv from "../components/content-div.js"
 
 const unsanitizeString = (string) =>
     string.split("_").join(" ");
@@ -38,25 +39,11 @@ function Card(props) {
 
         let cardText = cardData[candidateLastName]["Issue areas"][issue];
 
-        cardBullets = cardText.map((bullet, index) => {
-            if (bullet.indexOf("•") > -1) {
-                const subbullets = bullet.split("•");
-                const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
-                    <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" className={printStyles.printLink} /></li>
-                );
-
-                return (
-                    <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" className={printStyles.printLink} />
-                        <ul>
-                            {subbulletsList}
-                        </ul>
-                    </li>
-                )
-            }
-            else {
-                return <li key={index}><ReactMarkdown source={bullet} linkTarget="_blank" className={printStyles.printLink} /></li>
-            }
-        });
+        cardBullets = <ContentDiv
+            party={party}
+            topic=""
+            data={cardText}
+        />
     }
     else if(props.view === "Tax types") {
         let taxType = props.candidate.split("|")[0];
@@ -64,25 +51,11 @@ function Card(props) {
 
         let cardText = cardData[candidateLastName]["Tax types"][taxType];
 
-        cardBullets = cardText.map((bullet, index) => {
-            if (bullet.indexOf("•") > -1) {
-                const subbullets = bullet.split("•");
-                const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
-                    <li key={index}><ReactMarkdown source={subbullet}  className={printStyles.printLink}  linkTarget="_blank" /></li>
-                );
-
-                return (
-                    <li key={index}><ReactMarkdown source={subbullets[0]} className={printStyles.printLink}  linkTarget="_blank" />
-                        <ul>
-                            {subbulletsList}
-                        </ul>
-                    </li>
-                )
-            }
-            else {
-                return <li key={index}><ReactMarkdown source={bullet} className={printStyles.printLink}  linkTarget="_blank" /></li>
-            }
-        });
+        cardBullets = <ContentDiv
+            party={party}
+            topic=""
+            data={cardText}
+        />
     }
 
     return (
@@ -93,10 +66,7 @@ function Card(props) {
                 <h3 className={printStyles.candidateName + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
             <h4 className={printStyles.topicSubhead + " " + (party === "Democratic" ? printStyles.democrat : printStyles.republican)}>Proposal</h4>
-            {props.view === "Overview" && <p>{cardBullets}</p>}
-            {props.view !== "Overview" && <ul className={printStyles.contentList}>
-                {cardBullets}
-            </ul> }
+            <div>{cardBullets}</div>
         </div>
     )
 }
