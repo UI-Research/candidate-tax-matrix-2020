@@ -1,6 +1,6 @@
 .print {
     width: 8in;
-    border: 1px solid #d2d2d2;
+    /*border: 1px solid #d2d2d2;*/
 }
 
 .printLink a {
@@ -9,33 +9,3 @@
     cursor: auto;
     pointer-events: none;
 }
-
-/*.candidateName {
-    font-size: 16pt;
-    font-weight: bold;
-    display: inline-block;
-    float: left;
-    line-height: 30pt;
-}
-
-.candidateName.republican {
-    color: #a4201d;
-}
-
-.candidateName.democrat {
-    color: #11719F;
-}
-
-.topicSubhead {
-    font-size: 12pt;
-    font-weight: 700;
-    margin-bottom: 14pt;
-}
-
-.topicSubhead.republican {
-    color: #a4201d;
-}
-
-.topicSubhead.democrat {
-    color: #11719f;
-}*/

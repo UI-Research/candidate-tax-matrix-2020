@@ -12,15 +12,18 @@
     box-sizing: border-box;
 }
 
-.printCard {
+.card.print {
     margin-bottom: 50pt;
+    padding: 0;
+    max-width: 100%;
+    border: none;
 }
 
-.printCard:last-child {
+.card.print:last-child {
     margin-bottom: 0;
 }
 
-.printCard p {
+.card.print p {
     font-size: 12pt;
     line-height: 16pt;
 }
@@ -58,6 +61,16 @@
     padding-left: 2px;
 }
 
+.partyLogo.print {
+    height: 30pt;
+    width: 30pt;
+    font-size: 20pt;
+    line-height: 30pt;
+    padding-left: 2pt;
+    -webkit-print-color-adjust: exact; /* for chrome and safari */
+    color-adjust: exact;  /* for Firefox and IE */
+}
+
 .partyLogo.democrat {
     background: #11719f;
 }
@@ -72,6 +85,11 @@
     display: inline-block;
     float: left;
     line-height: 45px;
+}
+
+.print.candidateName {
+    font-size: 16pt;
+    line-height: 30pt;
 }
 
 .candidateName.democrat {

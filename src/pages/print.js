@@ -61,23 +61,21 @@ function PrintPage({ location }) {
 
             printBody = <div>
                 {candidateCards}
-            </div>
+            </div>;
         }
         else {
             const candidateFirstName = cardData[queryObj.candidate]["First name"];
             const party = cardData[queryObj.candidate]["Party"];
             // console.log(queryObj);
 
-            printBody = <>
-                <ModalContent
+            printBody = <ModalContent
                     candidateFirstName={candidateFirstName}
                     candidateLastName={queryObj.candidate}
                     view={queryObj.view}
                     topic={queryObj.topic}
                     party={party}
                     isPrint={true}
-                />
-            </>
+                />;
         }
     }
     return (

@@ -43,11 +43,11 @@ function Card(props) {
     }
 
     return (
-        <div className={isPrint ? cardStyles.printCard : cardStyles.card}>
+        <div className={cardStyles.card + " " + (isPrint ? cardStyles.print : "")}>
             <h5 className={cardStyles.cardTitle}>{cardTitle}</h5>
             <div style={{overflow: `auto`}}>
-                <div className={cardStyles.partyLogo + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
-                <h3 className={cardStyles.candidateName + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
+                <div className={cardStyles.partyLogo + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
+                <h3 className={cardStyles.candidateName + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
             <h4 className={cardStyles.sectionTitle + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
             <div>{cardBullets}</div>
