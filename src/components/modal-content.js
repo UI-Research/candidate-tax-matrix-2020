@@ -24,6 +24,7 @@ function ModalContent(props) {
                 party={party}
                 topic={topic}
                 data={data[topic]}
+                isPrint={isPrint}
             />
         );
 
@@ -38,6 +39,7 @@ function ModalContent(props) {
                     party={props.party}
                     topic={props.topic}
                     data={data[props.topic]}
+                    isPrint={isPrint}
                 />
                 <div className={modalContentStyles.separator + " " + (isPrint ? modalContentStyles.print : "")}><span className={modalContentStyles.separatorLine + " " + (isPrint ? modalContentStyles.print : "")}></span>Other proposals by {props.view === "Issue areas" ? "issue area" : "type of tax"}<span className={modalContentStyles.separatorLine + " " + (isPrint ? modalContentStyles.print : "")}></span></div>
                 {remainingTopics}

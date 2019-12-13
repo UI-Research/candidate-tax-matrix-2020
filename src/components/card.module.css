@@ -28,6 +28,13 @@
     line-height: 16pt;
 }
 
+.print a {
+    color: #353535;
+    text-decoration: none;
+    cursor: auto;
+    pointer-events: none;
+}
+
 @media screen and (max-width: 1094px) {
     .card {
         width: 396px;
