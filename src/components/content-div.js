@@ -3,16 +3,23 @@ import ReactMarkdown from 'react-markdown';
 // import cardData from "../data/data.json"
 import contentDivStyles from "./content-div.module.css"
 
+function convertUnicode(input) {
+    return input.replace(/\\u(\w{4,4})/g,function(a,b) {
+        var charcode = parseInt(b,16);
+        return String.fromCharCode(charcode);
+    });
+}
+
 function ContentDiv(props) {
     const contentBullets = props.data.map((bullet, index) => {
-        if (bullet.indexOf("•") > -1) {
-            const subbullets = bullet.split("•");
+        if (bullet.indexOf("\\n\\u2022") > -1) {
+            const subbullets = bullet.split("\\n\\u2022 ");
             const subbulletsList = subbullets.slice(1).map((subbullet, index) =>
-                <li key={index}><ReactMarkdown source={subbullet} linkTarget="_blank" /></li>
+                <li key={index}><ReactMarkdown source={convertUnicode(subbullet)} linkTarget="_blank" /></li>
             );
 
             return (
-                <li key={index}><ReactMarkdown source={subbullets[0]} linkTarget="_blank" />
+                <li key={index}><ReactMarkdown source={convertUnicode(subbullets[0])} linkTarget="_blank" />
                     <ul>
                         {subbulletsList}
                     </ul>
@@ -20,7 +27,7 @@ function ContentDiv(props) {
             )
         }
         else {
-            return <li key={index}><ReactMarkdown source={bullet} linkTarget="_blank" /></li>
+            return <li key={index}><ReactMarkdown source={convertUnicode(bullet)} linkTarget="_blank" /></li>
         }
     });
 

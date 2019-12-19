@@ -15,7 +15,7 @@ function ModalContent(props) {
         const party = props.party,
               candidateFirstName = props.candidateFirstName,
               candidateLastName = props.candidateLastName;
-        const topics = Object.keys(data).sort();
+        const topics = Object.keys(data);
         const selectedTopicPos = topics.indexOf(props.topic);
         topics.splice(selectedTopicPos, 1);
         const remainingTopics = topics.map((topic) =>
