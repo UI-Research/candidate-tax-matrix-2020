@@ -1,3 +1,7 @@
+.filterButtonContainer {
+    margin-bottom: 50px;
+}
+
 .menuTitle {
     font-size: 24px;
     font-weight: "bold";
@@ -8,7 +12,7 @@
     list-style: none;
     margin-left: 0;
     width: 290px;
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
 }
 
 .menuButton {
