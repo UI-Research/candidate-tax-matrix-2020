@@ -11,6 +11,7 @@ function Card(props) {
     if(props.view !== "Overview") candidateLastName = props.candidate.split("|")[1];
     let candidateFirstName = cardData[candidateLastName]["First name"];
     let party = cardData[candidateLastName]["Party"];
+    let droppedOut = cardData[candidateLastName]["Dropped out"] === "Y";
     let cardTitle = "Overview";
     let viewMoreText = "View overview";
     let cardBullets = <ReactMarkdown source={cardData[candidateLastName]["Overview"]} linkTarget="_blank" />;
@@ -24,6 +25,7 @@ function Card(props) {
 
         cardBullets = <ContentDiv
             party={party}
+            droppedOut={droppedOut}
             topic=""
             data={cardText}
         />
@@ -37,20 +39,21 @@ function Card(props) {
 
         cardBullets = <ContentDiv
             party={party}
+            droppedOut={droppedOut}
             topic=""
             data={cardText}
         />
     }
 
     return (
-        <div className={cardStyles.card + " " + (isPrint ? cardStyles.print : "")}>
-            <h5 className={cardStyles.cardTitle}>{cardTitle}</h5>
+        <div className={cardStyles.card + " " + (isPrint ? cardStyles.print : "") + " " + (droppedOut ? cardStyles.inactive : "")}>
+            <h5 className={cardStyles.cardTitle + " " + (isPrint ? cardStyles.print : "")  + " " + (droppedOut ? cardStyles.inactive : "")}>{cardTitle}</h5>
             <div style={{overflow: `auto`}}>
-                <div className={cardStyles.partyLogo + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{party === "Democratic" ? "D" : "R"}</div>
-                <h3 className={cardStyles.candidateName + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{candidateFirstName + " " + candidateLastName}</h3>
+                <div className={cardStyles.partyLogo + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>{party === "Democratic" ? "D" : "R"}</div>
+                <h3 className={cardStyles.candidateName + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
-            <h4 className={cardStyles.sectionTitle + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican)}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
-            <div>{cardBullets}</div>
+            <h4 className={cardStyles.sectionTitle + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
+            <div className={cardStyles.cardContent + " " + (isPrint ? cardStyles.print : "")  + " " + (droppedOut ? cardStyles.inactive : "")}>{cardBullets}</div>
             {props.view !== "Overview" && !isPrint && <p
                                             className={cardStyles.viewMoreLink}
                                             onClick={() => props.onClick(props.candidate)}
