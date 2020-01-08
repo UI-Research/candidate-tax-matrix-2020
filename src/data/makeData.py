@@ -69,6 +69,7 @@ for index, row in candidates.iterrows():
     candidate_dict["First name"] = row["first_name"]
     candidate_dict["Last name"] = row["last_name"]
     candidate_dict["Party"] = row["party"]
+    candidate_dict["Dropped out"] = row["dropped_out"]
     try:
         candidate_dict["Overview"] = overview_text.loc[row.last_name, "Overview"]
     except:
