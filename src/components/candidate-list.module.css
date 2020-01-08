@@ -1,3 +1,7 @@
+.filterButtonContainer {
+    margin-bottom: 50px;
+}
+
 .menuTitle {
     font-size: 24px;
     font-weight: "bold";
@@ -8,7 +12,7 @@
     list-style: none;
     margin-left: 0;
     width: 290px;
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
 }
 
 .menuButton {
@@ -48,6 +52,13 @@
     right: 0;
     top: 0;
     align-items: center;
+}
+
+.note {
+    max-width: 290px;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 24px;
 }
 
 .menuButton.selected .selectedIcon {

@@ -12,6 +12,10 @@
     color: #a4201d;
 }
 
+.topicSubhead.inactive {
+    color: #BCBEC0;
+}
+
 .contentList {
     margin-left: 1rem;
 }
