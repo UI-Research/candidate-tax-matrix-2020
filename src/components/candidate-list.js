@@ -70,7 +70,7 @@ function CandidateList(props) {
                     onClearSelectionClick={props.onClearSelectionClick}
                 />
                 <ul className={candidateListStyles.menuList}>{allListItems}</ul>
-                {props.listName === "candidates" && <p style={{maxWidth: 290}}>Asterisks denote candidates who have suspended their campaigns.</p>}
+                {props.listName === "candidates" && <p className={candidateListStyles.note}>Asterisks denote candidates who have suspended their campaigns.</p>}
                 <button
                     className={candidateListStyles.viewSelectionsButton}
                     onClick={() => props.onMobileMenuCloseBtnClick(listName)}
