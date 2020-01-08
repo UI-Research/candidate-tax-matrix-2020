@@ -1,7 +1,7 @@
 .card {
     /*height: 400px;*/
     max-width: 396px;
-    border: 1px solid #adabac;
+    border: 1px solid #BCBEC0;
     padding: 20px;
     margin-bottom: 20px;
     /*display: inline-block;*/
@@ -14,7 +14,7 @@
 
 .card.inactive {
     background-color: rgba(239, 239, 239, 0.25);
-    border: none;
+    /*border: none;*/
 }
 
 .card.print {
