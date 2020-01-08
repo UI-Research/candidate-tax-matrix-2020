@@ -252,13 +252,14 @@ class IndexPage extends Component {
 export default IndexPage
 export const query = graphql`
     query getCandidatesQuery {
-      allCandidatesJson(sort: {fields: last_name}) {
+      allCandidatesJson(sort: {fields: [dropped_out, last_name]}) {
         nodes {
           first_name
           id
           last_name
           party
           selected
+          dropped_out
         }
       }
       allTaxTypesJson {

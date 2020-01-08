@@ -12,11 +12,19 @@
     box-sizing: border-box;
 }
 
+.card.inactive {
+    background-color: rgba(239, 239, 239, 0.25);
+}
+
 .card.print {
     margin-bottom: 50pt;
     padding: 0;
     max-width: 100%;
     border: none;
+}
+
+.card.inactive.print {
+    background-color: #fff;
 }
 
 .card.print:last-child {
@@ -52,6 +60,14 @@
     text-transform: uppercase;
 }
 
+.cardTitle.inactive {
+    color: #BCBEC0;
+}
+
+.cardTitle.print.inactive {
+    color: #353535;
+}
+
 .partyLogo {
     height: 50px;
     width: 50px;
@@ -78,12 +94,18 @@
     color-adjust: exact;  /* for Firefox and IE */
 }
 
-.partyLogo.democrat {
+.partyLogo.democrat,
+.partyLogo.print.democrat.inactive {
     background: #11719f;
 }
 
-.partyLogo.republican {
+.partyLogo.republican,
+.partyLogo.print.republican.inactive {
     background: #a4201d;
+}
+
+.partyLogo.inactive {
+    background: #BCBEC0;
 }
 
 .candidateName {
@@ -99,12 +121,18 @@
     line-height: 30pt;
 }
 
-.candidateName.democrat {
+.candidateName.democrat,
+.print.candidateName.democrat.inactive {
     color: #11719f;
 }
 
-.candidateName.republican {
+.candidateName.republican,
+.print.candidateName.republican.inactive {
     color: #a4201d;
+}
+
+.candidateName.inactive {
+    color: #BCBEC0;
 }
 
 .sectionTitle {
@@ -114,12 +142,25 @@
     margin-bottom: 0.8rem;
 }
 
-.sectionTitle.democrat {
+.sectionTitle.democrat,
+.sectionTitle.print.democrat.inactive {
     color: #11719f;
 }
 
-.sectionTitle.republican {
+.sectionTitle.republican,
+.sectionTitle.print.republican.inactive {
     color: #a4201d;
+}
+
+.sectionTitle.inactive,
+.cardContent.inactive,
+.cardContent.inactive a {
+    color: #BCBEC0;
+}
+
+.cardContent.print.inactive,
+.cardContent.print.inactive a {
+    color: #353535;
 }
 
 .viewMoreLink {
