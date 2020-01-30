@@ -23,7 +23,7 @@ function ModalContent(props) {
                 key={topic}
                 party={party}
                 topic={topic}
-                data={data[topic]}
+                data={data[topic]["Bullets"]}
                 isPrint={isPrint}
             />
         );
@@ -38,7 +38,7 @@ function ModalContent(props) {
                 <ContentDiv
                     party={props.party}
                     topic={props.topic}
-                    data={data[props.topic]}
+                    data={data[props.topic]["Bullets"]}
                     isPrint={isPrint}
                 />
                 <div className={modalContentStyles.separator + " " + (isPrint ? modalContentStyles.print : "")}><span className={modalContentStyles.separatorLine + " " + (isPrint ? modalContentStyles.print : "")}></span>Other proposals by {props.view === "Issue areas" ? "issue area" : "type of tax"}<span className={modalContentStyles.separatorLine + " " + (isPrint ? modalContentStyles.print : "")}></span></div>

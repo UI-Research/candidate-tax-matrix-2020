@@ -21,7 +21,7 @@ function Card(props) {
         let issue = props.candidate.split("|")[0];
         cardTitle = issue;
 
-        let cardText = cardData[candidateLastName]["Issue areas"][issue];
+        let cardText = cardData[candidateLastName]["Issue areas"][issue]["Bullets"];
 
         cardBullets = <ContentDiv
             party={party}
@@ -35,7 +35,7 @@ function Card(props) {
         let taxType = props.candidate.split("|")[0];
         cardTitle = taxType;
 
-        let cardText = cardData[candidateLastName]["Tax types"][taxType];
+        let cardText = cardData[candidateLastName]["Tax types"][taxType]["Bullets"];
 
         cardBullets = <ContentDiv
             party={party}
