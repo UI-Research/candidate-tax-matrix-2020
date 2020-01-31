@@ -53,6 +53,14 @@ function Card(props) {
             topic=""
             data={cardText}
         />
+
+        let corrections = cardData[candidateLastName]["Tax types"][taxType]["Corrections"];
+
+        if(corrections[0] !== "None") {
+            correctionsBullets = <Corrections
+                data={corrections}
+            />
+        }
     }
 
     return (
