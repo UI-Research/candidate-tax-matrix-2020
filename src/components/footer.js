@@ -18,6 +18,7 @@ const Footer = () => (
             }}
         >
             <h4 className={footerStyles.footerHeader}>About</h4>
+            <p className={footerStyles.footerText}>This tool was published on December 12, 2019, and will be updated as new proposals are released.</p>
             <p className={footerStyles.footerText}>View and download the <a href="../../Methodology.pdf" target="_blank" rel="noopener noreferrer">technical appendix</a>.</p>
 
             <h4 className={footerStyles.footerHeader}>Project Credits</h4>
