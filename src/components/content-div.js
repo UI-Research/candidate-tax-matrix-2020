@@ -1,5 +1,5 @@
 import React from "react"
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown/with-html';
 // import cardData from "../data/data.json"
 import contentDivStyles from "./content-div.module.css"
 
@@ -19,7 +19,7 @@ function ContentDiv(props) {
             );
 
             return (
-                <li key={index}><ReactMarkdown source={convertUnicode(subbullets[0])} linkTarget="_blank" />
+                <li key={index}><ReactMarkdown source={convertUnicode(subbullets[0])} linkTarget="_blank" escapeHtml={false} />
                     <ul>
                         {subbulletsList}
                     </ul>
@@ -27,7 +27,7 @@ function ContentDiv(props) {
             )
         }
         else {
-            return <li key={index}><ReactMarkdown source={convertUnicode(bullet)} linkTarget="_blank" /></li>
+            return <li key={index}><ReactMarkdown source={convertUnicode(bullet)} linkTarget="_blank" escapeHtml={false} /></li>
         }
     });
 

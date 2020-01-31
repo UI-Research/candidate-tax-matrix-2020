@@ -2,6 +2,7 @@ import React from "react"
 import cardData from "../data/data.json"
 import modalContentStyles from "./modal-content.module.css"
 import ContentDiv from "./content-div.js"
+import Corrections from "./corrections.js"
 
 function ModalContent(props) {
     if(props.view === "Overview") {
@@ -19,13 +20,16 @@ function ModalContent(props) {
         const selectedTopicPos = topics.indexOf(props.topic);
         topics.splice(selectedTopicPos, 1);
         const remainingTopics = topics.map((topic) =>
-            <ContentDiv
-                key={topic}
-                party={party}
-                topic={topic}
-                data={data[topic]}
-                isPrint={isPrint}
-            />
+            <>
+                <ContentDiv
+                    key={topic}
+                    party={party}
+                    topic={topic}
+                    data={data[topic]["Bullets"]}
+                    isPrint={isPrint}
+                />
+                {(data[topic]["Corrections"][0] !== "None") && <Corrections data={data[topic]["Corrections"]} /> }
+            </>
         );
 
         return (
@@ -38,9 +42,10 @@ function ModalContent(props) {
                 <ContentDiv
                     party={props.party}
                     topic={props.topic}
-                    data={data[props.topic]}
+                    data={data[props.topic]["Bullets"]}
                     isPrint={isPrint}
                 />
+                {(data[props.topic]["Corrections"][0] !== "None") && <Corrections data={data[props.topic]["Corrections"]} />}
                 <div className={modalContentStyles.separator + " " + (isPrint ? modalContentStyles.print : "")}><span className={modalContentStyles.separatorLine + " " + (isPrint ? modalContentStyles.print : "")}></span>Other proposals by {props.view === "Issue areas" ? "issue area" : "type of tax"}<span className={modalContentStyles.separatorLine + " " + (isPrint ? modalContentStyles.print : "")}></span></div>
                 {remainingTopics}
             </div>
