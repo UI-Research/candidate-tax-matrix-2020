@@ -101,7 +101,7 @@ candidate_tp = pd.concat([tp1, tp2])
 ia_asterisks = candidate_ia.dropna(subset=["Corrections"])
 ia_asterisks["n"] = ia_asterisks.groupby(["Candidate", "Issue"]).cumcount() + 1
 ia_asterisks["asterisks"] = ia_asterisks["n"].apply(lambda x: x * "*")
-ia_asterisks["Corrections_w_star"] = ia_asterisks["asterisks"] + " " + ia_asterisks["Corrections"]
+ia_asterisks["Corrections_w_star"] = "\\" + ia_asterisks["asterisks"] + " " + ia_asterisks["Corrections"]
 ia_asterisks["Text_w_star"] = ia_asterisks["Text"] + ia_asterisks["asterisks"]
 
 ia_final = candidate_ia.merge(ia_asterisks, how = "left")
@@ -112,7 +112,7 @@ ia_final.drop(["n", "asterisks", "Text_w_star", "Corrections_w_star"], axis = 1,
 tp_asterisks = candidate_tp.dropna(subset=["Corrections"])
 tp_asterisks["n"] = tp_asterisks.groupby(["Candidate", "Tax type"]).cumcount() + 1
 tp_asterisks["asterisks"] = tp_asterisks["n"].apply(lambda x: x * "*")
-tp_asterisks["Corrections_w_star"] = tp_asterisks["asterisks"] + " " + tp_asterisks["Corrections"]
+tp_asterisks["Corrections_w_star"] = "\\" + tp_asterisks["asterisks"] + " " + tp_asterisks["Corrections"]
 tp_asterisks["Text_w_star"] = tp_asterisks["Text"] + tp_asterisks["asterisks"]
 
 tp_final = candidate_tp.merge(tp_asterisks, how = "left")
