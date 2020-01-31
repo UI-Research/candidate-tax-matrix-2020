@@ -1,5 +1,5 @@
 import React from "react"
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown/with-html';
 import correctionsStyles from "./corrections.module.css"
 
 function convertUnicode(input) {
@@ -18,7 +18,7 @@ function CorrectionsDiv(props) {
             );
 
             return (
-                <div key={index}><ReactMarkdown source={convertUnicode(subbullets[0])} linkTarget="_blank" />
+                <div key={index}><ReactMarkdown source={convertUnicode(subbullets[0])} linkTarget="_blank" escapeHtml={false} />
                     <ul>
                         {subbulletsList}
                     </ul>
@@ -26,7 +26,7 @@ function CorrectionsDiv(props) {
             )
         }
         else {
-            return <ReactMarkdown source={convertUnicode(correction)} linkTarget="_blank" />
+            return <ReactMarkdown source={convertUnicode(correction)} linkTarget="_blank" escapeHtml={false} />
         }
     });
 

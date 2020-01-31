@@ -100,25 +100,25 @@ candidate_tp = pd.concat([tp1, tp2])
 # then merge back onto candidate_ia/candidate_tp so that the grouped bullet points have the asterisks
 ia_asterisks = candidate_ia.dropna(subset=["Corrections"])
 ia_asterisks["n"] = ia_asterisks.groupby(["Candidate", "Issue"]).cumcount() + 1
-ia_asterisks["asterisks"] = ia_asterisks["n"].apply(lambda x: x * "*")
-ia_asterisks["Corrections_w_star"] = "\\" + ia_asterisks["asterisks"] + " " + ia_asterisks["Corrections"]
-ia_asterisks["Text_w_star"] = ia_asterisks["Text"] + ia_asterisks["asterisks"]
+ia_asterisks["superscripts"] = ia_asterisks["n"].apply(lambda x: "<sup>" + str(x) + "</sup>")
+ia_asterisks["Corrections_w_star"] = ia_asterisks["superscripts"] + ia_asterisks["Corrections"]
+ia_asterisks["Text_w_star"] = ia_asterisks["Text"] + ia_asterisks["superscripts"]
 
 ia_final = candidate_ia.merge(ia_asterisks, how = "left")
 ia_final["Text"] = np.where(pd.isna(ia_final["Text_w_star"]), ia_final["Text"], ia_final["Text_w_star"])
 ia_final["Corrections"] = np.where(pd.isna(ia_final["Corrections_w_star"]), ia_final["Corrections"], ia_final["Corrections_w_star"])
-ia_final.drop(["n", "asterisks", "Text_w_star", "Corrections_w_star"], axis = 1, inplace = True)
+ia_final.drop(["n", "superscripts", "Text_w_star", "Corrections_w_star"], axis = 1, inplace = True)
 
 tp_asterisks = candidate_tp.dropna(subset=["Corrections"])
 tp_asterisks["n"] = tp_asterisks.groupby(["Candidate", "Tax type"]).cumcount() + 1
-tp_asterisks["asterisks"] = tp_asterisks["n"].apply(lambda x: x * "*")
-tp_asterisks["Corrections_w_star"] = "\\" + tp_asterisks["asterisks"] + " " + tp_asterisks["Corrections"]
-tp_asterisks["Text_w_star"] = tp_asterisks["Text"] + tp_asterisks["asterisks"]
+tp_asterisks["superscripts"] = tp_asterisks["n"].apply(lambda x: "<sup>" + str(x) + "</sup>")
+tp_asterisks["Corrections_w_star"] = tp_asterisks["superscripts"] + tp_asterisks["Corrections"]
+tp_asterisks["Text_w_star"] = tp_asterisks["Text"] + tp_asterisks["superscripts"]
 
 tp_final = candidate_tp.merge(tp_asterisks, how = "left")
 tp_final["Text"] = np.where(pd.isna(tp_final["Text_w_star"]), tp_final["Text"], tp_final["Text_w_star"])
 tp_final["Corrections"] = np.where(pd.isna(tp_final["Corrections_w_star"]), tp_final["Corrections"], tp_final["Corrections_w_star"])
-tp_final.drop(["n", "asterisks", "Text_w_star", "Corrections_w_star"], axis = 1, inplace = True)
+tp_final.drop(["n", "superscripts", "Text_w_star", "Corrections_w_star"], axis = 1, inplace = True)
 
 # group together all text items that apply to the same issue area or tax type
 # per candidate and put them in a list
