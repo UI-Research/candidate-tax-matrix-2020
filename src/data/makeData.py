@@ -47,7 +47,7 @@ candidate_text = candidate_text[pd.notnull(candidate_text.Text)]
 candidates = master_lists[["Candidate_first", "Candidate_last", "Candidate_party", "Dropped_out"]]
 candidates.rename(columns={"Candidate_first": "first_name", "Candidate_last":"last_name", "Candidate_party": "party", "Dropped_out": "dropped_out"}, inplace = True)
 candidates["dropped_out"] = np.where(candidates.dropped_out == "Y", "Y", "N")
-candidates["selected"] = True
+candidates["selected"] = np.where(candidates.dropped_out == "Y", False, True)
 candidates.to_json("candidates.json", orient = "records")
 
 issue_areas = master_lists["Issue_areas"][master_lists["Issue_areas"].notnull()].to_frame()
