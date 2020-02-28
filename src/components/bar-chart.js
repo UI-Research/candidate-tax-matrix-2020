@@ -24,12 +24,24 @@ const dataset = [{x:"q1", y:10},
 const Axis = (direction) => {
     if(direction === "x") {
         return (
-            <path d="M 0 130 H 150" stroke="#000" />
+            <path
+                d={[
+                    "M", 0, chartHeight - padding,
+                    "H", chartWidth
+                    ].join(" ")}
+                stroke="#000"
+            />
         )
     }
     else if(direction === "y") {
         return (
-            <path d="M 0 0 V 130" stroke="#000" />
+            <path
+                d={[
+                    "M", 0, 0,
+                    "V", chartHeight - padding
+                ].join(" ")}
+                stroke="#000"
+            />
         )
     }
 }
