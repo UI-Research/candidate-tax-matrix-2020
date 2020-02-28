@@ -8,12 +8,12 @@ const chartWidth = 150,
 
 const xScale = scaleBand()
     .domain(["q1", "q2", "q3", "q4", "q5"])
-    .range([0, chartWidth - padding])
+    .range([padding, chartWidth])
     .padding(0);
 
 const yScale = scaleLinear()
     .domain([0, 100])
-    .range([0, chartHeight - padding]);
+    .range([chartHeight - padding, 0]);
 
 const dataset = [{x:"q1", y:10},
                  {x:"q2", y:25},
@@ -24,24 +24,57 @@ const dataset = [{x:"q1", y:10},
 const Axis = (direction) => {
     if(direction === "x") {
         return (
-            <path
-                d={[
-                    "M", 0, chartHeight - padding,
-                    "H", chartWidth
-                    ].join(" ")}
-                stroke="#000"
-            />
+            <g className="axis x">
+                <path
+                    d={[
+                        "M", padding, chartHeight - padding,
+                        "H", chartWidth
+                        ].join(" ")}
+                    stroke="#000"
+                />
+                <text x={chartWidth / 2} y={chartHeight} fill="#000">Income</text>
+            </g>
         )
     }
     else if(direction === "y") {
+        const ticks = yScale.ticks().map(value => ({
+                    value,
+                    yOffset: yScale(value)
+            }));
+console.log(ticks);
         return (
-            <path
-                d={[
-                    "M", 0, 0,
-                    "V", chartHeight - padding
-                ].join(" ")}
-                stroke="#000"
-            />
+            <g className="axis y">
+                <path
+                    d={[
+                        "M", padding, 0,
+                        "V", chartHeight - padding
+                    ].join(" ")}
+                    stroke="#000"
+                />
+                {ticks.map(({value, yOffset}) => (
+                    <g key={value} transform={`translate(0, ${yOffset})`} className="tick">
+                        <line
+                            x1="14"
+                            x2={padding}
+                            stroke="#000"
+                        />
+                        <line
+                            x1={padding}
+                            x2={chartWidth}
+                            stroke="#d2d2d2"
+                        />
+                        <text
+                            key={value}
+                            style={{
+                                fontSize: "10px",
+                                textAnchor: "start",
+                                transform: "translateY(4px)"
+                            }}>
+                            { value }
+                        </text>
+                    </g>
+                ))}
+            </g>
         )
     }
 }
@@ -51,8 +84,8 @@ function BarChart() {
           <rect
             className="bar"
             x={xScale(d.x)}
-            y={chartHeight - padding - yScale(d.y)}
-            height={yScale(d.y)}
+            y={yScale(d.y)}
+            height={chartHeight - padding - yScale(d.y)}
             width={xScale.bandwidth()}
           />
     );
@@ -61,10 +94,10 @@ function BarChart() {
     const yAxis = Axis("y");
 
     return (
-        <svg width="150" height="150" viewbox="0 0 100 100">
-            {bars}
+        <svg width="150" height="150" viewBox="0 0 150 150">
             {xAxis}
             {yAxis}
+            {bars}
         </svg>
     )
 }
