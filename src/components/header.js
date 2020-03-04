@@ -21,7 +21,7 @@ const Header = ({ siteTitle }) => (
               {siteTitle}
           </h1>
           <p className={headerStyles.date}>
-            Updated March 2, 2020
+            Updated March 4, 2020
           </p>
           <p className={headerStyles.introParagraph}>
             How would the 2020 presidential candidates change the tax code? We dig into the details of their latest proposals.
