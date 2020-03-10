@@ -4,7 +4,7 @@ import cardData from "../data/data.json"
 import cardStyles from "./card.module.css"
 import ContentDiv from "./content-div.js"
 import Corrections from "./corrections.js"
-import BarChart from "./bar-chart.js"
+import ExtendedAnalysis from "./extended-analysis.js"
 
 function Card(props) {
     const isPrint = props.isPrint;
@@ -72,7 +72,7 @@ function Card(props) {
                 <div className={cardStyles.partyLogo + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>{party === "Democratic" ? "D" : "R"}</div>
                 <h3 className={cardStyles.candidateName + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
-            {hasAnalysis && <BarChart />}
+            {props.view === "Overview" && hasAnalysis && <ExtendedAnalysis isPrint={props.isPrint} candidate={props.candidate} />}
             <h4 className={cardStyles.sectionTitle + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
             <div className={cardStyles.cardContent + " " + (isPrint ? cardStyles.print : "")  + " " + (droppedOut ? cardStyles.inactive : "")}>{cardBullets}</div>
             <div className={cardStyles.cardContent + " " + (isPrint ? cardStyles.print : "")  + " " + (droppedOut ? cardStyles.inactive : "")}>{correctionsBullets}</div>
