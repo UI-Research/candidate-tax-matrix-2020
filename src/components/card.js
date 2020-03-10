@@ -14,6 +14,7 @@ function Card(props) {
     let candidateFirstName = cardData[candidateLastName]["First name"];
     let party = cardData[candidateLastName]["Party"];
     let droppedOut = cardData[candidateLastName]["Dropped out"] === "Y";
+    let hasAnalysis = cardData[candidateLastName]["Has analysis"] === "Y";
     let cardTitle = "Overview";
     let viewMoreText = "View overview";
     let cardBullets = <ReactMarkdown source={cardData[candidateLastName]["Overview"]} linkTarget="_blank" />;
@@ -71,7 +72,7 @@ function Card(props) {
                 <div className={cardStyles.partyLogo + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>{party === "Democratic" ? "D" : "R"}</div>
                 <h3 className={cardStyles.candidateName + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>{candidateFirstName + " " + candidateLastName}</h3>
             </div>
-            <BarChart />
+            {hasAnalysis && <BarChart />}
             <h4 className={cardStyles.sectionTitle + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>{props.view === "Overview" ? "Overview of tax proposals" : "Proposal"}</h4>
             <div className={cardStyles.cardContent + " " + (isPrint ? cardStyles.print : "")  + " " + (droppedOut ? cardStyles.inactive : "")}>{cardBullets}</div>
             <div className={cardStyles.cardContent + " " + (isPrint ? cardStyles.print : "")  + " " + (droppedOut ? cardStyles.inactive : "")}>{correctionsBullets}</div>
