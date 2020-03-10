@@ -6,6 +6,7 @@ import ContentDiv from "./content-div.js"
 import Corrections from "./corrections.js"
 import ExtendedAnalysis from "./extended-analysis.js"
 
+
 function ModalContent(props) {
     const isPrint = props.isPrint;
     const data = cardData[props.candidateLastName][props.view];
@@ -21,7 +22,11 @@ function ModalContent(props) {
 
         content =
             <div className="contentContainer">
-                <ExtendedAnalysis isPrint={isPrint} candidate={candidateLastName} />
+                <ExtendedAnalysis
+                    isPrint={isPrint}
+                    isModal={true}
+                    candidate={candidateLastName}
+                />
                 <ul className={modalContentStyles.analysisBullets}>
                     {bullets}
                 </ul>
