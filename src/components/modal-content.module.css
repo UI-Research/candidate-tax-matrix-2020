@@ -78,6 +78,32 @@
     margin: 0 30pt 4pt 30pt;
 }
 
+.analysisBullets {
+    margin-top: 1.45rem;
+}
+
+.analysisBullets li {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.sectionTitle {
+    font-size: 16px;
+    margin-top: 1rem;
+}
+
+.sectionTitle.democrat {
+    color: #11719f;
+}
+
+.sectionTitle.republican {
+    color: #a4201d;
+}
+
+.content {
+    font-size: 16px;
+}
+
 @media screen and (max-width: 1094px) {
     .separatorLine {
         width: 20%;

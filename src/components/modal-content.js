@@ -1,5 +1,6 @@
 import React from "react"
 import cardData from "../data/data.json"
+import analysisData from "../data/analysis_data.json"
 import modalContentStyles from "./modal-content.module.css"
 import ContentDiv from "./content-div.js"
 import Corrections from "./corrections.js"
@@ -14,11 +15,18 @@ function ModalContent(props) {
     let content;
 
     if(props.view === "Overview") {
+        let bullets = analysisData[candidateLastName]["Bullets"].map((bullet, index) =>
+            <li key={index}>{bullet}</li>
+        );
+
         content =
             <div className="contentContainer">
                 <ExtendedAnalysis isPrint={isPrint} candidate={candidateLastName} />
+                <ul className={modalContentStyles.analysisBullets}>
+                    {bullets}
+                </ul>
                 <h4 className={modalContentStyles.sectionTitle + " " + (isPrint ? modalContentStyles.print : "") + " " + (party === "Democratic" ? modalContentStyles.democrat : modalContentStyles.republican)}>Overview of tax proposals</h4>
-                <div className={modalContentStyles.cardContent + " " + (isPrint ? modalContentStyles.print : "")}>{data}</div>
+                <div className={modalContentStyles.content + " " + (isPrint ? modalContentStyles.print : "")}>{data}</div>
             </div>
     }
     else {
