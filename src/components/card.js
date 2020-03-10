@@ -83,6 +83,13 @@ function Card(props) {
                                             {viewMoreText}
                                         </p>
             }
+            {props.view === "Overview" && hasAnalysis && !isPrint && <p
+                                            className={cardStyles.viewMoreLink}
+                                            onClick={() => props.onClick(props.candidate)}
+                                        >
+                                            Read more
+                                        </p>
+            }
         </div>
     )
 }
