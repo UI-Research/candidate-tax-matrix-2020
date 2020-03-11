@@ -4,16 +4,16 @@ import { scaleLinear, scaleBand } from "d3-scale"
 // import chartStyles from "./bar-chart.module.css"
 const chartWidth = 150,
       chartHeight = 150,
-      padding = 20;
+      padding = {top: 20, bottom: 20, left: 0, right: 0};
 
 const xScale = scaleBand()
     .domain(["Lowest", "Second", "Middle", "Fourth", "Highest"])
-    .range([padding, chartWidth])
+    .range([padding.left + 1, chartWidth])
     .padding(0);
 
 const yScale = scaleLinear()
-    .domain([-10, 0])
-    .range([chartHeight - padding, 0]);
+    .domain([-6, 0])
+    .range([chartHeight - padding.bottom, 0]);
 
 const Axis = (direction) => {
     if(direction === "x") {
@@ -21,12 +21,12 @@ const Axis = (direction) => {
             <g className="axis x">
                 <path
                     d={[
-                        "M", padding, 0,
+                        "M", padding.left + 1, 1,
                         "H", chartWidth
                         ].join(" ")}
                     stroke="#000"
                 />
-                <text x={chartWidth / 2} y={chartHeight} fill="#000">Quintile</text>
+                <text x={chartWidth / 2} y={chartHeight} fill="#000" style={{textAnchor:`middle`}}>Quintile</text>
             </g>
         )
     }
@@ -40,8 +40,8 @@ const Axis = (direction) => {
             <g className="axis y">
                 <path
                     d={[
-                        "M", padding, 0,
-                        "V", chartHeight - padding
+                        "M", padding.left + 1, 1,
+                        "V", chartHeight - padding.bottom
                     ].join(" ")}
                     stroke="#000"
                 />
@@ -49,11 +49,11 @@ const Axis = (direction) => {
                     <g key={value} transform={`translate(0, ${yOffset})`} className="tick">
                         <line
                             x1="14"
-                            x2={padding}
+                            x2={padding.left}
                             stroke="#000"
                         />
                         <line
-                            x1={padding}
+                            x1={padding.left}
                             x2={chartWidth}
                             stroke="#d2d2d2"
                         />
@@ -84,6 +84,7 @@ function BarChart(props) {
             y={0}
             height={yScale(d.pct_change)}
             width={xScale.bandwidth()}
+            style={{fill:`#174a7c`}}
           />
     );
 
@@ -91,10 +92,10 @@ function BarChart(props) {
     const yAxis = Axis("y");
 
     return (
-        <svg width="150" height="150" viewBox="0 0 150 150">
+        <svg width={chartWidth} height={chartHeight} viewBox="0 0 150 150" style={{marginBottom:`1rem`}}>
+            {bars}
             {xAxis}
             {yAxis}
-            {bars}
         </svg>
     )
 }
