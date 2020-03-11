@@ -19,7 +19,7 @@ function ExtendedAnalysis(props) {
             <h4 className={cardStyles.sectionTitle + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>Revenue Impact (2021–30)</h4>
             <p style={{fontSize: 16}}>{analysisData[candidateLastName]["Revenue impact"]}</p>
             <h4 className={cardStyles.sectionTitle + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>Percent Change in After-Tax Income (2021)</h4>
-            {!props.isModal && <BarChart /> }
+            {!props.isModal && <BarChart candidate={candidateLastName} /> }
             {props.isModal && <img src={BidenChart} style={{maxWidth: 600, width: `100%`}} /> }
         </>
     )

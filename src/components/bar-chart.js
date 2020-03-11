@@ -1,5 +1,5 @@
 import React from "react"
-//import cardData from "../data/data.json"
+import analysisData from "../data/analysis_data.json"
 import { scaleLinear, scaleBand } from "d3-scale"
 // import chartStyles from "./bar-chart.module.css"
 const chartWidth = 150,
@@ -7,19 +7,13 @@ const chartWidth = 150,
       padding = 20;
 
 const xScale = scaleBand()
-    .domain(["q1", "q2", "q3", "q4", "q5"])
+    .domain(["Lowest", "Second", "Middle", "Fourth", "Highest"])
     .range([padding, chartWidth])
     .padding(0);
 
 const yScale = scaleLinear()
-    .domain([0, 100])
+    .domain([-10, 0])
     .range([chartHeight - padding, 0]);
-
-const dataset = [{x:"q1", y:10},
-                 {x:"q2", y:25},
-                 {x:"q3", y:50},
-                 {x:"q4", y:60},
-                 {x:"q5", y:100}];
 
 const Axis = (direction) => {
     if(direction === "x") {
@@ -27,12 +21,12 @@ const Axis = (direction) => {
             <g className="axis x">
                 <path
                     d={[
-                        "M", padding, chartHeight - padding,
+                        "M", padding, 0,
                         "H", chartWidth
                         ].join(" ")}
                     stroke="#000"
                 />
-                <text x={chartWidth / 2} y={chartHeight} fill="#000">Income</text>
+                <text x={chartWidth / 2} y={chartHeight} fill="#000">Quintile</text>
             </g>
         )
     }
@@ -41,7 +35,7 @@ const Axis = (direction) => {
                     value,
                     yOffset: yScale(value)
             }));
-console.log(ticks);
+// console.log(ticks);
         return (
             <g className="axis y">
                 <path
@@ -51,7 +45,7 @@ console.log(ticks);
                     ].join(" ")}
                     stroke="#000"
                 />
-                {ticks.map(({value, yOffset}) => (
+          {/*      {ticks.map(({value, yOffset}) => (
                     <g key={value} transform={`translate(0, ${yOffset})`} className="tick">
                         <line
                             x1="14"
@@ -73,19 +67,22 @@ console.log(ticks);
                             { value }
                         </text>
                     </g>
-                ))}
+                ))} */}
             </g>
         )
     }
 }
 
-function BarChart() {
-    const bars = dataset.map((d, i) =>
+function BarChart(props) {
+    const data = analysisData[props.candidate]["Graph data"];
+    // data.filter((d) => d.quintile !== "Top 1%" && d.quintile !== "All").map((d) => console.log(xScale(d.quintile), yScale(d.pct_change)));
+    const bars = data.filter((d) => d.quintile !== "Top 1%" && d.quintile !== "All").map((d, i) =>
           <rect
+            key={i}
             className="bar"
-            x={xScale(d.x)}
-            y={yScale(d.y)}
-            height={chartHeight - padding - yScale(d.y)}
+            x={xScale(d.quintile)}
+            y={0}
+            height={yScale(d.pct_change)}
             width={xScale.bandwidth()}
           />
     );
