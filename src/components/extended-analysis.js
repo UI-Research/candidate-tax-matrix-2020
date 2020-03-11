@@ -21,6 +21,7 @@ function ExtendedAnalysis(props) {
             <h4 className={cardStyles.sectionTitle + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>Percent Change in After-Tax Income (2021)</h4>
             {!props.isModal && <BarChart candidate={candidateLastName} /> }
             {props.isModal && <img src={BidenChart} style={{maxWidth: 600, width: `100%`}} /> }
+            <a href={analysisData[candidateLastName]["Link"]} target="_blank"><p>See the analysis</p></a>
         </>
     )
 }
