@@ -4,7 +4,7 @@ import { scaleLinear, scaleBand } from "d3-scale"
 // import chartStyles from "./bar-chart.module.css"
 const chartWidth = 150,
       chartHeight = 150,
-      padding = {top: 20, bottom: 20, left: 0, right: 0};
+      padding = {top: 20, bottom: 0, left: 0, right: 0};
 
 const xScale = scaleBand()
     .domain(["Lowest", "Second", "Middle", "Fourth", "Highest"])
@@ -12,21 +12,21 @@ const xScale = scaleBand()
     .padding(0);
 
 const yScale = scaleLinear()
-    .domain([-6, 0])
-    .range([chartHeight - padding.bottom, 0]);
+    .domain([-15, 0])
+    .range([chartHeight - padding.bottom, padding.top]);
 
 const Axis = (direction) => {
     if(direction === "x") {
         return (
             <g className="axis x">
+                <text x={chartWidth / 2} y={padding.top - 8} fill="#000" style={{textAnchor:`middle`}}>Quintile</text>
                 <path
                     d={[
-                        "M", padding.left + 1, 1,
+                        "M", padding.left + 1, padding.top + 1,
                         "H", chartWidth
                         ].join(" ")}
                     stroke="#000"
                 />
-                <text x={chartWidth / 2} y={chartHeight} fill="#000" style={{textAnchor:`middle`}}>Quintile</text>
             </g>
         )
     }
@@ -40,7 +40,7 @@ const Axis = (direction) => {
             <g className="axis y">
                 <path
                     d={[
-                        "M", padding.left + 1, 1,
+                        "M", padding.left + 1, padding.top + 1,
                         "V", chartHeight - padding.bottom
                     ].join(" ")}
                     stroke="#000"
@@ -74,6 +74,7 @@ const Axis = (direction) => {
 }
 
 function BarChart(props) {
+    console.log(yScale(0));
     const data = analysisData[props.candidate]["Graph data"];
     // data.filter((d) => d.quintile !== "Top 1%" && d.quintile !== "All").map((d) => console.log(xScale(d.quintile), yScale(d.pct_change)));
     const bars = data.filter((d) => d.quintile !== "Top 1%" && d.quintile !== "All").map((d, i) =>
@@ -81,8 +82,8 @@ function BarChart(props) {
             key={i}
             className="bar"
             x={xScale(d.quintile)}
-            y={0}
-            height={yScale(d.pct_change)}
+            y={padding.top}
+            height={yScale(d.pct_change) - padding.top}
             width={xScale.bandwidth()}
             style={{fill:`#174a7c`}}
           />
