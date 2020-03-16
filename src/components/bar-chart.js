@@ -24,7 +24,7 @@ const Axis = (direction) => {
 
         return (
             <g className="axis x">
-                <text x={chartWidth / 2} y={15} fill="#000" style={{textAnchor:`middle`}}>Quintile</text>
+                <text x={chartWidth / 2} y={15} fill="#000" style={{textAnchor:`middle`, fontSize:14}}>Quintile</text>
                 <path
                     d={[
                         "M", padding.left + 1, padding.top,
