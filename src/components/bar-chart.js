@@ -4,11 +4,11 @@ import { scaleLinear, scaleBand } from "d3-scale"
 // import chartStyles from "./bar-chart.module.css"
 const chartWidth = 300,
       chartHeight = 150,
-      padding = {top: 20, bottom: 5, left: 35, right: 0};
+      padding = {top: 40, bottom: 5, left: 35, right: 0};
 
 const xScale = scaleBand()
-    .domain(["Lowest", "Second", "Middle", "Fourth", "Highest"])
-    .range([padding.left + 1, chartWidth])
+    .domain(["Q1", "Q2", "Q3", "Q4", "Q5"])
+    .rangeRound([padding.left + 1, chartWidth])
     .padding(0.2);
 
 const yScale = scaleLinear()
@@ -17,9 +17,14 @@ const yScale = scaleLinear()
 
 const Axis = (direction) => {
     if(direction === "x") {
+        const xTicks = xScale.domain().map(value => ({
+            value,
+            xOffset: xScale(value) + xScale.bandwidth() / 2
+        }));
+
         return (
             <g className="axis x">
-                <text x={chartWidth / 2} y={padding.top - 8} fill="#000" style={{textAnchor:`middle`}}>Quintile</text>
+                <text x={chartWidth / 2} y={15} fill="#000" style={{textAnchor:`middle`}}>Quintile</text>
                 <path
                     d={[
                         "M", padding.left + 1, padding.top,
@@ -27,6 +32,18 @@ const Axis = (direction) => {
                         ].join(" ")}
                     stroke="#000"
                 />
+                {xTicks.map(({value, xOffset}) => (
+                    <text
+                        key={value}
+                        x={xOffset}
+                        y={padding.top - 5}
+                        style={{
+                            fontSize: "12px",
+                            textAnchor: "middle",
+                        }}>
+                        {value}
+                    </text>
+                ))}
             </g>
         )
     }
@@ -79,7 +96,7 @@ function BarChart(props) {
           <rect
             key={i}
             className="bar"
-            x={xScale(d.quintile)}
+            x={xScale(d.quintile_short)}
             y={padding.top}
             height={yScale(d.pct_change) - padding.top}
             width={xScale.bandwidth()}
