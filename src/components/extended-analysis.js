@@ -5,6 +5,7 @@ import cardStyles from "./card.module.css"
 import BarChart from "./bar-chart.js"
 
 import BidenChart from "../images/Biden.png"
+import SandersChart from "../images/Sanders.png"
 
 function ExtendedAnalysis(props) {
     const isPrint = props.isPrint;
@@ -14,13 +15,17 @@ function ExtendedAnalysis(props) {
     let party = analysisData[candidateLastName]["Party"];
     let droppedOut = analysisData[candidateLastName]["Dropped out"] === "Y";
 
+    let chartImageName;
+    if(candidateLastName === "Biden") chartImageName = BidenChart;
+    else if(candidateLastName === "Sanders") chartImageName = SandersChart;
+
     return (
         <>
             <h4 className={cardStyles.sectionTitle + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>Revenue Impact (2021–30)</h4>
             <p style={{fontSize: 16}}>{analysisData[candidateLastName]["Revenue impact"]}</p>
             <h4 className={cardStyles.sectionTitle + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>Percent Change in After-Tax Income (2021)</h4>
             {!props.isModal && <BarChart candidate={candidateLastName} /> }
-            {props.isModal && <img src={BidenChart} style={{maxWidth: 600, width: `100%`}} /> }
+            {props.isModal && <img src={chartImageName} style={{maxWidth: 600, width: `100%`}} /> }
             {!props.isModal && <a href={analysisData[candidateLastName]["Link"]} target="_blank"><p>See the analysis</p></a>}
         </>
     )
