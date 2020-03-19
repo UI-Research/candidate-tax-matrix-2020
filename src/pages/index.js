@@ -258,6 +258,7 @@ export const query = graphql`
           id
           last_name
           party
+          has_analysis
           selected
           dropped_out
         }
