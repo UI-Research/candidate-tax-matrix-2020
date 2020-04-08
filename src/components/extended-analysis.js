@@ -21,12 +21,12 @@ function ExtendedAnalysis(props) {
 
     return (
         <>
-            <h4 className={cardStyles.sectionTitle + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>Revenue Impact (2021–30)</h4>
-            <p style={{fontSize: 16}}>{analysisData[candidateLastName]["Revenue impact"]}</p>
-            <h4 className={cardStyles.sectionTitle + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut ? cardStyles.inactive : "")}>Percent Change in After-Tax Income (2021)</h4>
-            {!props.isModal && <BarChart candidate={candidateLastName} /> }
+            <h4 className={cardStyles.sectionTitle + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut && !props.isModal ? cardStyles.inactive : "")}>Revenue Impact (2021–30)</h4>
+            <p className={cardStyles.cardContent + " " + (isPrint ? cardStyles.print : "") + " " + (droppedOut && !props.isModal ? cardStyles.inactive : "") }>{analysisData[candidateLastName]["Revenue impact"]}</p>
+            <h4 className={cardStyles.sectionTitle + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut && !props.isModal ? cardStyles.inactive : "")}>Percent Change in After-Tax Income (2021)</h4>
+            {!props.isModal && <BarChart candidate={candidateLastName} droppedOut={droppedOut} isPrint={isPrint} /> }
             {props.isModal && <img src={chartImageName} style={{maxWidth: 600, width: `100%`}} /> }
-            {!props.isModal && <a href={analysisData[candidateLastName]["Link"]} target="_blank"><p>See the analysis</p></a>}
+            {!props.isModal && <a href={analysisData[candidateLastName]["Link"]} target="_blank" style={{ color: droppedOut && !isPrint ? `#BCBEC0` : `` }}><p>See the analysis</p></a>}
         </>
     )
 }

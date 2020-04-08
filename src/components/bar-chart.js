@@ -2,6 +2,7 @@ import React from "react"
 import analysisData from "../data/analysis_data.json"
 import { scaleLinear, scaleBand } from "d3-scale"
 // import chartStyles from "./bar-chart.module.css"
+
 const chartWidth = 300,
       chartHeight = 150,
       padding = {top: 40, bottom: 5, left: 35, right: 0};
@@ -15,7 +16,7 @@ const yScale = scaleLinear()
     .domain([-12, 0])
     .range([chartHeight - padding.bottom, padding.top]);
 
-const Axis = (direction) => {
+const Axis = (direction, droppedOut, isPrint) => {
     if(direction === "x") {
         const xTicks = xScale.domain().map(value => ({
             value,
@@ -24,19 +25,20 @@ const Axis = (direction) => {
 
         return (
             <g className="axis x">
-                <text x={chartWidth / 2} y={15} fill="#000" style={{textAnchor:`middle`, fontSize:14}}>Quintile</text>
+                <text x={chartWidth / 2} y={15} fill={droppedOut && !isPrint ? `#BCBEC0` : `#000`} style={{textAnchor:`middle`, fontSize:14}}>Quintile</text>
                 <path
                     d={[
                         "M", padding.left + 1, padding.top,
                         "H", chartWidth
                         ].join(" ")}
-                    stroke="#000"
+                    stroke={droppedOut && !isPrint ? `#BCBEC0` : `#000`}
                 />
                 {xTicks.map(({value, xOffset}) => (
                     <text
                         key={value}
                         x={xOffset}
                         y={padding.top - 5}
+                        fill={droppedOut && !isPrint ? `#BCBEC0` : `#000`}
                         style={{
                             fontSize: "12px",
                             textAnchor: "middle",
@@ -75,6 +77,7 @@ const Axis = (direction) => {
                             x={padding.left - 5}
                             y={0.5}
                             dy={`0.32em`}
+                            fill={droppedOut && !isPrint ? `#BCBEC0` : `#000`}
                             style={{
                                 fontSize: "12px",
                                 textAnchor: "end",
@@ -100,12 +103,12 @@ function BarChart(props) {
             y={padding.top}
             height={yScale(d.pct_change) - padding.top}
             width={xScale.bandwidth()}
-            style={{fill:`#174a7c`}}
+            style={{fill: props.droppedOut && !props.isPrint ? `#BCBEC0` : `#174a7c`}}
           />
     );
 
-    const xAxis = Axis("x");
-    const yAxis = Axis("y");
+    const xAxis = Axis("x", props.droppedOut, props.isPrint);
+    const yAxis = Axis("y", props.droppedOut, props.isPrint);
 
     return (
         <svg width={chartWidth} height={chartHeight} viewBox="0 0 300 150" style={{marginBottom:`1rem`}}>
