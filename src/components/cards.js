@@ -24,12 +24,12 @@ function buildQueryString(view, candidates, props) {
     if(view === "Issue areas") {
         let issues = props.issues.filter((issue) => issue.selected).map((issue) => issue.name);
         topics = (issues.length > 0) && sanitizeString(issues[0]);
-        topics = issues.slice(1).reduce((accumulator, currentValue) => accumulator + "-" + sanitizeString(currentValue), topics);
+        topics = issues.slice(1).reduce((accumulator, currentValue) => accumulator + "|" + sanitizeString(currentValue), topics);
     }
     else if(view === "Tax types") {
         let taxTypes = props.taxPolicies.filter((taxPolicy) => taxPolicy.selected).map((taxPolicy) => taxPolicy.name);
         topics = (taxTypes.length > 0) && sanitizeString(taxTypes[0]);
-        topics = taxTypes.slice(1).reduce((accumulator, currentValue) => accumulator + "-" + sanitizeString(currentValue), topics);
+        topics = taxTypes.slice(1).reduce((accumulator, currentValue) => accumulator + "|" + sanitizeString(currentValue), topics);
     }
     // console.log(candidatesQueryString);
 
