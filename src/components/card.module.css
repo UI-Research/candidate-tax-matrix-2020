@@ -176,16 +176,3 @@
 .viewMoreLink:hover {
     text-decoration: underline;
 }
-
-.readMoreLink {
-    font-style: italic;
-    color: #adabac;
-    /*position: absolute;*/
-    /*bottom: 14px;*/
-    /*margin: 0;*/
-    cursor: pointer;
-}
-
-.readMoreLink:hover {
-    text-decoration: underline;
-}
