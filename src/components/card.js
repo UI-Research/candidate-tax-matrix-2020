@@ -85,17 +85,10 @@ function Card(props) {
             }
             {props.view === "Overview" && hasAnalysis && !isPrint &&
                 <p
-                    className={cardStyles.readMoreLink}
+                    className={cardStyles.viewMoreLink}
                     onClick={() => props.onClick(props.candidate)}
                 >
                     Read more
-                </p>
-            }
-            {props.view === "Overview" && candidateLastName === "Biden" &&
-                <p style={{ fontSize: `14px`,
-                            lineHeight: `18px`,
-                            fontStyle: `italic` }}>
-                    Note: The estimates of revenue impact and percent change in after-tax income are based on the Tax Policy Center’s analysis of Biden’s proposals as of February 23, 2020. The overview of his tax proposals is updated as his campaign clarifies or releases new information.
                 </p>
             }
         </div>
