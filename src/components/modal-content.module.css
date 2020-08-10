@@ -105,6 +105,11 @@
     font-size: 16px;
 }
 
+.printLink {
+    pointer-events: none;
+    color: #353535;
+}
+
 @media screen and (max-width: 1094px) {
     .separatorLine {
         width: 20%;
