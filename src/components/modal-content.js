@@ -32,6 +32,14 @@ function ModalContent(props) {
                 </ul>
                 <h4 className={modalContentStyles.sectionTitle + " " + (isPrint ? modalContentStyles.print : "") + " " + (party === "Democratic" ? modalContentStyles.democrat : modalContentStyles.republican)}>Overview of tax proposals</h4>
                 <div className={modalContentStyles.content + " " + (isPrint ? modalContentStyles.print : "")}>{data}</div>
+                {candidateLastName === "Biden" &&
+                    <p style={{ fontSize: `14px`,
+                                lineHeight: `18px`,
+                                fontStyle: `italic`,
+                                marginTop: `20px` }}>
+                        Note: The estimates of revenue impact and percent change in after-tax income are based on the Tax Policy Center’s analysis of Biden’s proposals as of February 23, 2020. The overview of his tax proposals is updated as his campaign clarifies or releases new information.
+                    </p>
+                }
             </div>
     }
     else {
