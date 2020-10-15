@@ -1,7 +1,6 @@
 import React from "react"
 import analysisData from "../data/analysis_data.json"
 import { scaleLinear, scaleBand } from "d3-scale"
-// import chartStyles from "./bar-chart.module.css"
 
 const chartWidth = 300,
       chartHeight = 150,
@@ -13,7 +12,7 @@ const xScale = scaleBand()
     .padding(0.2);
 
 const yScale = scaleLinear()
-    .domain([-12, 0])
+    .domain([-12, 6])
     .range([chartHeight - padding.bottom, padding.top]);
 
 const Axis = (direction, droppedOut, isPrint) => {
@@ -26,13 +25,13 @@ const Axis = (direction, droppedOut, isPrint) => {
         return (
             <g className="axis x">
                 <text x={chartWidth / 2} y={15} fill={droppedOut && !isPrint ? `#BCBEC0` : `#000`} style={{textAnchor:`middle`, fontSize:14}}>Quintile</text>
-                <path
+             {/*   <path
                     d={[
                         "M", padding.left + 1, padding.top,
                         "H", chartWidth
                         ].join(" ")}
                     stroke={droppedOut && !isPrint ? `#BCBEC0` : `#000`}
-                />
+                /> */}
                 {xTicks.map(({value, xOffset}) => (
                     <text
                         key={value}
@@ -70,7 +69,7 @@ const Axis = (direction, droppedOut, isPrint) => {
                         <line
                             x1={padding.left}
                             x2={chartWidth}
-                            stroke="#d2d2d2"
+                            stroke={(value === 0 && !droppedOut) || (value === 0 && isPrint) ? "#000" : "#d2d2d2"}
                         />
                         <text
                             key={value}
@@ -94,14 +93,13 @@ const Axis = (direction, droppedOut, isPrint) => {
 function BarChart(props) {
     console.log(yScale(0));
     const data = analysisData[props.candidate]["Graph data"];
-    // data.filter((d) => d.quintile !== "Top 1%" && d.quintile !== "All").map((d) => console.log(xScale(d.quintile), yScale(d.pct_change)));
     const bars = data.filter((d) => d.quintile !== "Top 1%" && d.quintile !== "All").map((d, i) =>
           <rect
             key={i}
             className="bar"
             x={xScale(d.quintile_short)}
-            y={padding.top}
-            height={yScale(d.pct_change) - padding.top}
+            y={d.pct_change < 0 ? yScale(0) : yScale(d.pct_change)}
+            height={Math.abs(yScale(d.pct_change) - yScale(0))}
             width={xScale.bandwidth()}
             style={{fill: props.droppedOut && !props.isPrint ? `#BCBEC0` : `#174a7c`}}
           />
