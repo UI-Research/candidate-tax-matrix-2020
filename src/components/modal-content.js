@@ -37,7 +37,7 @@ function ModalContent(props) {
                                 lineHeight: `18px`,
                                 fontStyle: `italic`,
                                 marginTop: `20px` }}>
-                        Note: The estimates of revenue impact and percent change in after-tax income are based on the Tax Policy Center’s <a href="https://www.taxpolicycenter.org/publications/analysis-former-vice-president-bidens-tax-proposals" target="_blank" rel="noopener noreferrer" className={(isPrint ? modalContentStyles.printLink : "")}>analysis</a> of Biden’s proposals as of September 28, 2020. The overview of his tax proposals is updated as his campaign clarifies or releases new information.
+                        Note: The estimates of revenue impact and percent change in after-tax income are based on the Tax Policy Center’s <a href={analysisData["Biden"]["Link"]} target="_blank" rel="noopener noreferrer" className={(isPrint ? modalContentStyles.printLink : "")}>analysis</a> of Biden’s proposals as of September 28, 2020. The overview of his tax proposals is updated as his campaign clarifies or releases new information.
                     </p>
                 }
             </div>
