@@ -37,7 +37,7 @@ function ModalContent(props) {
                                 lineHeight: `18px`,
                                 fontStyle: `italic`,
                                 marginTop: `20px` }}>
-                        Note: The estimates of revenue impact and percent change in after-tax income are based on the Tax Policy Center’s <a href={analysisData["Biden"]["Link"]} target="_blank" rel="noopener noreferrer" className={(isPrint ? modalContentStyles.printLink : "")}>analysis</a> of Biden’s proposals as of September 28, 2020. The overview of his tax proposals is updated as his campaign clarifies or releases new information.
+                        Note: The estimates of revenue impact and percent change in after-tax income are based on the Tax Policy Center’s <a href={analysisData["Biden"]["Link"]} target="_blank" rel="noopener noreferrer" className={(isPrint ? modalContentStyles.printLink : "")}>analysis</a> of Biden’s proposals as of September 28, 2020. These estimates were corrected on November 6, 2020. More details are available <a href="https://www.taxpolicycenter.org/taxvox/tpc-revises-its-revenue-estimate-bidens-tax-plan-downward-21-trillion-over-10-years" target="_blank" rel="noreferrer noopener">here</a>.
                     </p>
                 }
             </div>

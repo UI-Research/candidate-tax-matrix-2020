@@ -26,6 +26,11 @@ function ExtendedAnalysis(props) {
             <h4 className={cardStyles.sectionTitle + " " + (isPrint ? cardStyles.print : "") + " " + (party === "Democratic" ? cardStyles.democrat : cardStyles.republican) + " " + (droppedOut && !props.isModal ? cardStyles.inactive : "")}>Percent Change in After-Tax Income ({analysisData[candidateLastName]["Analysis year"]})</h4>
             {!props.isModal && <BarChart candidate={candidateLastName} droppedOut={droppedOut} isPrint={isPrint} /> }
             {props.isModal && <img src={chartImageName} style={{maxWidth: 600, width: `100%`}} /> }
+            {!props.isModal &&
+                candidateLastName === "Biden" &&
+                <p style={{fontSize: `14px`,
+                           lineHeight: `18px`,
+                           fontStyle: `italic`}}>Note: These estimates were corrected on November 6, 2020. More details are available <a href="https://www.taxpolicycenter.org/taxvox/tpc-revises-its-revenue-estimate-bidens-tax-plan-downward-21-trillion-over-10-years" target="_blank" rel="noreferrer noopener">here</a>.</p>}
             {!props.isModal && <a href={analysisData[candidateLastName]["Link"]} target="_blank" style={{ color: droppedOut && !isPrint ? `#BCBEC0` : `` }}><p>See the analysis</p></a>}
         </>
     )
