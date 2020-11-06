@@ -28,7 +28,9 @@ function ExtendedAnalysis(props) {
             {props.isModal && <img src={chartImageName} style={{maxWidth: 600, width: `100%`}} /> }
             {!props.isModal &&
                 candidateLastName === "Biden" &&
-                <p>These estimates were corrected on November X, 2020. More details are available here.</p>}
+                <p style={{fontSize: `14px`,
+                           lineHeight: `18px`,
+                           fontStyle: `italic`}}>Note: These estimates were corrected on November X, 2020. More details are available here.</p>}
             {!props.isModal && <a href={analysisData[candidateLastName]["Link"]} target="_blank" style={{ color: droppedOut && !isPrint ? `#BCBEC0` : `` }}><p>See the analysis</p></a>}
         </>
     )
