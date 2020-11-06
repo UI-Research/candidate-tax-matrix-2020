@@ -30,7 +30,7 @@ function ExtendedAnalysis(props) {
                 candidateLastName === "Biden" &&
                 <p style={{fontSize: `14px`,
                            lineHeight: `18px`,
-                           fontStyle: `italic`}}>Note: These estimates were corrected on November X, 2020. More details are available here.</p>}
+                           fontStyle: `italic`}}>Note: These estimates were corrected on November 6, 2020. More details are available <a href="https://www.taxpolicycenter.org/taxvox/tpc-revises-its-revenue-estimate-bidens-tax-plan-downward-21-trillion-over-10-years" target="_blank" rel="noreferrer noopener">here</a>.</p>}
             {!props.isModal && <a href={analysisData[candidateLastName]["Link"]} target="_blank" style={{ color: droppedOut && !isPrint ? `#BCBEC0` : `` }}><p>See the analysis</p></a>}
         </>
     )
