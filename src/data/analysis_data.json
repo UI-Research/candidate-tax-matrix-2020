@@ -1,0 +1,50 @@
+{
+    "Biden": {
+        "First name": "Joe",
+        "Last name": "Biden",
+        "Party": "Democratic",
+        "Dropped out": "N",
+        "Has analysis": "Y",
+        "Link": "https://www.taxpolicycenter.org/publications/updated-analysis-former-vice-president-bidens-tax-proposals",
+        "Revenue impact": "$2.1 trillion (0.8 percent of GDP)",
+        "Analysis year": "2022",
+        "Graph data": [
+            {"quintile": "Lowest", "quintile_short": "Q1", "pct_change": 5.2},
+            {"quintile": "Second", "quintile_short": "Q2", "pct_change": 2.2},
+            {"quintile": "Middle", "quintile_short": "Q3", "pct_change": 1.0},
+            {"quintile": "Fourth", "quintile_short": "Q4", "pct_change": 0.5},
+            {"quintile": "Top", "quintile_short": "Q5", "pct_change": -4.8},
+            {"quintile": "Top 1%", "quintile_short": "", "pct_change": -15.6},
+            {"quintile": "All", "quintile_short": "", "pct_change": -1.7}
+        ],
+        "Bullets": [
+            "The average tax bill would rise by $259,670 (15.6  percent of after-tax income) for households in the top 1 percent of the income distribution.",
+            "Those in the middle income quintile would pay, on average, $680 less (1.1 percent of after-tax income).",
+            "Those in the lowest income quintile would pay, on average, $760 less (5.2 percent of after-tax income)."
+        ]
+    },
+    "Sanders": {
+        "First name": "Bernie",
+        "Last name": "Sanders",
+        "Party": "Democratic",
+        "Dropped out": "Y",
+        "Has analysis": "Y",
+        "Link": "https://www.taxpolicycenter.org/publications/analysis-senator-sanderss-tax-proposals",
+        "Revenue impact": "$9.9 trillion (3.6 percent of GDP)",
+        "Analysis year": "2021",
+        "Graph data": [
+            {"quintile": "Lowest", "quintile_short": "Q1", "pct_change": -1.1},
+            {"quintile": "Second", "quintile_short": "Q2", "pct_change": -1.3},
+            {"quintile": "Middle", "quintile_short": "Q3", "pct_change": -1.7},
+            {"quintile": "Fourth", "quintile_short": "Q4", "pct_change": -2.0},
+            {"quintile": "Top", "quintile_short": "Q5", "pct_change": -10.6},
+            {"quintile": "Top 1%", "quintile_short": "", "pct_change": -29.5},
+            {"quintile": "All", "quintile_short": "", "pct_change": -6.2}
+        ],
+        "Bullets": [
+            "In 2021, the average tax bill would rise by $518,190 (29.5 percent of after-tax income) for households in the top 1 percent of the income distribution.",
+            "Those in the middle income quintile would pay, on average, $1,070 more (1.7 percent of after-tax income).",
+            "Those in the lowest income quintile would pay, on average, $170 more (1.1 percent of after-tax income)."
+        ]
+    }
+}

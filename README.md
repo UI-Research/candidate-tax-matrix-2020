@@ -4,6 +4,10 @@ Build status: [![CircleCI](https://circleci.com/gh/UI-Research/candidate-tax-mat
 
 ## 🚀 Quick start
 
+## Requirements
+
+This project works best with node version 8. See [Gatsby docs](https://www.gatsbyjs.org/docs/preparing-your-environment/) for more on this.
+
 1. **Install Dependencies**
 
     Prepare your local development environment by installing a few dependencies as well as gatsby-cli. Check out the [Gatsby Quick Start](https://www.gatsbyjs.org/docs/quick-start/) for the most up-to-date dependency install info for your system of choice.

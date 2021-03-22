@@ -28,7 +28,7 @@ function Modal(props) {
     const party = cardData[candidateLastName]["Party"];
     // console.log(view, candidate, topic);
 
-    const printLink = "print/?candidate=" + candidateLastName + "&view=" + sanitizeString(view) + "&topic=" + sanitizeString(topic);
+    const printLink = "print/?candidate=" + candidateLastName + "&view=" + sanitizeString(view) + (view === "Overview" ? "" : "&topic=" + sanitizeString(topic));
 
     return (
         <div>

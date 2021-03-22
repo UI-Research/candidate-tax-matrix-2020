@@ -34,8 +34,8 @@ candidate_text = pd.read_excel("Candidate text_edited.xlsx", sheet_name = "Maste
                                names = ["Candidate", "Tax1", "Tax2", "Issue1", "Issue2", "Text", "Corrections"])
 
 master_lists = pd.read_excel("Candidate text_edited.xlsx", sheet_name = "Lists (Don't delete!)",
-                             usecols = "A:F",
-                             names = ["Candidate_first", "Candidate_last", "Candidate_party", "Dropped_out", "Tax_types", "Issue_areas"])
+                             usecols = "A:G",
+                             names = ["Candidate_first", "Candidate_last", "Candidate_party", "Dropped_out", "Has_analysis", "Tax_types", "Issue_areas"])
 
 # TEMPORARY: final overview data will look different after analyses are completed
 overview_text = pd.read_csv("overviews.csv", index_col = "Candidate")
@@ -44,10 +44,11 @@ overview_text = pd.read_csv("overviews.csv", index_col = "Candidate")
 candidate_text = candidate_text[pd.notnull(candidate_text.Text)]
 
 # make master data jsons for candidate, issue areas and tax policies filter lists
-candidates = master_lists[["Candidate_first", "Candidate_last", "Candidate_party", "Dropped_out"]]
-candidates.rename(columns={"Candidate_first": "first_name", "Candidate_last":"last_name", "Candidate_party": "party", "Dropped_out": "dropped_out"}, inplace = True)
+candidates = master_lists[["Candidate_first", "Candidate_last", "Candidate_party", "Dropped_out", "Has_analysis"]]
+candidates.rename(columns={"Candidate_first": "first_name", "Candidate_last":"last_name", "Candidate_party": "party", "Dropped_out": "dropped_out", "Has_analysis": "has_analysis"}, inplace = True)
 candidates["dropped_out"] = np.where(candidates.dropped_out == "Y", "Y", "N")
-candidates["selected"] = True
+candidates["has_analysis"] = np.where(candidates.has_analysis == "Y", "Y", "N")
+candidates["selected"] = np.where(candidates.dropped_out == "Y", False, True)
 candidates.to_json("candidates.json", orient = "records")
 
 issue_areas = master_lists["Issue_areas"][master_lists["Issue_areas"].notnull()].to_frame()
@@ -70,6 +71,7 @@ for index, row in candidates.iterrows():
     candidate_dict["Last name"] = row["last_name"]
     candidate_dict["Party"] = row["party"]
     candidate_dict["Dropped out"] = row["dropped_out"]
+    candidate_dict["Has analysis"] = row["has_analysis"]
     try:
         candidate_dict["Overview"] = overview_text.loc[row.last_name, "Overview"]
     except:

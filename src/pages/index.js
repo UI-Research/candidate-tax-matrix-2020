@@ -81,7 +81,7 @@ class IndexPage extends Component {
     handleSelectAllClick = (list) => {
         if(list === "candidates") {
             const candidates = this.state.selectedCandidates.slice();
-            candidates.map(c => c.selected = true);
+            candidates.map(c => (c.dropped_out === "N") ? c.selected = true : c.selected = false);
             // candidates.sort(sortBySelection);
             this.setState({selectedCandidates : candidates});
         }
@@ -258,6 +258,7 @@ export const query = graphql`
           id
           last_name
           party
+          has_analysis
           selected
           dropped_out
         }

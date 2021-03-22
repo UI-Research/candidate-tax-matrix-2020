@@ -43,8 +43,7 @@ function PrintPage({ location }) {
         if(Object.keys(queryObj).indexOf("cards") > -1) {
             let candidates = queryObj["candidates"].split(",");
             let view = queryObj["view"];
-            let topics = queryObj["topic"].split("-");
-
+            let topics = queryObj["topic"].split("|");
             let allCards = candidates;
             if(view !== "Overview") {
                 allCards = cartProd(candidates, topics);
